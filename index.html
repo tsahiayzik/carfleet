@@ -501,8 +501,10 @@ body.dark input,body.dark textarea,body.dark select{color:var(--ink)}
       <div class="tiles-grp-lbl">טיפול ק"מ</div>
       <div class="tiles">
         <div class="tile"><div class="tile-lbl">טיפול כל</div><div class="tile-val" id="d-itvl">—</div></div>
-        <div class="tile"><div class="tile-lbl">ק"מ לטיפול</div><div class="tile-val ltr" id="d-nkm">—</div></div>
+        <div class="tile"><div class="tile-lbl">ק"מ טיפול אחרון</div><div class="tile-val ltr" id="d-km-last-srv">—</div></div>
+        <div class="tile"><div class="tile-lbl">ק"מ טיפול הבא</div><div class="tile-val ltr" id="d-nkm">—</div></div>
         <div class="tile wide"><div class="tile-lbl">רישוי שנתי (טסט)</div><div class="tile-val" id="d-annual">—</div></div>
+        <div class="tile wide"><div class="tile-lbl">טיפול שנתי אחרון</div><div class="tile-val" id="d-annual-srv">—</div></div>
       </div>
       <div class="tiles-grp-lbl">דלקן וקודן</div>
       <div class="tiles">
@@ -528,7 +530,10 @@ body.dark input,body.dark textarea,body.dark select{color:var(--ink)}
       </div>
       <div class="tiles-grp-lbl">הערות</div>
       <div class="tiles">
-        <div class="tile wide"><div class="tile-lbl">הערות</div><div class="tile-val note" id="d-notes">—</div></div>
+        <div class="tile wide" onclick="openNotesModal()" style="cursor:pointer">
+          <div class="tile-lbl">הערות <span style="font-size:10px;color:var(--blue)">✏️ לחץ לעריכה</span></div>
+          <div class="tile-val note" id="d-notes">אין הערות</div>
+        </div>
       </div>
     </div>
     <div style="height:8px"></div>
@@ -628,7 +633,7 @@ body.dark input,body.dark textarea,body.dark select{color:var(--ink)}
       </div>
 
       <div style="text-align:center;padding:24px 0;color:var(--ink3);font-size:12px;font-weight:500">
-        CarFleet · גרסה 0.67V
+        CarFleet · גרסה 0.69V
       </div>
     </div>
   </div>
@@ -714,6 +719,23 @@ body.dark input,body.dark textarea,body.dark select{color:var(--ink)}
     </div>
 
     <button class="mbtn blue" onclick="saveWeeklyModal()">שמור טיפול שבועי</button>
+  </div>
+</div>
+
+<!-- NOTES MODAL -->
+<div class="modal-overlay" id="m-notes">
+  <div class="modal-sheet">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+      <div class="modal-title" style="margin:0">📝 הערות</div>
+      <button onclick="closeM('m-notes')" style="background:none;border:none;font-size:24px;color:var(--ink3);cursor:pointer">×</button>
+    </div>
+    <textarea id="m-notes-val" style="width:100%;height:120px;border:1.5px solid var(--line);border-radius:12px;
+      padding:12px;font-family:var(--font);font-size:14px;color:var(--ink);background:var(--bg);
+      resize:none;outline:none;direction:rtl" placeholder="כתוב הערה..."></textarea>
+    <div style="margin-top:12px">
+      <button class="mbtn blue" onclick="saveNotes()">שמור</button>
+      <button class="mbtn gray" onclick="closeM('m-notes')">ביטול</button>
+    </div>
   </div>
 </div>
 
@@ -810,7 +832,10 @@ function getStatus(v){
   const today=new Date(); today.setHours(0,0,0,0);
   const issues=[];
   const nkm=v.km+(v.itvl||10000);
-  const kmNext = (v.kmNext && v.kmNext > v.km) ? v.kmNext : nkm;
+  // If kmLastService is set, base next service on it; otherwise fallback
+  const kmNext = v.kmLastService
+    ? v.kmLastService + (v.itvl||10000)
+    : (v.kmNext && v.kmNext > v.km) ? v.kmNext : nkm;
 
   const bal=kmNext-v.km;
   if(bal<=0)       issues.push({s:'red',   m:`עבר ק"מ לטיפול (+${Math.abs(bal).toLocaleString()})`});
@@ -1355,7 +1380,9 @@ function openDetail(id){
   document.getElementById('d-purpose').textContent=v.purpose||'—';
   document.getElementById('d-itvl').textContent=(v.itvl||0).toLocaleString()+' ק"מ';
   document.getElementById('d-nkm').textContent=kmNext.toLocaleString();
+  document.getElementById('d-km-last-srv').textContent=v.kmLastService?v.kmLastService.toLocaleString():'לא הוזן';
   document.getElementById('d-annual').textContent=fmt(v.annual)||'—';
+  document.getElementById('d-annual-srv').textContent=fmt(v.annualService)||'לא הוזן';
 
   const bn=nextBcheck(v.blast,v.bf);
   const bntxt=fmt(bn)||'—';
@@ -1363,7 +1390,7 @@ function openDetail(id){
   document.getElementById('d-bf').textContent=`${v.bf||'—'} · ${bdtxt}`;
   document.getElementById('d-bn').textContent=bntxt;
   document.getElementById('d-winter').textContent=fmt(v.winter)||'—';
-  document.getElementById('d-notes').textContent=v.notes||'—';
+  document.getElementById('d-notes').textContent=v.notes||'אין הערות';
 
   // Weekly service status
   const wlast = v.lastWeekly ? new Date(v.lastWeekly) : null;
@@ -1409,13 +1436,14 @@ function openDetail(id){
     if(v.enaStatus==='needed'||v.enaStatus==='fail'){
       const base=v.enaDate?new Date(v.enaDate):new Date();
       base.setDate(base.getDate()+30);
-      const dueIso=base.toISOString().split('T')[0];
-      const dueStr=fmt(dueIso);
+      const dueStr=fmt(base.toISOString().split('T')[0]);
       const daysLeft=Math.round((base-today)/86400000);
       enaDueEl.textContent=`${dueStr} (עוד ${daysLeft} ימים)`;
       enaDueEl.className=`tile-val ${daysLeft<0?'alert':daysLeft<=7?'warn':'ok'}`;
+      enaDueEl.closest('.tile').style.display='';
     } else {
       enaDueEl.textContent='—'; enaDueEl.className='tile-val';
+      enaDueEl.closest('.tile').style.display='none';
     }
   }
 
@@ -1635,6 +1663,25 @@ function saveBcheck(){
   openDetail(_cur);
 }
 
+/* ═══ NOTES MODAL ═══ */
+function openNotesModal(){
+  const d=load(); const v=d.v.find(x=>x.id===_cur); if(!v) return;
+  document.getElementById('m-notes-val').value=v.notes||'';
+  document.getElementById('m-notes').classList.add('show');
+  setTimeout(()=>document.getElementById('m-notes-val').focus(),300);
+}
+function saveNotes(){
+  const d=load(); const v=d.v.find(x=>x.id===_cur); if(!v) return;
+  const txt=document.getElementById('m-notes-val').value.trim();
+  const old=v.notes||'';
+  v.notes=txt;
+  if(txt!==old) logEvent(v,'edit',`הערות עודכנו`);
+  save(d);
+  closeM('m-notes');
+  document.getElementById('d-notes').textContent=txt||'אין הערות';
+  showToast('✅ הערות נשמרו');
+}
+
 /* ═══ DELETE / ARCHIVE ═══ */
 function confirmDel(){
   const d=load(); const v=d.v.find(x=>x.id===_cur);
@@ -1696,6 +1743,8 @@ function buildForm(v){
     <div class="fcard">
       <div class="frow"><span class="ficon">📍</span><span class="flabel">ק"מ נוכחי</span><input class="finput" type="number" id="fv-km" value="${v?v.km:''}" placeholder="0"></div>
       <div class="frow"><span class="ficon">📅</span><span class="flabel">תאריך עדכון</span><input class="finput" type="date" id="fv-kmdate" value="${v?v.kmDate||'':new Date().toISOString().split('T')[0]}"></div>
+      <div class="frow"><span class="ficon">🔧</span><span class="flabel">ק"מ טיפול אחרון</span><input class="finput" type="number" id="fv-km-last-service" value="${v?v.kmLastService||'':''}" placeholder="0"></div>
+      <div class="frow"><span class="ficon">📅</span><span class="flabel">תאריך טיפול שנתי</span><input class="finput" type="date" id="fv-annual-service" value="${v?v.annualService||'':''}"></div>
     </div>
     <div class="fcard">
       <div class="chips-wrap"><div class="chips-lbl">טיפול כל (ק"מ)</div>
@@ -1822,6 +1871,8 @@ function readForm(){
 
   const km=parseInt(g('fv-km')?.value)||0;
   const kmDate=g('fv-kmdate')?.value||new Date().toISOString().split('T')[0];
+  const kmLastService=parseInt(g('fv-km-last-service')?.value)||null;
+  const annualService=g('fv-annual-service')?.value||null;
 
   // Interval — check if "אחר" chip active
   const itvlChip=document.querySelector('#fv-itvl-chips .chip.active');
@@ -1844,7 +1895,7 @@ function readForm(){
   const fuelCode=g('fv-fuel-code')?.value.trim()||'';
   const vehicleCode=g('fv-vehicle-code')?.checked||false;
   const vehicleCodeVal=g('fv-code-val')?.value.trim()||'';
-  return {model,civ,mil,resp,year,purpose,km,kmDate,itvl,bf,bday,blast,annual,winter,notes,exemptWeekly,exemptBcheck,enaActive,enaStatus,enaDate,fuelCard,fuelCode,vehicleCode,vehicleCodeVal};
+  return {model,civ,mil,resp,year,purpose,km,kmDate,kmLastService,annualService,itvl,bf,bday,blast,annual,winter,notes,exemptWeekly,exemptBcheck,enaActive,enaStatus,enaDate,fuelCard,fuelCode,vehicleCode,vehicleCodeVal};
 }
 
 function doAdd(){
