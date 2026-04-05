@@ -795,25 +795,7 @@ function load(){try{return JSON.parse(localStorage.getItem(STORE))||{v:[],nid:1}
 function save(d){localStorage.setItem(STORE,JSON.stringify(d));}
 
 function seed(){
-  const d=load(); if(d.v.length) return;
-  const t=new Date(), iso=x=>x.toISOString().split('T')[0];
-  const ago=n=>{const x=new Date(t);x.setDate(x.getDate()-n);return iso(x);};
-  const add=n=>{const x=new Date(t);x.setDate(x.getDate()+n);return iso(x);};
-  d.v=[
-    {id:1,model:'שברולט סילברדו',civ:'240-358-12',mil:'240358',resp:'נחום שמאול',year:2024,purpose:'משימתי',
-     km:240358,kmDate:ago(3),itvl:12000,annual:add(120),
-     bf:'תלת חודשי (12 שב\')',bday:'ראשון',blast:ago(30),winter:ago(90),notes:''},
-    {id:2,model:'איזוסו דימקס',civ:'149-885-07',mil:'149885',resp:'יוסי יעקב',year:2010,purpose:'ייעודי',
-     km:149885,kmDate:ago(15),itvl:10000,annual:ago(5),
-     bf:'חודשי (4 שב\')',bday:'שלישי',blast:ago(31),winter:ago(200),notes:'דורש בדיקת בלמים'},
-    {id:3,model:"דודג' ראם",civ:'239-027-14',mil:'239027',resp:'רז ורוטנקר',year:2014,purpose:'צמוד אישי',
-     km:239027,kmDate:ago(8),itvl:10000,annual:add(60),
-     bf:'חודשי (4 שב\')',bday:'שני',blast:ago(20),winter:ago(10),notes:''},
-    {id:4,model:'רנו קנגו',civ:'266-084-18',mil:'266084',resp:'טמיר ניל',year:2018,purpose:'שכור',
-     km:266084,kmDate:ago(2),itvl:30000,annual:add(200),
-     bf:'תלת חודשי (12 שב\')',bday:'רביעי',blast:ago(10),winter:ago(5),notes:''},
-  ];
-  d.nid=5; save(d);
+  // No demo data
 }
 
 /* ═══ STATUS ═══ */
