@@ -31,7 +31,7 @@ mLink.rel = 'manifest';
 mLink.href = URL.createObjectURL(blob);
 document.head.appendChild(mLink);
 </script>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,">
 <title>Fleet v3</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -67,7 +67,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--ink);min-height:10
 .icon-btn.blue{background:var(--blue);color:#fff;font-size:20px}
 
 /* ── DASHBOARD ── */
-.dash-hero{padding:calc(52px + env(safe-area-inset-top,0px)) 20px 20px;background:var(--card)}
+.dash-hero{padding:52px 20px 20px;background:var(--card)}
 .dash-greeting{font-size:13px;font-weight:600;color:var(--blue-light);margin-bottom:4px;letter-spacing:.3px}
 .dash-title{font-size:26px;font-weight:800;letter-spacing:-.8px}
 
@@ -137,7 +137,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--ink);min-height:10
 .pick-vmeta{font-size:12px;color:var(--ink3);margin-top:1px}
 
 /* ── LIST ── */
-.list-hdr{background:var(--card);padding:calc(52px + env(safe-area-inset-top,0px)) 20px 0;border-bottom:1px solid var(--line)}
+.list-hdr{background:var(--card);padding:52px 20px 0;border-bottom:1px solid var(--line)}
 .list-hdr-row{display:flex;align-items:flex-end;justify-content:space-between;padding-bottom:14px}
 .list-hdr h1{font-size:26px;font-weight:800;letter-spacing:-.8px}
 .list-sub{font-size:12px;color:var(--ink3);font-weight:500;margin-top:2px}
@@ -167,7 +167,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--ink);min-height:10
 .vplate-lbl{font-size:10px;color:var(--ink3);font-weight:500;text-align:left}
 
 /* ── DETAIL ── */
-.det-nav{background:var(--card);padding:calc(52px + env(safe-area-inset-top,0px)) 16px 14px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--line)}
+.det-nav{background:var(--card);padding:52px 16px 14px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--line)}
 .det-title{font-size:16px;font-weight:700;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .stag{font-size:12px;font-weight:700;padding:5px 12px;border-radius:999px;flex-shrink:0}
 .stag.red{background:var(--red-bg);color:var(--red)}.stag.yellow{background:var(--yel-bg);color:var(--yellow)}.stag.green{background:var(--grn-bg);color:var(--green)}
@@ -221,7 +221,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--ink);min-height:10
 .cta-btn.danger{background:#fff;color:var(--red);box-shadow:none;border:1.5px solid var(--line)}
 
 /* ── FORMS ── */
-.form-hdr{background:var(--card);padding:calc(52px + env(safe-area-inset-top,0px)) 16px 18px;border-bottom:1px solid var(--line)}
+.form-hdr{background:var(--card);padding:52px 16px 18px;border-bottom:1px solid var(--line)}
 .form-hdr h1{font-size:22px;font-weight:800;letter-spacing:-.6px}
 .form-hdr p{font-size:13px;color:var(--ink3);font-weight:500;margin-top:3px}
 .form-body{padding:16px;display:flex;flex-direction:column;gap:10px}
@@ -399,6 +399,19 @@ body.dark input,body.dark textarea,body.dark select{color:var(--ink)}
 .toggle-switch input:checked+.toggle-knob{background:var(--blue)}
 .toggle-switch input:checked+.toggle-knob::after{transform:translateX(-20px)}
 </style>
+
+<script>
+// ═══ VERSION CHECK ═══
+// Checks if app was updated since last visit
+const CURRENT_VERSION = 'v0.71';
+const stored = localStorage.getItem('carfleet_version');
+if(stored && stored !== CURRENT_VERSION){
+  const t=document.getElementById('toast');
+  if(t){ t.textContent='✅ האפליקציה עודכנה ל-' + CURRENT_VERSION; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),3000); }
+}
+localStorage.setItem('carfleet_version', CURRENT_VERSION);
+</script>
+
 </head>
 <body>
 <div class="app">
@@ -491,25 +504,26 @@ body.dark input,body.dark textarea,body.dark select{color:var(--ink)}
     <div class="tiles-sec">
       <div class="tiles-grp-lbl">פרטי רכב</div>
       <div class="tiles">
-        <div class="tile"><div class="tile-lbl">מס' רכב</div><div class="tile-val ltr" id="d-civ">—</div></div>
-        <div class="tile"><div class="tile-lbl">מס' צבאי</div><div class="tile-val ltr" id="d-mil">—</div></div>
+        <div class="tile"><div class="tile-lbl">מס' רכב</div><div class="tile-val" style="direction:ltr;text-align:right" id="d-civ">—</div></div>
+        <div class="tile"><div class="tile-lbl">מס' צבאי</div><div class="tile-val" style="direction:ltr;text-align:right" id="d-mil">—</div></div>
         <div class="tile"><div class="tile-lbl">דגם</div><div class="tile-val" id="d-model">—</div></div>
         <div class="tile"><div class="tile-lbl">שנת ייצור</div><div class="tile-val" id="d-year">—</div></div>
         <div class="tile"><div class="tile-lbl">אחראי</div><div class="tile-val" id="d-resp">—</div></div>
         <div class="tile"><div class="tile-lbl">ייעוד</div><div class="tile-val" id="d-purpose">—</div></div>
+        <div class="tile"><div class="tile-lbl">סוג רכב</div><div class="tile-val" id="d-vtype">—</div></div>
       </div>
       <div class="tiles-grp-lbl">טיפול ק"מ</div>
       <div class="tiles">
         <div class="tile"><div class="tile-lbl">טיפול כל</div><div class="tile-val" id="d-itvl">—</div></div>
-        <div class="tile"><div class="tile-lbl">ק"מ טיפול אחרון</div><div class="tile-val ltr" id="d-km-last-srv">—</div></div>
-        <div class="tile"><div class="tile-lbl">ק"מ טיפול הבא</div><div class="tile-val ltr" id="d-nkm">—</div></div>
-        <div class="tile wide"><div class="tile-lbl">רישוי שנתי (טסט)</div><div class="tile-val" id="d-annual">—</div></div>
+        <div class="tile"><div class="tile-lbl">ק"מ טיפול אחרון</div><div class="tile-val" style="direction:ltr;text-align:right" id="d-km-last-srv">—</div></div>
+        <div class="tile"><div class="tile-lbl">ק"מ טיפול הבא</div><div class="tile-val" style="direction:ltr;text-align:right" id="d-nkm">—</div></div>
+        <div class="tile wide"><div class="tile-lbl">תוקף רישוי שנתי (טסט)</div><div class="tile-val" id="d-annual">—</div></div>
         <div class="tile wide"><div class="tile-lbl">טיפול שנתי אחרון</div><div class="tile-val" id="d-annual-srv">—</div></div>
       </div>
       <div class="tiles-grp-lbl">דלקן וקודן</div>
       <div class="tiles">
-        <div class="tile"><div class="tile-lbl">קוד תדלוק</div><div class="tile-val ltr" id="d-fuel-code">—</div></div>
-        <div class="tile"><div class="tile-lbl">קודן רכב</div><div class="tile-val ltr" id="d-vehicle-code">—</div></div>
+        <div class="tile"><div class="tile-lbl">קוד תדלוק</div><div class="tile-val" style="direction:ltr;text-align:right" id="d-fuel-code">—</div></div>
+        <div class="tile"><div class="tile-lbl">קודן רכב</div><div class="tile-val" style="direction:ltr;text-align:right" id="d-vehicle-code">—</div></div>
       </div>
       <div class="tiles-grp-lbl">מערכת ענ"א</div>
       <div class="tiles">
@@ -528,10 +542,9 @@ body.dark input,body.dark textarea,body.dark select{color:var(--ink)}
         <div class="tile"><div class="tile-lbl">בוחנים הבא</div><div class="tile-val" id="d-bn">—</div></div>
         <div class="tile wide"><div class="tile-lbl">ביקורת חורף</div><div class="tile-val" id="d-winter">—</div></div>
       </div>
-      <div class="tiles-grp-lbl">הערות</div>
       <div class="tiles">
         <div class="tile wide" onclick="openNotesModal()" style="cursor:pointer">
-          <div class="tile-lbl">הערות <span style="font-size:10px;color:var(--blue)">✏️ לחץ לעריכה</span></div>
+          <div class="tile-lbl">✏️ לחץ לעריכה</div>
           <div class="tile-val note" id="d-notes">אין הערות</div>
         </div>
       </div>
@@ -633,7 +646,7 @@ body.dark input,body.dark textarea,body.dark select{color:var(--ink)}
       </div>
 
       <div style="text-align:center;padding:24px 0;color:var(--ink3);font-size:12px;font-weight:500">
-        CarFleet · גרסה 0.69V
+        CarFleet · גרסה 0.71V
       </div>
     </div>
   </div>
@@ -876,9 +889,11 @@ function getStatus(v){
     if(base<today){ enaUnfit=true; issues.push({s:'red',m:`ענ"א נדרש — עבר מועד`}); }
     else if(Math.round((base-today)/86400000)<=7) issues.push({s:'yellow',m:`ענ"א נדרש — ${Math.round((base-today)/86400000)} ימים`});
   }
-  const unfit = annualExpired || bcheckExpired || kmOverdue || enaUnfit;
+  const unfit = v.manualUnfit || annualExpired || bcheckExpired || kmOverdue || enaUnfit;
+  const unfitMsg = v.manualUnfit ? 'סומן ידנית כלא כשיר' : (reds.length?reds[0].m:issues[0]?.m);
 
-  if(!issues.length) return {st:'green',msg:null,kmNext,unfit:false};
+  if(!issues.length && !v.manualUnfit) return {st:'green',msg:null,kmNext,unfit:false};
+  if(v.manualUnfit) return {st:'red', msg:'סומן ידנית כלא כשיר', kmNext, unfit:true};
   const reds=issues.filter(i=>i.s==='red');
   return reds.length
     ?{st:'red',   msg:reds[0].m,  kmNext, unfit}
@@ -1378,6 +1393,7 @@ function openDetail(id){
   document.getElementById('d-year').textContent=v.year;
   document.getElementById('d-resp').textContent=v.resp||'—';
   document.getElementById('d-purpose').textContent=v.purpose||'—';
+  document.getElementById('d-vtype').textContent=v.vtype||'—';
   document.getElementById('d-itvl').textContent=(v.itvl||0).toLocaleString()+' ק"מ';
   document.getElementById('d-nkm').textContent=kmNext.toLocaleString();
   document.getElementById('d-km-last-srv').textContent=v.kmLastService?v.kmLastService.toLocaleString():'לא הוזן';
@@ -1733,6 +1749,21 @@ function buildForm(v){
       <div class="frow"><span class="ficon">📅</span><span class="flabel">שנת ייצור</span><input class="finput" type="number" id="fv-year" value="${v?v.year:''}" placeholder="2020"></div>
     </div>
     <div class="fcard">
+      <div class="chips-wrap"><div class="chips-lbl">סוג רכב</div>
+        ${(()=>{
+          const VTYPES=['רב הינע B','רב הינע C1','נוסעים','אחר'];
+          const cur=v?v.vtype||'':'';
+          const isCustomVtype=cur&&!VTYPES.slice(0,-1).includes(cur)&&cur!=='אחר';
+          return `<div class="chips-row" id="fv-vtype-chips">${VTYPES.map(t=>{
+            const active=t===cur||(t==='אחר'&&isCustomVtype);
+            const extra=t==='אחר'?` onclick="pickChip(this);toggleOther('vtype-other',this)"`:" onclick=\"pickChip(this);hideOther('vtype-other')\"";
+            return `<button class="chip${active?' active':''}"${extra}>${t}</button>`;
+          }).join('')}</div>
+          <input class="other-input${isCustomVtype?' show':''}" id="vtype-other" placeholder="הקלד סוג..." value="${isCustomVtype?esc(cur):''}">`;
+        })()}
+      </div>
+    </div>
+    <div class="fcard">
       <div class="chips-wrap"><div class="chips-lbl">ייעוד</div>
         <div class="chips-row" id="fv-purpose-chips">${purChips}</div>
         <input class="other-input${isCustomPurpose?' show':''}" id="purpose-other" placeholder="הקלד ייעוד..." value="${isCustomPurpose?esc(v.purpose):''}">
@@ -1762,13 +1793,20 @@ function buildForm(v){
         <div class="chips-row" id="fv-bd-chips">${WDAYS.map(d=>`<button class="chip${d===bdVal?' active':''}" onclick="pickChip(this)">${d}</button>`).join('')}</div>
       </div>
       <div class="frow" style="border-top:1px solid var(--line)"><span class="ficon">📅</span><span class="flabel">בוחנים אחרון</span><input class="finput" type="date" id="fv-blast" value="${v?v.blast||'':''}"></div>
-      <div class="frow"><span class="ficon">📋</span><span class="flabel">רישוי שנתי</span><input class="finput" type="date" id="fv-annual" value="${v?v.annual||'':''}"></div>
+      <div class="frow"><span class="ficon">📋</span><span class="flabel">תוקף רישוי שנתי</span><input class="finput" type="date" id="fv-annual" value="${v?v.annual||'':''}"></div>
       <div class="frow"><span class="ficon">❄️</span><span class="flabel">ביקורת חורף</span><input class="finput" type="date" id="fv-winter" value="${v?v.winter||'':''}"></div>
     </div>
 
-    <div class="form-sec-lbl">פטורים</div>
+    <div class="form-sec-lbl">פטורים וכשירות</div>
     <div class="fcard">
       <div class="exempt-row">
+        <div class="exempt-label">
+          <div class="exempt-title">🚫 סמן כלא כשיר</div>
+          <div class="exempt-sub">עוקף חישוב אוטומטי</div>
+        </div>
+        <label class="sw"><input type="checkbox" id="fv-manual-unfit" ${v&&v.manualUnfit?'checked':''}><span class="sw-knob" style="${v&&v.manualUnfit?'background:var(--red)':''}"></span></label>
+      </div>
+      <div class="exempt-row" style="border-top:1px solid var(--line)">
         <div class="exempt-label">
           <div class="exempt-title">פטור טיפול שבועי</div>
           <div class="exempt-sub">רכב זה אינו מחויב בטיפול שבועי</div>
@@ -1863,6 +1901,13 @@ function readForm(){
   const resp=g('fv-resp')?.value.trim()||'—';
   const year=parseInt(g('fv-year')?.value)||2020;
 
+  // Vehicle type
+  const vtypeChip=document.querySelector('#fv-vtype-chips .chip.active');
+  const vtype= vtypeChip?.textContent==='אחר'
+    ? (g('vtype-other')?.value.trim()||'אחר')
+    : (vtypeChip?.textContent||'');
+  const manualUnfit=g('fv-manual-unfit')?.checked||false;
+
   // Purpose — check if "אחר" chip is active
   const purChip=document.querySelector('#fv-purpose-chips .chip.active');
   const purpose= purChip?.textContent==='אחר'
@@ -1895,7 +1940,7 @@ function readForm(){
   const fuelCode=g('fv-fuel-code')?.value.trim()||'';
   const vehicleCode=g('fv-vehicle-code')?.checked||false;
   const vehicleCodeVal=g('fv-code-val')?.value.trim()||'';
-  return {model,civ,mil,resp,year,purpose,km,kmDate,kmLastService,annualService,itvl,bf,bday,blast,annual,winter,notes,exemptWeekly,exemptBcheck,enaActive,enaStatus,enaDate,fuelCard,fuelCode,vehicleCode,vehicleCodeVal};
+  return {model,civ,mil,resp,year,vtype,purpose,manualUnfit,km,kmDate,kmLastService,annualService,itvl,bf,bday,blast,annual,winter,notes,exemptWeekly,exemptBcheck,enaActive,enaStatus,enaDate,fuelCard,fuelCode,vehicleCode,vehicleCodeVal};
 }
 
 function doAdd(){
@@ -1922,13 +1967,16 @@ function doUpdate(){
   const d=load(); const v=d.v.find(x=>x.id===_cur); if(!v) return;
   // log specific field changes
   const changes=[];
-  if(f.annual!==v.annual) changes.push(`רישוי שנתי עודכן ל-${fmt(f.annual)||'—'}`);
+  if(f.annual!==v.annual) changes.push(`תוקף רישוי שנתי עודכן ל-${fmt(f.annual)||'—'}`);
   if(f.winter!==v.winter) changes.push(`ביקורת חורף עודכן ל-${fmt(f.winter)||'—'}`);
   if(f.km>v.km) changes.push(`ק"מ עודכן ל-${f.km.toLocaleString()}`);
   if(f.resp!==v.resp) changes.push(`אחראי שונה ל-${f.resp}`);
+  if(f.annualService!==v.annualService) changes.push(`טיפול שנתי עודכן ל-${fmt(f.annualService)||'—'}`);
   if(changes.length===0) changes.push('פרטי רכב עודכנו');
   changes.forEach(c=>logEvent(v,'edit',c));
-  Object.assign(v,f);
+  // Preserve history and archive fields, merge new form data
+  const preserved={id:v.id, history:v.history, weeklyLog:v.weeklyLog, lastWeekly:v.lastWeekly, kmNext:v.kmNext};
+  Object.assign(v, f, preserved);
   save(d);
   showToast('✅ הפרטים עודכנו');
   goBack();
