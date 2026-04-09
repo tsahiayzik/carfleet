@@ -66,6 +66,12 @@ body{font-family:var(--font);background:var(--bg);color:var(--ink);min-height:10
 .icon-btn:active{transform:scale(.9)}
 .icon-btn.blue{background:var(--blue);color:#fff;font-size:20px}
 
+/* ── UNIFIED HEADER ── */
+.app-header{background:var(--card);padding:52px 16px 14px;display:flex;align-items:center;gap:10px;border-bottom:2px solid var(--line)}
+.app-header .hdr-logo{flex-shrink:0}
+.app-header .hdr-title{font-size:18px;font-weight:800;color:var(--navy);flex:1;letter-spacing:-.3px}
+.app-header .hdr-sub{font-size:11px;color:var(--ink3);font-weight:500;margin-top:1px}
+
 /* ── DASHBOARD ── */
 .dash-hero{padding:52px 20px 20px;background:var(--card)}
 .dash-greeting{font-size:13px;font-weight:600;color:var(--blue-light);margin-bottom:4px;letter-spacing:.3px}
@@ -400,17 +406,7 @@ body.dark input,body.dark textarea,body.dark select{color:var(--ink)}
 .toggle-switch input:checked+.toggle-knob::after{transform:translateX(-20px)}
 </style>
 
-<script>
-// ═══ VERSION CHECK ═══
-// Checks if app was updated since last visit
-const CURRENT_VERSION = 'v0.71';
-const stored = localStorage.getItem('carfleet_version');
-if(stored && stored !== CURRENT_VERSION){
-  const t=document.getElementById('toast');
-  if(t){ t.textContent='✅ האפליקציה עודכנה ל-' + CURRENT_VERSION; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),3000); }
-}
-localStorage.setItem('carfleet_version', CURRENT_VERSION);
-</script>
+
 
 </head>
 <body>
@@ -419,9 +415,9 @@ localStorage.setItem('carfleet_version', CURRENT_VERSION);
 <!-- ══ DASHBOARD ══ -->
 <div class="screen active" id="s-dash">
   <div class="scroll-body">
-    <div class="dash-hero">
-      <div class="dash-greeting" id="dash-date">טוען...</div>
-      <div class="dash-title" style="font-size:32px;font-weight:900;letter-spacing:-1px;color:var(--navy)">CarFleet</div>
+    <div class="app-header">
+      <div class="hdr-logo"><img src="data:image/png;base64,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" style="width:32px;height:32px;border-radius:8px;object-fit:contain;flex-shrink:0"></div>
+      <div><div class="hdr-title">CarFleet</div></div>
     </div>
     <div style="height:16px"></div>
     <div class="banner red" id="dash-banner" onclick="bannerClick()">
@@ -449,10 +445,9 @@ localStorage.setItem('carfleet_version', CURRENT_VERSION);
 <!-- ══ LIST ══ -->
 <div class="screen" id="s-list">
   <div class="list-hdr">
-    <div class="list-hdr-row">
-      <div><div class="list-hdr h1" style="font-size:26px;font-weight:800;letter-spacing:-.8px">כל הרכבים</div>
-        <div class="list-sub" id="list-sub">—</div></div>
-      
+    <div class="app-header">
+      <div class="hdr-logo"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABCGlDQ1BJQ0MgUHJvZmlsZQAAeJxjYGA8wQAELAYMDLl5JUVB7k4KEZFRCuwPGBiBEAwSk4sLGHADoKpv1yBqL+viUYcLcKakFicD6Q9ArFIEtBxopAiQLZIOYWuA2EkQtg2IXV5SUAJkB4DYRSFBzkB2CpCtkY7ETkJiJxcUgdT3ANk2uTmlyQh3M/Ck5oUGA2kOIJZhKGYIYnBncAL5H6IkfxEDg8VXBgbmCQixpJkMDNtbGRgkbiHEVBYwMPC3MDBsO48QQ4RJQWJRIliIBYiZ0tIYGD4tZ2DgjWRgEL7AwMAVDQsIHG5TALvNnSEfCNMZchhSgSKeDHkMyQx6QJYRgwGDIYMZAKbWPz9HbOBQAAAHgElEQVR4nK2XW2wd1RWGv73nduYc2zi2Yydu0iRNZIISQNwRGBIRCBBogYJIpBYkHvrQUlWkqlQqUQlBpaoPvVGEhKo29IFAJELpRS0UWlCFSIsERDhcSiKHxIRjx46Pfa5z2bNXH8Zx7ISLXXVJo9kazez173//699rVE/vJmGRoRRoDXEspBm4jqLggxWQRc6m/5fkmYXJaUt3p8O5a12WLRGmGpAa0Gpx87mLTW6M4HuKxx/o5o4bOmhPKzRGxnhhyOd7uxxO1KHg5WwsJBbNQJrB7x5cyo6b2mjVDHc/1OLYhMPWCy17vmsIvJyhhRKxYACOhmrDcv3lIddvb2fXMzUu+nqZphVu/LHHw085XHJVxo4rLdVW/v7/FYBSkKZw3eUh44dT9r7U4IFvdPHMYyV+dlfCywc0H7yruf58iwAL1eKitwCR2SrIrIDklGudX7KY7IsBIAKeBy/8K6Jnpccd17bxkyemuPWbDb6/22fLRsu6Acvz+zVqEZWgFuQDSqF0PnEzEp5/pJezBzxMw/KDn49z/7Y6nV2aSkWx6UEvZ0SByOcbw+cDUAoxBtNs4mioNeHKC0JefmIluAWoTiCj46iisONHwt5/a7pK+fYo1wfH/UwQn+0DSiFpStDTw4pbvoLfuYTikg6GJjyePHyArw28S6vpEKqYf45sYF/fJlZccxzTaiFJi7R8CFubBO3yacI4A4DSOpf8DOosTTln530su3EztITpekx4sMIv61/i5miEolsjznwe/fjLdJ6zDtucptVK0V6AGTtM7aUn8uRKkbvD/G2ZL0KlMK0WyWQF02ySRRHtAwN0XXIxrfIUabXKR8NlgsYJhptdPFLejFeYYE95kLeqqwnNJA4ZkkTYxhRO13Lc3lWISRCTIlEDSZN5KfXc5DZJ6NywgfX33Uvf5s2YRoPl116LU2xDK0UzsVSbKeL6tDsRT564iH+MXcHu8lUUnYRMHDzfwws8hLxW/TXngTF4y9ZQvOgGvOVrwWac9Ep3LgCyLKd760aaIxmmWqX7skuRNMEPPEbGKpjM4rkaR4RYXL71wV20JRV81yCiUEAQeCRxiqQJbu9qvP61lK64A6e7H+/4Eap/fnRWE6eqQClsHNM7OEj3ZZew5NzzyJKE9tWraMYZ07WI0fE6JsuNCAFcTTBRpW20gnX1PJ1FrYQ0MZjMItUJlOtjxkcw40dIjhyYFeYpBkRwCgXKL75IadUq/C29+MWQ0fIUR8rTWCs4znyTkdPucyMsBoTFgFYjosVSFBYxCfHwWyivMPvVrAaU45DWaqy87VbO3nkvXjGkERmOHG+ACK67ONcWEcRaih0l/IIPSlPYeDWFjZuRNAKl5wNABKUd+q65BskgGR9nbP8Q2fgYTqGw6E4HQHk+pjYF06PYRhXJUvyV61FuAGKBOSIUEbTrEPT0MP3Oe7xx306yOAYg23IzhW23I0nMgoxeBOUH1IZeY3Lf8yAWQVG68naczr7cHTMDSs33gRyES1QuUz96GNtsIrVpoud2Y0ePgecvoOnLmcyadU68+ifS2iRZGmNrE9jqBEo7zFXNPCdUjoNpNFh61SAXPPgQYwc/pB4ZnKAApfYctbUzTglYwFrE2nwsM1OrDO24LLl0K1nUIDMZmQ7w116IRA2U0gjZmQAAxFpEYNX2O3GP1zl8bArPUdhGAxwXFZZOZXI1umlxwgSZLUOFZLkHdF68BaU1cZRQrzZRMgN2TpwBwAlDUIp0ehozVYXaNBRCVFs72cF3MYfeR81shXYVUT3CVluIVnlbnhmCnn7CVeuxSYySDIkSJG6hvCA/IT8VgAjV994j/MIKXK1xSh20fAcZPYyXNoh3/5pk+CBuISDLhHpT8oPfUTgaSqHGGoNu72bZ1h04YQnd3oOxoJRCbIaZPIbYbFbM85xQrEVpxdV7nkb1LKP/xNu0ZaM8/cOn+ei1t9FtbYShQ60JpYIweL5PnELBh2pdeHV/jO8pioFQm6oTLl/DF3d8m8aJSazfhq9Tpv/4K6RVA8fjDCdUSqGVYvgPf2WgX7inczf73jcUKw533xSilbDvPynXbRKO1+DhnX08vneKDWs83hm2BJ7l8vMK7Hquxldv66bYqTlYeYUHtld4+LnlvHkgQoshm1MJZ/YDCPt/8RgbBhOmtpW496cFNg7E3HlFxro+xa5XYMcgfOe3Do6GRkuoVC39SxX33NJFKxVCz3LPLR0cLSc8+7eXaY+6Gf7L66QVi1cI5nnJGf5qBbqWdvDa0Q4yKzx1f8KlazPOCoU3h4Ukyfj9Ps0bhxSHjsT85tk6UWwZGU14fajJgeGEv7/eYOhgxNAhw0tvCnFLM7Cug1SHqNP+3T6xJ1QKkkQIHEN/t+LouKKjaEmNJrPguZo4FQJf0UoUgWtJDFibsaLP58OPM8LA0tvlcXQ0o/ssEBym6oI+bcmf2pQqBVYUiRECV+W/W0pQKARBq9yTtM5ZyxemSFJL4CushdTkII0BFJx2Yn+yBk6GSK6HgpdbtDujG0HQ+RDHyd87xWqe8OSzk2N3pjH+pJX+FxurtCnYqRgPAAAAAElFTkSuQmCC" style="width:32px;height:32px;border-radius:8px;object-fit:contain;flex-shrink:0"></div>
+      <div><div class="hdr-title">כל הרכבים</div><div class="list-sub hdr-sub" id="list-sub">—</div></div>
     </div>
     <div class="fbar">
       <div class="fchip active" data-f="all"    onclick="setF(this)">הכל</div>
@@ -558,26 +553,29 @@ localStorage.setItem('carfleet_version', CURRENT_VERSION);
 
 <!-- ══ ADD ══ -->
 <div class="screen" id="s-add">
-  <div class="form-hdr">
-    <button class="icon-btn" onclick="goBack()" style="margin-bottom:12px">‹</button>
-    <h1>רכב חדש</h1><p>מלא את הפרטים</p>
+  <div class="app-header">
+    <button class="icon-btn" onclick="goBack()">‹</button>
+    <div class="hdr-logo"><img src="data:image/png;base64,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" style="width:32px;height:32px;border-radius:8px;object-fit:contain;flex-shrink:0"></div>
+    <div><div class="hdr-title">רכב חדש</div><div class="hdr-sub">מלא את הפרטים</div></div>
   </div>
   <div class="scroll-body"><div class="form-body" id="add-body"></div></div>
 </div>
 
 <!-- ══ EDIT ══ -->
 <div class="screen" id="s-edit">
-  <div class="form-hdr">
-    <button class="icon-btn" onclick="goBack()" style="margin-bottom:12px">‹</button>
-    <h1>עריכת רכב</h1><p id="edit-sub">—</p>
+  <div class="app-header">
+    <button class="icon-btn" onclick="goBack()">‹</button>
+    <div class="hdr-logo"><img src="data:image/png;base64,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" style="width:32px;height:32px;border-radius:8px;object-fit:contain;flex-shrink:0"></div>
+    <div><div class="hdr-title">עריכת רכב</div><div class="hdr-sub" id="edit-sub">—</div></div>
   </div>
   <div class="scroll-body"><div class="form-body" id="edit-body"></div></div>
 </div>
 
 <!-- ══ SETTINGS ══ -->
 <div class="screen" id="s-settings">
-  <div class="form-hdr" style="padding-bottom:20px">
-    <div style="font-size:26px;font-weight:800;letter-spacing:-.8px;margin-top:4px">הגדרות</div>
+  <div class="app-header" style="padding-bottom:18px">
+    <div class="hdr-logo"><img src="data:image/png;base64,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" style="width:32px;height:32px;border-radius:8px;object-fit:contain;flex-shrink:0"></div>
+    <div class="hdr-title">הגדרות</div>
   </div>
   <div class="scroll-body">
     <div style="padding:16px;display:flex;flex-direction:column;gap:10px">
@@ -646,7 +644,7 @@ localStorage.setItem('carfleet_version', CURRENT_VERSION);
       </div>
 
       <div style="text-align:center;padding:24px 0;color:var(--ink3);font-size:12px;font-weight:500">
-        CarFleet · גרסה 0.71V
+        CarFleet · גרסה 0.72V
       </div>
     </div>
   </div>
@@ -889,12 +887,11 @@ function getStatus(v){
     if(base<today){ enaUnfit=true; issues.push({s:'red',m:`ענ"א נדרש — עבר מועד`}); }
     else if(Math.round((base-today)/86400000)<=7) issues.push({s:'yellow',m:`ענ"א נדרש — ${Math.round((base-today)/86400000)} ימים`});
   }
+  const reds=issues.filter(i=>i.s==='red');
   const unfit = v.manualUnfit || annualExpired || bcheckExpired || kmOverdue || enaUnfit;
-  const unfitMsg = v.manualUnfit ? 'סומן ידנית כלא כשיר' : (reds.length?reds[0].m:issues[0]?.m);
 
   if(!issues.length && !v.manualUnfit) return {st:'green',msg:null,kmNext,unfit:false};
   if(v.manualUnfit) return {st:'red', msg:'סומן ידנית כלא כשיר', kmNext, unfit:true};
-  const reds=issues.filter(i=>i.s==='red');
   return reds.length
     ?{st:'red',   msg:reds[0].m,  kmNext, unfit}
     :{st:'yellow',msg:issues[0].m,kmNext, unfit:false};
@@ -954,6 +951,9 @@ function goBack(){
 function onEnter(id){
   const navMap={'s-dash':0,'s-list':1,'s-settings':2};
   if(navMap[id]!==undefined) setNav(navMap[id]);
+  // Show/hide FAB
+  const fab=document.getElementById('fab-btn');
+  if(fab) fab.style.display=id==='s-add'||id==='s-edit'?'none':'flex';
   if(id==='s-dash') renderDash();
   if(id==='s-list'){ syncF(); renderList(_filter); }
   if(id==='s-add'){ const el=document.getElementById('add-body'); if(el) el.innerHTML=buildForm(null); }
@@ -1121,7 +1121,8 @@ function setNav(i){
 function renderDash(){
   const days=['ראשון','שני','שלישי','רביעי','חמישי','שישי','שבת'];
   const now=new Date();
-  document.getElementById('dash-date').textContent=`יום ${days[now.getDay()]}, ${now.toLocaleDateString('he-IL')}`;
+  const dateEl=document.getElementById('dash-date');
+  if(dateEl) dateEl.textContent=`יום ${days[now.getDay()]}, ${now.toLocaleDateString('he-IL')}`;
   const d=load();
   const ws=d.v.map(v=>({...v,...getStatus(v)}));
   const nr=ws.filter(v=>v.st==='red').length;
@@ -1724,160 +1725,113 @@ function closeM(id){document.getElementById(id).classList.remove('show');}
 function buildForm(v){
   const itvlVal=v?v.itvl:10000;
   const isCustomItvl=v&&!INTERVALS.includes(v.itvl);
-  const itvlChips=INTERVALS.map(n=>`<button class="chip${n===itvlVal&&!isCustomItvl?' active':''}" onclick="pickChip(this)" data-val="${n}">${n.toLocaleString()}</button>`).join('')
-    +`<button class="chip${isCustomItvl?' active':''}" onclick="pickChip(this);toggleOther('itvl-other',this)" data-val="other">אחר</button>`;
-
   const purposeVal=v?v.purpose:'משימתי';
   const isCustomPurpose=v&&!PURPOSES.slice(0,-1).includes(v.purpose)&&v.purpose!=='אחר';
-  const purChips=PURPOSES.map(p=>{
-    const isActive=p===purposeVal||(p==='אחר'&&isCustomPurpose);
-    const extra=p==='אחר'?` onclick="pickChip(this);toggleOther('purpose-other',this)"`:" onclick=\"pickChip(this);hideOther('purpose-other')\"";
-    return `<button class="chip${isActive?' active':''}"${extra}>${p}</button>`;
-  }).join('');
-
   const bfVal=v?v.bf:BFREQS[0];
   const bdVal=v?v.bday:'ראשון';
   const fn=v?'doUpdate()':'doAdd()';
+  const VTYPES=['רב הינע B','רב הינע C1','נוסעים','אחר'];
+  const curVtype=v?v.vtype||'':'';
+  const isCustomVtype=curVtype&&!VTYPES.slice(0,-1).includes(curVtype)&&curVtype!=='אחר';
 
-  return `
-    <div class="form-sec-lbl">זיהוי</div>
-    <div class="fcard">
-      <div class="frow"><span class="ficon">🚗</span><span class="flabel">דגם</span><input class="finput rtl" type="text" id="fv-model" value="${v?esc(v.model):''}" placeholder="איזוסו דימקס"></div>
-      <div class="frow"><span class="ficon">🔵</span><span class="flabel">מס' רכב</span><input class="finput" type="text" id="fv-civ" value="${v?esc(v.civ||''):''}" placeholder="12-345-67"></div>
-      <div class="frow"><span class="ficon">🟢</span><span class="flabel">מס' צבאי</span><input class="finput" type="text" id="fv-mil" value="${v?esc(v.mil||''):''}" placeholder="123456"></div>
-      <div class="frow"><span class="ficon">👤</span><span class="flabel">אחראי</span><input class="finput rtl" type="text" id="fv-resp" value="${v?esc(v.resp||''):''}" placeholder="שם האחראי"></div>
-      <div class="frow"><span class="ficon">📅</span><span class="flabel">שנת ייצור</span><input class="finput" type="number" id="fv-year" value="${v?v.year:''}" placeholder="2020"></div>
-    </div>
-    <div class="fcard">
-      <div class="chips-wrap"><div class="chips-lbl">סוג רכב</div>
-        ${(()=>{
-          const VTYPES=['רב הינע B','רב הינע C1','נוסעים','אחר'];
-          const cur=v?v.vtype||'':'';
-          const isCustomVtype=cur&&!VTYPES.slice(0,-1).includes(cur)&&cur!=='אחר';
-          return `<div class="chips-row" id="fv-vtype-chips">${VTYPES.map(t=>{
-            const active=t===cur||(t==='אחר'&&isCustomVtype);
-            const extra=t==='אחר'?` onclick="pickChip(this);toggleOther('vtype-other',this)"`:" onclick=\"pickChip(this);hideOther('vtype-other')\"";
-            return `<button class="chip${active?' active':''}"${extra}>${t}</button>`;
-          }).join('')}</div>
-          <input class="other-input${isCustomVtype?' show':''}" id="vtype-other" placeholder="הקלד סוג..." value="${isCustomVtype?esc(cur):''}">`;
-        })()}
-      </div>
-    </div>
-    <div class="fcard">
-      <div class="chips-wrap"><div class="chips-lbl">ייעוד</div>
-        <div class="chips-row" id="fv-purpose-chips">${purChips}</div>
-        <input class="other-input${isCustomPurpose?' show':''}" id="purpose-other" placeholder="הקלד ייעוד..." value="${isCustomPurpose?esc(v.purpose):''}">
-      </div>
-    </div>
+  // Pre-compute all chip HTML strings
+  const itvlChipsHTML=INTERVALS.map(n=>'<button class="chip'+(n===itvlVal&&!isCustomItvl?' active':'')+'" onclick="pickChip(this)" data-val="'+n+'">'+n.toLocaleString()+'</button>').join('')
+    +'<button class="chip'+(isCustomItvl?' active':'')+'" onclick="pickChip(this);toggleOther(\'itvl-other\',this)" data-val="other">אחר</button>';
 
-    <div class="form-sec-lbl">ק"מ וטיפול</div>
-    <div class="fcard">
-      <div class="frow"><span class="ficon">📍</span><span class="flabel">ק"מ נוכחי</span><input class="finput" type="number" id="fv-km" value="${v?v.km:''}" placeholder="0"></div>
-      <div class="frow"><span class="ficon">📅</span><span class="flabel">תאריך עדכון</span><input class="finput" type="date" id="fv-kmdate" value="${v?v.kmDate||'':new Date().toISOString().split('T')[0]}"></div>
-      <div class="frow"><span class="ficon">🔧</span><span class="flabel">ק"מ טיפול אחרון</span><input class="finput" type="number" id="fv-km-last-service" value="${v?v.kmLastService||'':''}" placeholder="0"></div>
-      <div class="frow"><span class="ficon">📅</span><span class="flabel">תאריך טיפול שנתי</span><input class="finput" type="date" id="fv-annual-service" value="${v?v.annualService||'':''}"></div>
-    </div>
-    <div class="fcard">
-      <div class="chips-wrap"><div class="chips-lbl">טיפול כל (ק"מ)</div>
-        <div class="chips-row" id="fv-itvl-chips">${itvlChips}</div>
-        <input class="other-input${isCustomItvl?' show':''}" id="itvl-other" type="number" placeholder="הקלד ק״מ..." value="${isCustomItvl?v.itvl:''}">
-      </div>
-    </div>
+  const purChipsHTML=PURPOSES.map(p=>{
+    const active=p===purposeVal||(p==='אחר'&&isCustomPurpose);
+    const extra=p==='אחר'?' onclick="pickChip(this);toggleOther(\'purpose-other\',this)"':' onclick="pickChip(this);hideOther(\'purpose-other\')"';
+    return '<button class="chip'+(active?' active':'')+'"'+extra+'>'+p+'</button>';
+  }).join('');
 
-    <div class="form-sec-lbl">בוחנים ורישוי</div>
-    <div class="fcard">
-      <div class="chips-wrap"><div class="chips-lbl">מרווח בוחנים</div>
-        <div class="chips-row" id="fv-bf-chips">${BFREQS.map(f=>`<button class="chip${f===bfVal?' active':''}" onclick="pickChip(this)">${f}</button>`).join('')}</div>
-      </div>
-      <div class="chips-wrap" style="border-top:1px solid var(--line)"><div class="chips-lbl">יום טיפול</div>
-        <div class="chips-row" id="fv-bd-chips">${WDAYS.map(d=>`<button class="chip${d===bdVal?' active':''}" onclick="pickChip(this)">${d}</button>`).join('')}</div>
-      </div>
-      <div class="frow" style="border-top:1px solid var(--line)"><span class="ficon">📅</span><span class="flabel">בוחנים אחרון</span><input class="finput" type="date" id="fv-blast" value="${v?v.blast||'':''}"></div>
-      <div class="frow"><span class="ficon">📋</span><span class="flabel">תוקף רישוי שנתי</span><input class="finput" type="date" id="fv-annual" value="${v?v.annual||'':''}"></div>
-      <div class="frow"><span class="ficon">❄️</span><span class="flabel">ביקורת חורף</span><input class="finput" type="date" id="fv-winter" value="${v?v.winter||'':''}"></div>
-    </div>
+  const bfChipsHTML=BFREQS.map(f=>'<button class="chip'+(f===bfVal?' active':'')+'" onclick="pickChip(this)">'+f+'</button>').join('');
+  const bdChipsHTML=WDAYS.map(d=>'<button class="chip'+(d===bdVal?' active':'')+'" onclick="pickChip(this)">'+d+'</button>').join('');
+  const vtypeChipsHTML=VTYPES.map(t=>{
+    const active=(t===curVtype)||(t==='אחר'&&isCustomVtype);
+    const extra=t==='אחר'?' onclick="pickChip(this);toggleOther(\'vtype-other\',this)"':' onclick="pickChip(this);hideOther(\'vtype-other\')"';
+    return '<button class="chip'+(active?' active':'')+'"'+extra+'>'+t+'</button>';
+  }).join('');
 
-    <div class="form-sec-lbl">פטורים וכשירות</div>
-    <div class="fcard">
-      <div class="exempt-row">
-        <div class="exempt-label">
-          <div class="exempt-title">🚫 סמן כלא כשיר</div>
-          <div class="exempt-sub">עוקף חישוב אוטומטי</div>
-        </div>
-        <label class="sw"><input type="checkbox" id="fv-manual-unfit" ${v&&v.manualUnfit?'checked':''}><span class="sw-knob" style="${v&&v.manualUnfit?'background:var(--red)':''}"></span></label>
-      </div>
-      <div class="exempt-row" style="border-top:1px solid var(--line)">
-        <div class="exempt-label">
-          <div class="exempt-title">פטור טיפול שבועי</div>
-          <div class="exempt-sub">רכב זה אינו מחויב בטיפול שבועי</div>
-        </div>
-        <label class="sw"><input type="checkbox" id="fv-exempt-weekly" ${v&&v.exemptWeekly?'checked':''}><span class="sw-knob"></span></label>
-      </div>
-      <div class="exempt-row">
-        <div class="exempt-label">
-          <div class="exempt-title">פטור טיפול בוחנים</div>
-          <div class="exempt-sub">רכב זה אינו מחויב בטיפול בוחנים</div>
-        </div>
-        <label class="sw"><input type="checkbox" id="fv-exempt-bcheck" ${v&&v.exemptBcheck?'checked':''}><span class="sw-knob"></span></label>
-      </div>
-    </div>
+  var h='';
+  h+='<div class="form-sec-lbl">זיהוי</div>';
+  h+='<div class="fcard">';
+  h+='<div class="frow"><span class="ficon">🚗</span><span class="flabel">דגם</span><input class="finput rtl" type="text" id="fv-model" value="'+(v?esc(v.model):'')+'" placeholder="איזוסו דימקס"></div>';
+  h+='<div class="frow"><span class="ficon">🔵</span><span class="flabel">מס\' רכב</span><input class="finput" type="text" id="fv-civ" value="'+(v?esc(v.civ||''):'')+'" placeholder="12-345-67"></div>';
+  h+='<div class="frow"><span class="ficon">🟢</span><span class="flabel">מס\' צבאי</span><input class="finput" type="text" id="fv-mil" value="'+(v?esc(v.mil||''):'')+'" placeholder="123456"></div>';
+  h+='<div class="frow"><span class="ficon">👤</span><span class="flabel">אחראי</span><input class="finput rtl" type="text" id="fv-resp" value="'+(v?esc(v.resp||''):'')+'" placeholder="שם האחראי"></div>';
+  h+='<div class="frow"><span class="ficon">📅</span><span class="flabel">שנת ייצור</span><input class="finput" type="number" id="fv-year" value="'+(v?v.year:'')+'" placeholder="2020"></div>';
+  h+='</div>';
 
-    <div class="form-sec-lbl">מערכת ענ"א</div>
-    <div class="fcard">
-      <div class="exempt-row">
-        <div class="exempt-label">
-          <div class="exempt-title">מערכת ענ"א</div>
-          <div class="exempt-sub">מעקב בדיקת ענ"א לרכב זה</div>
-        </div>
-        <label class="sw"><input type="checkbox" id="fv-ena-active" ${v&&v.enaActive?'checked':''} onchange="toggleEnaForm(this.checked)"><span class="sw-knob"></span></label>
-      </div>
-      <div id="fv-ena-fields" style="display:${v&&v.enaActive?'block':'none'}">
-        <div class="frow" style="border-top:1px solid var(--line)">
-          <span class="ficon">🔍</span><span class="flabel">סטטוס</span>
-          <select class="field-select" id="fv-ena-status" style="flex:1;border:none;outline:none;font-family:var(--font);font-size:14px;font-weight:600;color:var(--ink);background:transparent;text-align:right;direction:rtl;cursor:pointer">
-            <option value="ok" ${v&&v.enaStatus==='ok'?'selected':''}>תקין</option>
-            <option value="fail" ${v&&v.enaStatus==='fail'?'selected':''}>לא תקין</option>
-            <option value="needed" ${v&&v.enaStatus==='needed'?'selected':''}>נדרש</option>
-          </select>
-        </div>
-        <div class="frow"><span class="ficon">📅</span><span class="flabel">תאריך בדיקה אחרונה</span><input class="finput" type="date" id="fv-ena-date" value="${v?v.enaDate||'':''}"></div>
-      </div>
-    </div>
+  h+='<div class="fcard"><div class="chips-wrap"><div class="chips-lbl">סוג רכב</div>';
+  h+='<div class="chips-row" id="fv-vtype-chips">'+vtypeChipsHTML+'</div>';
+  h+='<input class="other-input'+(isCustomVtype?' show':'')+'" id="vtype-other" placeholder="הקלד סוג..." value="'+(isCustomVtype?esc(curVtype):'')+'"></div></div>';
 
-    <div class="form-sec-lbl">דלקן וקודן</div>
-    <div class="fcard">
-      <div class="exempt-row">
-        <div class="exempt-label">
-          <div class="exempt-title">דלקן</div>
-          <div class="exempt-sub">לרכב יש קוד תדלוק</div>
-        </div>
-        <label class="sw"><input type="checkbox" id="fv-fuel-card" ${v&&v.fuelCard?'checked':''} onchange="toggleFuelForm(this.checked)"><span class="sw-knob"></span></label>
-      </div>
-      <div id="fv-fuel-fields" style="display:${v&&v.fuelCard?'block':'none'}">
-        <div class="frow" style="border-top:1px solid var(--line)"><span class="ficon">⛽</span><span class="flabel">קוד תדלוק</span><input class="finput" type="text" id="fv-fuel-code" value="${v?esc(v.fuelCode||''):''}" placeholder="הקלד קוד..."></div>
-      </div>
-      <div class="exempt-row" style="border-top:1px solid var(--line)">
-        <div class="exempt-label">
-          <div class="exempt-title">קודן</div>
-          <div class="exempt-sub">לרכב יש קוד כניסה/הפעלה</div>
-        </div>
-        <label class="sw"><input type="checkbox" id="fv-vehicle-code" ${v&&v.vehicleCode?'checked':''} onchange="toggleCodeForm(this.checked)"><span class="sw-knob"></span></label>
-      </div>
-      <div id="fv-code-fields" style="display:${v&&v.vehicleCode?'block':'none'}">
-        <div class="frow" style="border-top:1px solid var(--line)"><span class="ficon">🔑</span><span class="flabel">קוד רכב</span><input class="finput" type="text" id="fv-code-val" value="${v?esc(v.vehicleCodeVal||''):''}" placeholder="הקלד קוד..."></div>
-      </div>
-    </div>
-    <div class="fcard">
-      <div class="frow"><span class="ficon">📝</span><span class="flabel">הערות</span><textarea class="fta" id="fv-notes">${v?esc(v.notes||''):''}</textarea></div>
-    </div>
-    <div class="cta-wrap" style="padding:0">
-      <button class="cta-btn" onclick="${fn}">✅ &nbsp;שמור</button>
-    </div>
-    ${v?`<div class="cta-wrap" style="padding:8px 0 0">
-      <button class="cta-btn danger" onclick="confirmDel()">🗑 &nbsp;מחק רכב</button>
-    </div>`:''}`;
+  h+='<div class="fcard"><div class="chips-wrap"><div class="chips-lbl">ייעוד</div>';
+  h+='<div class="chips-row" id="fv-purpose-chips">'+purChipsHTML+'</div>';
+  h+='<input class="other-input'+(isCustomPurpose?' show':'')+'" id="purpose-other" placeholder="הקלד ייעוד..." value="'+(isCustomPurpose?esc(v.purpose):'')+'"></div></div>';
+
+  h+='<div class="form-sec-lbl">ק"מ וטיפול</div>';
+  h+='<div class="fcard">';
+  h+='<div class="frow"><span class="ficon">📍</span><span class="flabel">ק"מ נוכחי</span><input class="finput" type="number" id="fv-km" value="'+(v?v.km:'')+'" placeholder="0"></div>';
+  h+='<div class="frow"><span class="ficon">📅</span><span class="flabel">תאריך עדכון</span><input class="finput" type="date" id="fv-kmdate" value="'+(v?v.kmDate||'':new Date().toISOString().split('T')[0])+'"></div>';
+  h+='<div class="frow"><span class="ficon">🔧</span><span class="flabel">ק"מ טיפול אחרון</span><input class="finput" type="number" id="fv-km-last-service" value="'+(v?v.kmLastService||'':'')+'" placeholder="0"></div>';
+  h+='<div class="frow"><span class="ficon">📅</span><span class="flabel">תאריך טיפול שנתי</span><input class="finput" type="date" id="fv-annual-service" value="'+(v?v.annualService||'':'')+'"></div>';
+  h+='</div>';
+  h+='<div class="fcard"><div class="chips-wrap"><div class="chips-lbl">טיפול כל (ק"מ)</div>';
+  h+='<div class="chips-row" id="fv-itvl-chips">'+itvlChipsHTML+'</div>';
+  h+='<input class="other-input'+(isCustomItvl?' show':'')+'" id="itvl-other" type="number" placeholder="הקלד ק״מ..." value="'+(isCustomItvl?v.itvl:'')+'"></div></div>';
+
+  h+='<div class="form-sec-lbl">בוחנים ורישוי</div>';
+  h+='<div class="fcard">';
+  h+='<div class="chips-wrap"><div class="chips-lbl">מרווח בוחנים</div><div class="chips-row" id="fv-bf-chips">'+bfChipsHTML+'</div></div>';
+  h+='<div class="chips-wrap" style="border-top:1px solid var(--line)"><div class="chips-lbl">יום טיפול</div><div class="chips-row" id="fv-bd-chips">'+bdChipsHTML+'</div></div>';
+  h+='<div class="frow" style="border-top:1px solid var(--line)"><span class="ficon">📅</span><span class="flabel">בוחנים אחרון</span><input class="finput" type="date" id="fv-blast" value="'+(v?v.blast||'':'')+'"></div>';
+  h+='<div class="frow"><span class="ficon">📋</span><span class="flabel">תוקף רישוי שנתי</span><input class="finput" type="date" id="fv-annual" value="'+(v?v.annual||'':'')+'"></div>';
+  h+='<div class="frow"><span class="ficon">❄️</span><span class="flabel">ביקורת חורף</span><input class="finput" type="date" id="fv-winter" value="'+(v?v.winter||'':'')+'"></div>';
+  h+='</div>';
+
+  h+='<div class="form-sec-lbl">פטורים וכשירות</div>';
+  h+='<div class="fcard">';
+  h+='<div class="exempt-row"><div class="exempt-label"><div class="exempt-title">🚫 סמן כלא כשיר</div><div class="exempt-sub">עוקף חישוב אוטומטי</div></div>';
+  h+='<label class="sw"><input type="checkbox" id="fv-manual-unfit" '+(v&&v.manualUnfit?'checked':'')+' onchange="this.nextElementSibling.style.background=this.checked?\'var(--red)\':\'\'">'  +'<span class="sw-knob" style="'+(v&&v.manualUnfit?'background:var(--red)':'')+'"></span></label></div>';
+  h+='<div class="exempt-row" style="border-top:1px solid var(--line)"><div class="exempt-label"><div class="exempt-title">פטור טיפול שבועי</div><div class="exempt-sub">רכב זה אינו מחויב בטיפול שבועי</div></div>';
+  h+='<label class="sw"><input type="checkbox" id="fv-exempt-weekly" '+(v&&v.exemptWeekly?'checked':'')+'>​<span class="sw-knob"></span></label></div>';
+  h+='<div class="exempt-row" style="border-top:1px solid var(--line)"><div class="exempt-label"><div class="exempt-title">פטור טיפול בוחנים</div><div class="exempt-sub">רכב זה אינו מחויב בטיפול בוחנים</div></div>';
+  h+='<label class="sw"><input type="checkbox" id="fv-exempt-bcheck" '+(v&&v.exemptBcheck?'checked':'')+'>​<span class="sw-knob"></span></label></div>';
+  h+='</div>';
+
+  h+='<div class="form-sec-lbl">מערכת ענ"א</div>';
+  h+='<div class="fcard">';
+  h+='<div class="exempt-row"><div class="exempt-label"><div class="exempt-title">הפעל מערכת ענ"א</div><div class="exempt-sub">מעקב בדיקת ענ"א לרכב זה</div></div>';
+  h+='<label class="sw"><input type="checkbox" id="fv-ena-active" '+(v&&v.enaActive?'checked':'')+' onchange="toggleEnaForm(this.checked)"><span class="sw-knob"></span></label></div>';
+  h+='<div id="fv-ena-fields" style="display:'+(v&&v.enaActive?'block':'none')+'">';
+  h+='<div class="frow" style="border-top:1px solid var(--line)"><span class="ficon">🔍</span><span class="flabel">סטטוס</span>';
+  h+='<select class="field-select" id="fv-ena-status" style="flex:1;border:none;outline:none;font-family:var(--font);font-size:14px;font-weight:600;color:var(--ink);background:transparent;text-align:right;direction:rtl;cursor:pointer">';
+  h+='<option value="ok" '+(v&&v.enaStatus==='ok'?'selected':'')+'>תקין</option>';
+  h+='<option value="fail" '+(v&&v.enaStatus==='fail'?'selected':'')+'>לא תקין</option>';
+  h+='<option value="needed" '+(v&&v.enaStatus==='needed'?'selected':'')+'>נדרש</option>';
+  h+='</select></div>';
+  h+='<div class="frow"><span class="ficon">📅</span><span class="flabel">תאריך ביצוע</span><input class="finput" type="date" id="fv-ena-date" value="'+(v?v.enaDate||'':'')+'"></div>';
+  h+='</div></div>';
+
+  h+='<div class="form-sec-lbl">דלקן וקודן</div>';
+  h+='<div class="fcard">';
+  h+='<div class="exempt-row"><div class="exempt-label"><div class="exempt-title">דלקן</div><div class="exempt-sub">לרכב יש קוד תדלוק</div></div>';
+  h+='<label class="sw"><input type="checkbox" id="fv-fuel-card" '+(v&&v.fuelCard?'checked':'')+' onchange="toggleFuelForm(this.checked)"><span class="sw-knob"></span></label></div>';
+  h+='<div id="fv-fuel-fields" style="display:'+(v&&v.fuelCard?'block':'none')+'">';
+  h+='<div class="frow" style="border-top:1px solid var(--line)"><span class="ficon">⛽</span><span class="flabel">קוד תדלוק</span><input class="finput" type="text" id="fv-fuel-code" value="'+(v?esc(v.fuelCode||''):'')+'" placeholder="הקלד קוד..."></div></div>';
+  h+='<div class="exempt-row" style="border-top:1px solid var(--line)"><div class="exempt-label"><div class="exempt-title">קודן</div><div class="exempt-sub">לרכב יש קוד כניסה/הפעלה</div></div>';
+  h+='<label class="sw"><input type="checkbox" id="fv-vehicle-code" '+(v&&v.vehicleCode?'checked':'')+' onchange="toggleCodeForm(this.checked)"><span class="sw-knob"></span></label></div>';
+  h+='<div id="fv-code-fields" style="display:'+(v&&v.vehicleCode?'block':'none')+'">';
+  h+='<div class="frow" style="border-top:1px solid var(--line)"><span class="ficon">🔑</span><span class="flabel">קוד רכב</span><input class="finput" type="text" id="fv-code-val" value="'+(v?esc(v.vehicleCodeVal||''):'')+'" placeholder="הקלד קוד..."></div></div>';
+  h+='</div>';
+
+  h+='<div class="form-sec-lbl">הערות</div>';
+  h+='<div class="fcard"><div class="frow"><span class="ficon">📝</span><span class="flabel">טקסט</span><textarea class="fta" id="fv-notes">'+( v?esc(v.notes||''):'' )+'</textarea></div></div>';
+  h+='<div class="cta-wrap" style="padding:0"><button class="cta-btn" onclick="'+fn+'">✅ &nbsp;שמור</button></div>';
+  if(v) h+='<div class="cta-wrap" style="padding:8px 0 0"><button class="cta-btn danger" onclick="confirmDel()">🗑 &nbsp;מחק רכב</button></div>';
+  return h;
 }
-
 function pickChip(el){
   el.closest('.chips-row').querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
   el.classList.add('active');
@@ -1950,12 +1904,13 @@ function doAdd(){
   d.v.push({id:d.nid++,...f});
   save(d);
   showToast('✅ הרכב נוסף!');
-  setTimeout(()=>{goBack();},400);
+  goHome();
 }
 
 function goEdit(){
   const d=load(); const v=d.v.find(x=>x.id===_cur); if(!v) return;
-  document.getElementById('edit-sub').textContent=v.model;
+  const editSubEl=document.getElementById('edit-sub')||document.querySelector('#s-edit .hdr-sub');
+  if(editSubEl) editSubEl.textContent=v.model;
   document.getElementById('edit-body').innerHTML=buildForm(v);
   pushScreen('s-edit');
   setNav(-1);
@@ -2019,6 +1974,13 @@ function showToast(msg){
 seed();
 if(localStorage.getItem('fleet_dark')==='1') document.body.classList.add('dark');
 renderDash();
+// Version check
+(function(){
+  const VER='v0.72';
+  const prev=localStorage.getItem('carfleet_version');
+  localStorage.setItem('carfleet_version',VER);
+  if(prev && prev!==VER) setTimeout(()=>showToast('✅ עודכן ל-'+VER),800);
+})();
 </script>
 </body>
 </html>
