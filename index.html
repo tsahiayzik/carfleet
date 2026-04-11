@@ -146,7 +146,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--ink);min-height:10
 .pick-vmeta{font-size:12px;color:var(--ink3);margin-top:1px}
 
 /* ── LIST ── */
-.list-hdr{background:var(--card);padding:52px 20px 0;border-bottom:1px solid var(--line)}
+.list-hdr{background:var(--card)}
 .list-hdr-row{display:flex;align-items:flex-end;justify-content:space-between;padding-bottom:14px}
 .list-hdr h1{font-size:26px;font-weight:800;letter-spacing:-.8px}
 .list-sub{font-size:12px;color:var(--ink3);font-weight:500;margin-top:2px}
@@ -267,13 +267,14 @@ body{font-family:var(--font);background:var(--bg);color:var(--ink);min-height:10
   font-family:var(--font);font-size:13px;font-weight:700;cursor:pointer;transition:all .2s}
 .filter-btn.active{background:var(--navy);border-color:var(--navy);color:#fff}
 .filter-sheet-item{display:flex;align-items:center;justify-content:space-between;
-  padding:15px 16px;border-bottom:1px solid var(--line);cursor:pointer;transition:background .15s}
+  padding:15px 16px;border-bottom:1px solid var(--line);cursor:pointer;transition:background .15s;border-radius:0}
 .filter-sheet-item:last-child{border-bottom:none}
 .filter-sheet-item:active{background:var(--bg)}
 .filter-sheet-item .fi-left{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600}
 .filter-sheet-item .fi-count{font-size:13px;font-weight:700;color:var(--ink3)}
-.filter-sheet-item.selected .fi-left{color:var(--navy)}
-.filter-sheet-item.selected::after{content:'✓';color:var(--navy);font-weight:900;font-size:18px}
+.filter-sheet-item.selected{background:var(--navy);border-radius:12px;margin:2px 0}
+.filter-sheet-item.selected .fi-left{color:#fff}
+.filter-sheet-item.selected .fi-count{color:rgba(255,255,255,.7)}
 
 /* ── TABLE VIEW ── */
 .view-toggle{display:flex;gap:6px;padding:0 16px 12px}
@@ -463,20 +464,19 @@ body.dark input,body.dark textarea,body.dark select{color:var(--ink)}
 <!-- ══ LIST ══ -->
 <div class="screen" id="s-list">
   <div class="list-hdr">
-    <div style="padding:52px 20px 12px;background:var(--card);display:flex;align-items:flex-end;justify-content:space-between">
+    <div style="padding:52px 20px 16px;background:var(--card);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)">
       <div>
         <div style="font-size:26px;font-weight:800;letter-spacing:-.8px;color:var(--navy)">כל הרכבים</div>
         <div style="font-size:12px;color:var(--ink3);font-weight:500;margin-top:2px" id="list-sub">—</div>
       </div>
-      <button class="filter-btn" id="filter-btn" onclick="openFilterSheet()">
-        <span>⚙️</span><span id="filter-btn-label">סינון</span>
-      </button>
-    </div>
-    <div style="display:flex;align-items:center;gap:8px;padding:8px 16px;background:var(--card);border-bottom:1px solid var(--line)">
-      <div style="flex:1"></div>
-      <div class="view-toggle" style="margin:0;padding:0">
-        <div class="vtoggle-btn active" id="vt-cards" onclick="setView('cards')">🃏 כרטיסים</div>
-        <div class="vtoggle-btn" id="vt-table" onclick="setView('table')">📋 טבלה</div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <div class="view-toggle" style="margin:0;padding:0">
+          <div class="vtoggle-btn active" id="vt-cards" onclick="setView('cards')">🃏</div>
+          <div class="vtoggle-btn" id="vt-table" onclick="setView('table')">📋</div>
+        </div>
+        <button class="filter-btn" id="filter-btn" onclick="openFilterSheet()">
+          <span>⚙️</span><span id="filter-btn-label">סינון</span>
+        </button>
       </div>
     </div>
   </div>
@@ -534,7 +534,7 @@ body.dark input,body.dark textarea,body.dark select{color:var(--ink)}
         <div class="tile"><div class="tile-lbl">ק"מ טיפול אחרון</div><div class="tile-val" style="direction:ltr;text-align:right" id="d-km-last-srv">—</div></div>
         <div class="tile"><div class="tile-lbl">ק"מ טיפול הבא</div><div class="tile-val" style="direction:ltr;text-align:right" id="d-nkm">—</div></div>
         <div class="tile wide"><div class="tile-lbl">תוקף רישוי שנתי (טסט)</div><div class="tile-val" id="d-annual">—</div></div>
-        <div class="tile wide"><div class="tile-lbl">טיפול שנתי אחרון</div><div class="tile-val" id="d-annual-srv">—</div></div>
+        <div class="tile wide"><div class="tile-lbl">טיפול אחרון</div><div class="tile-val" id="d-annual-srv">—</div></div>
       </div>
       <div class="tiles-grp-lbl">דלקן וקודן</div>
       <div class="tiles">
@@ -669,7 +669,7 @@ body.dark input,body.dark textarea,body.dark select{color:var(--ink)}
       </div>
 
       <div style="text-align:center;padding:24px 0;color:var(--ink3);font-size:12px;font-weight:500">
-        CarFleet · גרסה 0.75V
+        CarFleet · גרסה 0.77V
       </div>
     </div>
   </div>
@@ -828,7 +828,7 @@ body.dark input,body.dark textarea,body.dark select{color:var(--ink)}
 </div>
 
 <!-- FILTER SHEET -->
-<div class="modal-overlay" id="m-filter">
+<div class="modal-overlay" id="m-filter" onclick="if(event.target===this)closeM('m-filter')">
   <div class="modal-sheet" style="padding-bottom:32px">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
       <div class="modal-title" style="margin:0">סינון רכבים</div>
@@ -904,6 +904,17 @@ body.dark input,body.dark textarea,body.dark select{color:var(--ink)}
   </div>
 </div>
 
+<!-- CONFIRM FIXED MODAL -->
+<div class="modal-overlay" id="m-confirm-fixed">
+  <div class="modal-sheet">
+    <div class="modal-icon">🔧</div>
+    <div class="modal-title" id="m-confirm-fixed-title">אישור תיקון</div>
+    <div class="modal-sub" id="m-confirm-fixed-sub">האם הבעיה תוקנה?</div>
+    <button class="mbtn green" onclick="markFixed(_fixKey)">✅ כן, תוקן בהצלחה</button>
+    <button class="mbtn gray" onclick="closeM('m-confirm-fixed')">ביטול</button>
+  </div>
+</div>
+
 <!-- DELETE MODAL -->
 <div class="modal-overlay" id="m-del">
   <div class="modal-sheet">
@@ -961,8 +972,18 @@ function getStatus(v){
   if(v.annual){
     const d=new Date(v.annual);d.setHours(0,0,0,0);
     const diff=Math.round((d-today)/86400000);
-    if(diff<0){ issues.push({s:'red',m:`רישוי פג לפני ${Math.abs(diff)} ימים`}); annualExpired=true; }
-    else if(diff<=30) issues.push({s:'yellow',m:`רישוי שנתי עוד ${diff} ימים`});
+    if(diff<0){ issues.push({s:'red',m:'רישוי פג לפני '+Math.abs(diff)+' ימים'}); annualExpired=true; }
+    else if(diff<=30) issues.push({s:'yellow',m:'רישוי שנתי עוד '+diff+' ימים'});
+  }
+
+  // Annual service check — 1 year from last service date, warn 14 days before
+  let annualServiceExpired=false;
+  if(v.annualService){
+    const d=new Date(v.annualService); d.setHours(0,0,0,0);
+    const nextAnnual=new Date(d); nextAnnual.setFullYear(nextAnnual.getFullYear()+1);
+    const diff=Math.round((nextAnnual-today)/86400000);
+    if(diff<0){ issues.push({s:'red',m:'טיפול שנתי פג לפני '+Math.abs(diff)+' ימים'}); annualServiceExpired=true; }
+    else if(diff<=14) issues.push({s:'yellow',m:'טיפול שנתי עוד '+diff+' ימים'});
   }
 
   // Bcheck — also determines fitness (unless exempt)
@@ -992,13 +1013,13 @@ function getStatus(v){
     else if(Math.round((base-today)/86400000)<=7) issues.push({s:'yellow',m:`ענ"א נדרש — ${Math.round((base-today)/86400000)} ימים`});
   }
   const reds=issues.filter(i=>i.s==='red');
-  const unfit = v.manualUnfit || annualExpired || bcheckExpired || kmOverdue || enaUnfit;
+  const unfit = v.manualUnfit || annualExpired || annualServiceExpired || bcheckExpired || kmOverdue || enaUnfit;
 
-  if(!issues.length && !v.manualUnfit) return {st:'green',msg:null,kmNext,unfit:false};
-  if(v.manualUnfit) return {st:'red', msg:'סומן ידנית כלא כשיר', kmNext, unfit:true};
+  if(!issues.length && !v.manualUnfit) return {st:'green',msg:null,kmNext,unfit:false,_issues:[]};
+  if(v.manualUnfit) return {st:'red', msg:'סומן ידנית כלא כשיר', kmNext, unfit:true,_issues:issues};
   return reds.length
-    ?{st:'red',   msg:reds[0].m,  kmNext, unfit}
-    :{st:'yellow',msg:issues[0].m,kmNext, unfit:false};
+    ?{st:'red',   msg:reds[0].m,  kmNext, unfit,_issues:issues}
+    :{st:'yellow',msg:issues[0].m,kmNext, unfit:false,_issues:issues};
 }
 
 /* ═══ NAVIGATION ═══ */
@@ -1282,16 +1303,25 @@ function openFilterSheet(){
 }
 function applyFilter(f){
   _filter=f;
-  closeM('m-filter');
   updateFilterBtn();
   renderList(f);
+  syncFilterSheet();
+}
+function syncFilterSheet(){
+  ['all','red','yellow','green'].forEach(f=>{
+    const el=document.getElementById('fi-'+f);
+    if(el) el.classList.toggle('selected', f===_filter);
+  });
 }
 function updateFilterBtn(){
-  const labels={all:'סינון',red:'🔴 דחוף',yellow:'⚠️ קרוב',green:'✅ תקין'};
+  const d=load();
+  const ws=d.v.map(v=>({...v,...getStatus(v)}));
+  const counts={all:ws.length, red:ws.filter(v=>v.st==='red').length, yellow:ws.filter(v=>v.st==='yellow').length, green:ws.filter(v=>v.st==='green').length};
+  const icons={all:'⚙️',red:'🔴',yellow:'⚠️',green:'✅'};
   const btn=document.getElementById('filter-btn');
   const lbl=document.getElementById('filter-btn-label');
   if(btn) btn.classList.toggle('active',_filter!=='all');
-  if(lbl) lbl.textContent=labels[_filter]||'סינון';
+  if(lbl) lbl.textContent=(_filter==='all'?'סינון':(icons[_filter]+' '+counts[_filter]));
 }
 
 /* ═══ LIST ═══ */
@@ -1328,10 +1358,11 @@ function renderList(f){
       const pl=v.mil||v.civ||'—';
       const pll=v.purpose||'';
       const unfitTag=v.unfit?'<span style="font-size:10px;font-weight:700;color:var(--red);background:var(--red-bg);padding:2px 7px;border-radius:999px;margin-top:2px;display:inline-block">לא כשיר</span>':'';
+      const ironStr=v.iron?`<div class="vplate-lbl" style="margin-top:2px">ברזל: ${v.iron}</div>`:'';
       return `<div class="vcard ${v.st}" style="animation-delay:${i*.04}s" onclick="openDetail(${v.id})">
         <div class="vbadge ${v.st}">${SICON[v.st]}</div>
         <div class="vinfo"><div class="vname">${v.model}</div><div class="vmeta">${v.resp||'—'} · ${v.year}</div>${unfitTag}</div>
-        <div><div class="vplate">${pl}</div><div class="vplate-lbl">${pll}</div></div>
+        <div><div class="vplate">${pl}</div><div class="vplate-lbl">${pll}</div>${ironStr}</div>
       </div>`;
     }).join('');
   } else {
@@ -1390,7 +1421,7 @@ function renderTable(list){
     return 0;
   });
 
-  const heads=['סטטוס','דגם','מס\' רכב','מס\' צבאי','אחראי','שנה','ייעוד',
+  const heads=['סטטוס','דגם','מס\' רכב','מס\' צבאי','מס\' ברזל','אחראי','שנה','ייעוד',
     'ק"מ נוכחי','יתרה','ק"מ לטיפול','טיפול כל',
     'רישוי שנתי','בוחנים הבא','חורף','הערות'];
 
@@ -1406,6 +1437,7 @@ function renderTable(list){
       <td style="font-weight:700">${v.model}</td>
       <td style="direction:ltr;text-align:left">${v.civ||'—'}</td>
       <td style="direction:ltr;text-align:left">${v.mil||'—'}</td>
+      <td style="direction:ltr;text-align:left">${v.iron||'—'}</td>
       <td>${v.resp||'—'}</td>
       <td>${v.year}</td>
       <td>${v.purpose||'—'}</td>
@@ -1518,8 +1550,8 @@ function openDetail(id){
   const fill=document.getElementById('d-fill');
   fill.className=`prog-fill ${s.st}`; fill.style.width='0%';
   setTimeout(()=>fill.style.width=pct+'%',80);
-  document.getElementById('d-rs').textContent=baseKm.toLocaleString();
-  document.getElementById('d-re').textContent=kmNext.toLocaleString();
+  document.getElementById('d-rs').textContent=kmNext.toLocaleString();
+  document.getElementById('d-re').textContent=baseKm.toLocaleString();
 
   document.getElementById('d-civ').textContent=v.civ||'—';
   document.getElementById('d-mil').textContent=v.mil||'—';
@@ -1604,41 +1636,47 @@ function openDetail(id){
   // Pending banner (weekly/bcheck not passed)
   const pendEl=document.getElementById('d-pending-banner');
   if(pendEl){
-    const wp=v.weeklyPending; const bp=v.bcheckPending;
-    if(wp||bp){
-      const p=wp||bp;
-      const type=wp?'טיפול שבועי':'טיפול בוחנים';
-      const typeLbl=wp?'weeklyPending':'bcheckPending';
-      pendEl.innerHTML=`<div style="margin:0 16px 10px;border-radius:14px;padding:14px 16px;
-        background:#FFF0F0;border:1.5px solid var(--red);display:flex;align-items:center;justify-content:space-between;gap:12px">
-        <div>
-          <div style="font-size:13px;font-weight:700;color:var(--red)">⏳ ${type} — ממתין לתיקון</div>
-          ${p.note?`<div style="font-size:11px;color:var(--ink3);margin-top:2px">${p.note}</div>`:''}
-          <div style="font-size:11px;color:var(--ink3);margin-top:2px">${fmt(p.date)||''}</div>
-        </div>
-        <button onclick="markFixed('${typeLbl}')" style="background:var(--green);color:#fff;border:none;border-radius:10px;
-          padding:8px 14px;font-family:var(--font);font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap">
-          ✅ תוקן
-        </button>
-      </div>`;
-    } else {
-      pendEl.innerHTML='';
-    }
-  }
+    let html='';
 
-  // Fitness banner
-  const fitEl=document.getElementById('d-fitness-banner');
-  if(s.unfit){
-    fitEl.innerHTML=`<div class="unfit-banner">
-      <div class="unfit-icon">🚫</div>
-      <div><div class="unfit-text">לא כשיר לשימוש</div>
-      <div class="unfit-sub">${s.msg}</div></div>
-    </div>`;
-  } else {
-    fitEl.innerHTML=`<div class="fit-banner">
-      <div class="fit-icon">✅</div>
-      <div class="fit-text">כשיר לשימוש</div>
-    </div>`;
+    // Pending repairs (weekly/bcheck failed)
+    const pendItems=[];
+    if(v.weeklyPending) pendItems.push({key:'weeklyPending', type:'טיפול שבועי', data:v.weeklyPending});
+    if(v.bcheckPending) pendItems.push({key:'bcheckPending', type:'טיפול בוחנים', data:v.bcheckPending});
+
+    if(pendItems.length){
+      const rows=pendItems.map(p=>
+        '<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,0,0,.1)">'
+        +'<div>'
+        +'<div style="font-size:13px;font-weight:700;color:var(--red)">⏳ '+p.type+' — ממתין לתיקון</div>'
+        +(p.data.note?'<div style="font-size:11px;color:var(--ink3);margin-top:2px">'+p.data.note+'</div>':'')
+        +'<div style="font-size:11px;color:var(--ink3);margin-top:1px">'+( fmt(p.data.date)||'' )+'</div>'
+        +'</div>'
+        +'<button onclick="confirmFixed(\''+p.key+'\')" style="background:var(--green);color:#fff;border:none;border-radius:10px;'
+        +'padding:8px 14px;font-family:var(--font);font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;flex-shrink:0">'
+        +'✅ תוקן'
+        +'</button>'
+        +'</div>'
+      ).join('');
+      html+='<div style="margin:0 16px 10px;border-radius:14px;padding:14px 16px;background:#FFF0F0;border:1.5px solid var(--red)">'+rows+'</div>';
+    }
+
+    // Warnings banner (yellow/red issues from getStatus)
+    const allIssues=s._issues||[];
+    const warnings=allIssues.filter(i=>i.s==='yellow'||i.s==='red');
+    if(warnings.length){
+      const items=warnings.map(i=>{
+        const icon=i.s==='red'?'🔴':'⚠️';
+        return '<div style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid rgba(0,0,0,.06)">'
+          +'<span style="font-size:14px">'+icon+'</span>'
+          +'<span style="font-size:13px;font-weight:600;color:var(--ink)">'+i.m+'</span>'
+          +'</div>';
+      }).join('');
+      html+='<div style="margin:0 16px 10px;border-radius:14px;padding:12px 16px;background:var(--card);box-shadow:var(--sh)">'
+        +'<div style="font-size:11px;font-weight:700;color:var(--ink3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:4px">התראות</div>'
+        +items+'</div>';
+    }
+
+    pendEl.innerHTML=html;
   }
 
   // Push detail screen
@@ -1832,15 +1870,19 @@ function saveWeeklyModal(){
   v.lastWeekly=selectedDate;
   // Pass/fail
   const passed=document.getElementById('m-weekly-pass')?.checked!==false;
+  const noteText=document.getElementById('m-weekly-fail-text')?.value.trim()||'';
+  if(noteText){
+    v.notes=v.notes?v.notes+'\n['+fmt(selectedDate)+'] '+noteText:'['+fmt(selectedDate)+'] '+noteText;
+    logEvent(v,'edit','הערה נוספה מטיפול שבועי: '+noteText);
+  }
   if(!passed){
-    const failNote=document.getElementById('m-weekly-fail-text')?.value.trim()||'';
-    if(failNote){
-      v.notes=v.notes?v.notes+'\n['+fmt(selectedDate)+'] '+failNote:'['+fmt(selectedDate)+'] '+failNote;
-      logEvent(v,'edit','הערה נוספה מטיפול שבועי: '+failNote);
-    }
-    logEvent(v,'weekly',`טיפול שבועי לא תקין — ${fmt(selectedDate)}`);
+    v.weeklyPending={date:selectedDate,note:noteText,type:'weekly'};
+    v.manualUnfit=true;
+    logEvent(v,'weekly','טיפול שבועי לא תקין — ממתין לתיקון ('+fmt(selectedDate)+')');
   } else {
-    logEvent(v,'weekly',`בוצע טיפול שבועי בתאריך ${fmt(selectedDate)}`);
+    v.weeklyPending=null;
+    if(!v.bcheckPending) v.manualUnfit=false;
+    logEvent(v,'weekly','בוצע טיפול שבועי בהצלחה — '+fmt(selectedDate));
   }
   // ENA check
   const enaChecked=document.getElementById('m-weekly-ena-check').checked;
@@ -1929,16 +1971,20 @@ function saveBcheck(){
   const bdEl=document.getElementById('m-bcheck-date');
   const blast=bdEl&&bdEl.value?bdEl.value:new Date().toISOString().split('T')[0];
   const bPassed=document.getElementById('m-bcheck-pass')?.checked!==false;
+  const bNote=document.getElementById('m-bcheck-fail-text')?.value.trim()||'';
   v.blast=blast;
+  if(bNote){
+    v.notes=v.notes?v.notes+'\n['+fmt(blast)+'] '+bNote:'['+fmt(blast)+'] '+bNote;
+    logEvent(v,'edit','הערה נוספה מטיפול בוחנים: '+bNote);
+  }
   if(!bPassed){
-    const failNote=document.getElementById('m-bcheck-fail-text')?.value.trim()||'';
-    if(failNote){
-      v.notes=v.notes?v.notes+'\n['+fmt(blast)+'] '+failNote:'['+fmt(blast)+'] '+failNote;
-      logEvent(v,'edit','הערה נוספה מטיפול בוחנים: '+failNote);
-    }
-    logEvent(v,'bcheck',`טיפול בוחנים לא עבר — ${fmt(blast)}`);
+    v.bcheckPending={date:blast,note:bNote,type:'bcheck'};
+    v.manualUnfit=true;
+    logEvent(v,'bcheck','טיפול בוחנים לא עבר — ממתין לתיקון ('+fmt(blast)+')');
   } else {
-    logEvent(v,'bcheck',`בוצע טיפול בוחנים בתאריך ${fmt(blast)}`);
+    v.bcheckPending=null;
+    if(!v.weeklyPending) v.manualUnfit=false;
+    logEvent(v,'bcheck','טיפול בוחנים עבר בהצלחה — '+fmt(blast));
   }
   save(d);
   closeM('m-bcheck');
@@ -1947,18 +1993,27 @@ function saveBcheck(){
 }
 
 /* ═══ MARK FIXED ═══ */
-function markFixed(pendingKey){
+let _fixKey=null;
+function confirmFixed(pendingKey){
   const d=load(); const v=d.v.find(x=>x.id===_cur); if(!v) return;
-  const p=v[pendingKey];
-  if(!p) return;
+  const p=v[pendingKey]; if(!p) return;
+  _fixKey=pendingKey;
   const type=pendingKey==='weeklyPending'?'טיפול שבועי':'טיפול בוחנים';
+  document.getElementById('m-confirm-fixed-title').textContent='אישור תיקון — '+type;
+  const subMsg=(p.note?'בעיה: '+p.note+' | ':'')+'האם הבעיה תוקנה ו'+type+' תקין?';
+  document.getElementById('m-confirm-fixed-sub').textContent=subMsg;
+  document.getElementById('m-confirm-fixed').classList.add('show');
+}
+function markFixed(pendingKey){
+  closeM('m-confirm-fixed');
+  const d=load(); const v=d.v.find(x=>x.id===_cur); if(!v) return;
+  const p=v[pendingKey]; if(!p) return;
   const successMsg=pendingKey==='weeklyPending'?'טיפול שבועי בוצע בהצלחה':'טיפול בוחנים עבר בהצלחה';
   v[pendingKey]=null;
-  // Remove manualUnfit only if no other pending
   if(!v.weeklyPending && !v.bcheckPending) v.manualUnfit=false;
-  logEvent(v,'edit',`${successMsg} — תוקן`);
+  logEvent(v,'edit',successMsg+' — תוקן');
   save(d);
-  showToast(`✅ ${successMsg}`);
+  showToast('✅ '+successMsg);
   openDetail(_cur);
 }
 
@@ -2058,7 +2113,7 @@ function buildForm(v){
   h+='<div class="frow"><span class="ficon">📍</span><span class="flabel">ק"מ נוכחי</span><input class="finput" type="number" id="fv-km" value="'+(v?v.km:'')+'" placeholder="0"></div>';
   h+='<div class="frow"><span class="ficon">📅</span><span class="flabel">תאריך עדכון</span><input class="finput" type="date" id="fv-kmdate" value="'+(v?v.kmDate||'':new Date().toISOString().split('T')[0])+'"></div>';
   h+='<div class="frow"><span class="ficon">🔧</span><span class="flabel">ק"מ טיפול אחרון</span><input class="finput" type="number" id="fv-km-last-service" value="'+(v?v.kmLastService||'':'')+'" placeholder="0"></div>';
-  h+='<div class="frow"><span class="ficon">📅</span><span class="flabel">תאריך טיפול שנתי</span><input class="finput" type="date" id="fv-annual-service" value="'+(v?v.annualService||'':'')+'"></div>';
+  h+='<div class="frow"><span class="ficon">📅</span><span class="flabel">תאריך טיפול אחרון</span><input class="finput" type="date" id="fv-annual-service" value="'+(v?v.annualService||'':'')+'"></div>';
   h+='</div>';
   h+='<div class="fcard"><div class="chips-wrap"><div class="chips-lbl">טיפול כל (ק"מ)</div>';
   h+='<div class="chips-row" id="fv-itvl-chips">'+itvlChipsHTML+'</div>';
