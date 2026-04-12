@@ -285,7 +285,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--ink);min-height:10
 
 .tbl-wrap{overflow-x:auto;padding:0 0 12px;-webkit-overflow-scrolling:touch}
 .tbl{border-collapse:collapse;width:max-content;min-width:100%;font-size:12px;direction:rtl}
-.tbl th{background:var(--card);color:var(--ink3);font-weight:700;font-size:10px;
+.tbl th{background:#0D1B4B;color:rgba(255,255,255,.8);font-weight:700;font-size:10px;
   letter-spacing:.5px;padding:10px 12px;text-align:right;
   border-bottom:2px solid var(--line);white-space:nowrap;position:sticky;top:0;z-index:2}
 .tbl td{padding:10px 12px;border-bottom:1px solid var(--line);white-space:nowrap;
@@ -336,6 +336,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--ink);min-height:10
 
 /* ── TABLE SORT ── */
 .tbl th{cursor:pointer;user-select:none}
+.tbl th.sort-active{background:#1565C0;color:#fff}
 .tbl th:hover{background:var(--bg)}
 .tbl th.sort-asc::after{content:' ▲';font-size:9px;color:var(--blue)}
 .tbl th.sort-desc::after{content:' ▼';font-size:9px;color:var(--blue)}
@@ -1800,23 +1801,24 @@ function renderTable(list){
     return {v, s, kmNext, bal, bn, annual, bcheck};
   });
 
-  // Sort
+  // Sort — 16 cols matching heads array exactly
   const sortKeys=[
-    r=>({red:0,yellow:1,green:2}[r.s.st]),  // 0 סטטוס
-    r=>r.v.model||'',                         // 1 דגם
-    r=>r.v.civ||'',                           // 2 מס' רכב
-    r=>r.v.mil||'',                           // 3 מס' צבאי
-    r=>r.v.resp||'',                          // 4 אחראי
-    r=>r.v.year||0,                           // 5 שנה
-    r=>r.v.purpose||'',                       // 6 ייעוד
-    r=>r.v.km||0,                             // 7 ק"מ נוכחי
-    r=>r.bal,                                 // 8 יתרה
-    r=>r.kmNext||0,                           // 9 ק"מ לטיפול
-    r=>r.v.itvl||0,                           // 10 טיפול כל
-    r=>r.annual.ts||0,                        // 11 רישוי שנתי
-    r=>r.bcheck.ts||0,                        // 12 בוחנים הבא
-    r=>r.v.winter||'',                        // 13 חורף
-    r=>r.v.notes||'',                         // 14 הערות
+    r=>({red:0,yellow:1,green:2}[r.s.st]||0), // 0  סטטוס
+    r=>(r.v.model||'').toLowerCase(),           // 1  דגם
+    r=>r.v.civ||'',                             // 2  מס' רכב
+    r=>r.v.mil||'',                             // 3  מס' צבאי
+    r=>r.v.iron||'',                            // 4  מס' ברזל
+    r=>(r.v.resp||'').toLowerCase(),            // 5  אחראי
+    r=>r.v.year||0,                             // 6  שנה
+    r=>(r.v.purpose||'').toLowerCase(),         // 7  ייעוד
+    r=>r.v.km||0,                               // 8  ק"מ נוכחי
+    r=>r.bal,                                   // 9  יתרה
+    r=>r.kmNext||0,                             // 10 ק"מ לטיפול
+    r=>r.v.itvl||0,                             // 11 טיפול כל
+    r=>r.annual.ts||0,                          // 12 רישוי שנתי
+    r=>r.bcheck.ts||0,                          // 13 בוחנים הבא
+    r=>r.v.winter||'',                          // 14 חורף
+    r=>(r.v.notes||'').toLowerCase(),           // 15 הערות
   ];
 
   const {col, asc}=_tblSort;
@@ -1832,8 +1834,10 @@ function renderTable(list){
     'רישוי שנתי','בוחנים הבא','חורף','הערות'];
 
   const thHTML=heads.map((h,i)=>{
-    const cls=i===col?(asc?'sort-asc':'sort-desc'):'';
-    return `<th class="${cls}" onclick="sortTable(${i})">${h}</th>`;
+    const active=i===col;
+    const arrow=active?(asc?' ▲':' ▼'):'';
+    const cls=active?'sort-active':'';
+    return `<th class="${cls}" onclick="sortTable(${i})" style="cursor:pointer;white-space:nowrap">${h}<span style="color:${active?'#fff':'rgba(255,255,255,.3)'};font-size:10px">${arrow||' ⇅'}</span></th>`;
   }).join('');
 
   const rows=rowData.map(({v,s,kmNext,bal,annual,bcheck})=>{
