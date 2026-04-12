@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="he" dir="rtl">
 <head>
 <meta charset="UTF-8">
@@ -54,7 +55,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--ink);min-height:10
 .app{max-width:430px;margin:0 auto;min-height:100dvh;position:relative;overflow:hidden}
 
 /* ── SCREENS ── */
-.screen{position:absolute;inset:0;display:none;flex-direction:column;background:var(--bg);overflow:hidden}
+.screen{position:absolute;inset:0;display:none;flex-direction:column;background:var(–bg);overflow:hidden}
 .screen.active{display:flex}
 .screen.push-enter{animation:pushIn .28s cubic-bezier(.25,.46,.45,.94) both}
 .screen.push-exit{animation:pushOut .28s cubic-bezier(.25,.46,.45,.94) both}
@@ -70,122 +71,122 @@ body{font-family:var(--font);background:var(--bg);color:var(--ink);min-height:10
 .scroll-body{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding-bottom:110px}
 
 /* ── COMMON ── */
-.icon-btn{width:36px;height:36px;border-radius:12px;background:var(--bg);border:none;font-size:18px;
-  cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .15s;flex-shrink:0}
+.icon-btn{width:36px;height:36px;border-radius:12px;background:var(–bg);border:none;font-size:18px;
+cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .15s;flex-shrink:0}
 .icon-btn:active{transform:scale(.9)}
-.icon-btn.blue{background:var(--blue);color:#fff;font-size:20px}
+.icon-btn.blue{background:var(–blue);color:#fff;font-size:20px}
 
 /* ── DASHBOARD ── */
-.dash-hero{padding:52px 20px 20px;background:var(--card)}
-.dash-greeting{font-size:13px;font-weight:600;color:var(--blue-light);margin-bottom:4px;letter-spacing:.3px}
+.dash-hero{padding:52px 20px 20px;background:var(–card)}
+.dash-greeting{font-size:13px;font-weight:600;color:var(–blue-light);margin-bottom:4px;letter-spacing:.3px}
 .dash-title{font-size:26px;font-weight:800;letter-spacing:-.8px}
 
-.banner{margin:16px 16px 0;border-radius:var(--r);padding:20px;cursor:pointer;position:relative;overflow:hidden;transition:transform .15s}
+.banner{margin:16px 16px 0;border-radius:var(–r);padding:20px;cursor:pointer;position:relative;overflow:hidden;transition:transform .15s}
 .banner:active{transform:scale(.98)}
-.banner.red{background:#FF3B30}.banner.yellow{background:#FF9500}.banner.green{background:linear-gradient(135deg,var(--navy),#1565C0)}
-.banner::after{content:'';position:absolute;top:-30px;left:-30px;width:140px;height:140px;background:rgba(255,255,255,.08);border-radius:50%}
+.banner.red{background:#FF3B30}.banner.yellow{background:#FF9500}.banner.green{background:linear-gradient(135deg,var(–navy),#1565C0)}
+.banner::after{content:’’;position:absolute;top:-30px;left:-30px;width:140px;height:140px;background:rgba(255,255,255,.08);border-radius:50%}
 .banner-label{font-size:11px;font-weight:700;color:rgba(255,255,255,.75);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px}
 .banner-count{font-size:52px;font-weight:900;color:#fff;line-height:1;letter-spacing:-2px}
 .banner-sub{font-size:14px;font-weight:500;color:rgba(255,255,255,.85);margin-top:4px}
 .banner-arrow{position:absolute;left:20px;top:50%;transform:translateY(-50%);font-size:28px;color:rgba(255,255,255,.4)}
 
 .pills{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:10px 16px 0}
-.pill{background:var(--card);border-radius:16px;padding:16px;display:flex;align-items:center;gap:12px;
-  cursor:pointer;box-shadow:var(--sh);transition:transform .15s;border:1.5px solid transparent}
+.pill{background:var(–card);border-radius:16px;padding:16px;display:flex;align-items:center;gap:12px;
+cursor:pointer;box-shadow:var(–sh);transition:transform .15s;border:1.5px solid transparent}
 .pill:active{transform:scale(.96)}
-.pill.yellow{border-color:var(--yel-bg)}.pill.green{border-color:var(--grn-bg)}
+.pill.yellow{border-color:var(–yel-bg)}.pill.green{border-color:var(–grn-bg)}
 .pill-icon{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
-.pill.yellow .pill-icon{background:var(--yel-bg)}.pill.green .pill-icon{background:var(--grn-bg)}
+.pill.yellow .pill-icon{background:var(–yel-bg)}.pill.green .pill-icon{background:var(–grn-bg)}
 .pill-num{font-size:24px;font-weight:800;line-height:1;letter-spacing:-.5px}
-.pill.yellow .pill-num{color:var(--yellow)}.pill.green .pill-num{color:var(--green)}
-.pill-label{font-size:12px;color:var(--ink3);font-weight:500;margin-top:1px}
+.pill.yellow .pill-num{color:var(–yellow)}.pill.green .pill-num{color:var(–green)}
+.pill-label{font-size:12px;color:var(–ink3);font-weight:500;margin-top:1px}
 
 .sec-hdr{display:flex;align-items:center;justify-content:space-between;padding:22px 20px 10px}
 .sec-hdr h2{font-size:17px;font-weight:700;letter-spacing:-.3px}
-.see-all{font-size:14px;font-weight:600;color:var(--blue);cursor:pointer}
+.see-all{font-size:14px;font-weight:600;color:var(–blue);cursor:pointer}
 
 .alert-list{padding:0 16px;display:flex;flex-direction:column;gap:8px}
-.alert-row{background:var(--card);border-radius:16px;padding:14px 16px;display:flex;align-items:center;gap:12px;
-  cursor:pointer;box-shadow:var(--sh);transition:transform .15s;border-right:4px solid transparent}
+.alert-row{background:var(–card);border-radius:12px;padding:9px 12px;display:flex;align-items:center;gap:10px;
+cursor:pointer;box-shadow:var(–sh);transition:transform .15s;border-right:4px solid transparent}
 .alert-row:active{transform:scale(.98)}
-.alert-row.red{border-right-color:var(--red)}.alert-row.yellow{border-right-color:var(--yellow)}
-.alert-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
-.alert-row.red .alert-icon{background:var(--red-bg)}.alert-row.yellow .alert-icon{background:var(--yel-bg)}
+.alert-row.red{border-right-color:var(–red)}.alert-row.yellow{border-right-color:var(–yellow)}
+.alert-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.alert-row.red .alert-icon{background:var(–red-bg)}.alert-row.yellow .alert-icon{background:var(–yel-bg)}
 .alert-body{flex:1;min-width:0}
-.alert-name{font-size:14px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.alert-desc{font-size:12px;color:var(--ink3);margin-top:2px;font-weight:500}
-.alert-chev{color:var(--line);font-size:18px}
+.alert-name{font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.alert-desc{font-size:11px;color:var(–ink3);margin-top:1px;font-weight:500}
+.alert-chev{color:var(–line);font-size:18px}
 
 /* ── FAB MENU ── */
-.fab{position:fixed;bottom:90px;right:20px;width:56px;height:56px;background:linear-gradient(135deg,var(--navy),#1565C0);border-radius:18px;
-  display:flex;align-items:center;justify-content:center;font-size:28px;
-  box-shadow:0 4px 20px rgba(13,27,75,.4);cursor:pointer;transition:transform .2s,rotate .2s;
-  z-index:300;border:none;color:#fff}
+.fab{position:fixed;bottom:90px;right:20px;width:56px;height:56px;background:linear-gradient(135deg,var(–navy),#1565C0);border-radius:18px;
+display:flex;align-items:center;justify-content:center;font-size:28px;
+box-shadow:0 4px 20px rgba(13,27,75,.4);cursor:pointer;transition:transform .2s,rotate .2s;
+z-index:300;border:none;color:#fff}
 .fab:active{transform:scale(.92)}
 .fab.open{rotate:45deg}
 .fab-overlay{position:fixed;inset:0;z-index:250;background:rgba(0,0,0,.35);
-  opacity:0;pointer-events:none;transition:opacity .25s}
+opacity:0;pointer-events:none;transition:opacity .25s}
 .fab-overlay.show{opacity:1;pointer-events:all}
 .fab-menu{position:fixed;bottom:158px;right:20px;z-index:280;
-  display:flex;flex-direction:column;gap:10px;align-items:flex-end;
-  opacity:0;pointer-events:none;transform:translateY(16px);transition:all .25s cubic-bezier(.4,0,.2,1)}
+display:flex;flex-direction:column;gap:10px;align-items:flex-end;
+opacity:0;pointer-events:none;transform:translateY(16px);transition:all .25s cubic-bezier(.4,0,.2,1)}
 .fab-menu.show{opacity:1;pointer-events:all;transform:translateY(0)}
 .fab-action{display:flex;align-items:center;gap:12px;cursor:pointer;flex-direction:row-reverse}
 .fab-action-icon{width:46px;height:46px;border-radius:14px;display:flex;align-items:center;
-  justify-content:center;font-size:22px;box-shadow:0 2px 12px rgba(0,0,0,.12);flex-shrink:0}
-.fab-action-label{background:var(--ink);color:#fff;font-size:13px;font-weight:700;
-  padding:7px 14px;border-radius:999px;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+justify-content:center;font-size:22px;box-shadow:0 2px 12px rgba(0,0,0,.12);flex-shrink:0}
+.fab-action-label{background:var(–ink);color:#fff;font-size:13px;font-weight:700;
+padding:7px 14px;border-radius:999px;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.2)}
 
 /* ── PICK VEHICLE LIST ── */
-.pick-vrow{display:flex;align-items:center;gap:12px;padding:12px 14px;background:var(--bg);
-  border-radius:14px;cursor:pointer;transition:background .15s}
-.pick-vrow:active{background:var(--line)}
+.pick-vrow{display:flex;align-items:center;gap:12px;padding:12px 14px;background:var(–bg);
+border-radius:14px;cursor:pointer;transition:background .15s}
+.pick-vrow:active{background:var(–line)}
 .pick-vbadge{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
-.pick-vbadge.red{background:var(--red-bg)}.pick-vbadge.yellow{background:var(--yel-bg)}.pick-vbadge.green{background:var(--grn-bg)}
+.pick-vbadge.red{background:var(–red-bg)}.pick-vbadge.yellow{background:var(–yel-bg)}.pick-vbadge.green{background:var(–grn-bg)}
 .pick-vname{font-size:14px;font-weight:700;flex:1}
-.pick-vmeta{font-size:12px;color:var(--ink3);margin-top:1px}
+.pick-vmeta{font-size:12px;color:var(–ink3);margin-top:1px}
 
 /* ── LIST ── */
-.list-hdr{background:var(--card)}
+.list-hdr{background:var(–card)}
 .list-hdr-row{display:flex;align-items:flex-end;justify-content:space-between;padding-bottom:14px}
 .list-hdr h1{font-size:26px;font-weight:800;letter-spacing:-.8px}
-.list-sub{font-size:12px;color:var(--ink3);font-weight:500;margin-top:2px}
+.list-sub{font-size:12px;color:var(–ink3);font-weight:500;margin-top:2px}
 .fbar{display:flex;gap:8px;overflow-x:auto;padding-bottom:14px;scrollbar-width:none}
 .fbar::-webkit-scrollbar{display:none}
-.fchip{padding:7px 16px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);
-  color:var(--ink3);font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;
-  transition:all .2s;flex-shrink:0;font-family:var(--font)}
-.fchip.active{background:var(--navy);border-color:var(--navy);color:#fff}
-.fchip.red.active{background:var(--red);border-color:var(--red)}
-.fchip.yellow.active{background:var(--yellow);border-color:var(--yellow)}
-.fchip.green.active{background:var(--green);border-color:var(--green)}
+.fchip{padding:7px 16px;border-radius:999px;border:1.5px solid var(–line);background:var(–card);
+color:var(–ink3);font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;
+transition:all .2s;flex-shrink:0;font-family:var(–font)}
+.fchip.active{background:var(–navy);border-color:var(–navy);color:#fff}
+.fchip.red.active{background:var(–red);border-color:var(–red)}
+.fchip.yellow.active{background:var(–yellow);border-color:var(–yellow)}
+.fchip.green.active{background:var(–green);border-color:var(–green)}
 
 .vlist{padding:12px 16px;display:flex;flex-direction:column;gap:8px}
-.vcard{background:var(--card);border-radius:var(--r);padding:16px;display:flex;align-items:center;gap:14px;
-  cursor:pointer;box-shadow:var(--sh);transition:transform .15s;
-  border-right:4px solid transparent;animation:up .25s ease both}
+.vcard{background:var(–card);border-radius:var(–r);padding:16px;display:flex;align-items:center;gap:14px;
+cursor:pointer;box-shadow:var(–sh);transition:transform .15s;
+border-right:4px solid transparent;animation:up .25s ease both}
 .vcard:active{transform:scale(.98)}
-.vcard.red{border-right-color:var(--red)}.vcard.yellow{border-right-color:var(--yellow)}.vcard.green{border-right-color:var(--green)}
+.vcard.red{border-right-color:var(–red)}.vcard.yellow{border-right-color:var(–yellow)}.vcard.green{border-right-color:var(–green)}
 @keyframes up{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 .vbadge{width:44px;height:44px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
-.vbadge.red{background:var(--red-bg)}.vbadge.yellow{background:var(--yel-bg)}.vbadge.green{background:var(--grn-bg)}
+.vbadge.red{background:var(–red-bg)}.vbadge.yellow{background:var(–yel-bg)}.vbadge.green{background:var(–grn-bg)}
 .vinfo{flex:1;min-width:0}
 .vname{font-size:15px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.vmeta{font-size:12px;color:var(--ink3);margin-top:2px;font-weight:500}
+.vmeta{font-size:12px;color:var(–ink3);margin-top:2px;font-weight:500}
 .vplate{font-size:15px;font-weight:700;text-align:left;direction:ltr}
-.vplate-lbl{font-size:10px;color:var(--ink3);font-weight:500;text-align:left}
+.vplate-lbl{font-size:10px;color:var(–ink3);font-weight:500;text-align:left}
 
 /* ── DETAIL ── */
-.det-nav{background:var(--card);padding:52px 16px 14px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--line)}
+.det-nav{background:var(–card);padding:52px 16px 14px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(–line)}
 .det-title{font-size:16px;font-weight:700;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .stag{font-size:12px;font-weight:700;padding:5px 12px;border-radius:999px;flex-shrink:0}
-.stag.red{background:var(--red-bg);color:var(--red)}.stag.yellow{background:var(--yel-bg);color:var(--yellow)}.stag.green{background:var(--grn-bg);color:var(--green)}
+.stag.red{background:var(–red-bg);color:var(–red)}.stag.yellow{background:var(–yel-bg);color:var(–yellow)}.stag.green{background:var(–grn-bg);color:var(–green)}
 
-.km-hero{margin:12px 16px;border-radius:var(--r);padding:22px;position:relative;overflow:hidden}
+.km-hero{margin:12px 16px;border-radius:var(–r);padding:22px;position:relative;overflow:hidden}
 .km-hero.red{background:linear-gradient(135deg,#FF3B30,#FF6B6B)}
 .km-hero.yellow{background:linear-gradient(135deg,#FF9500,#FFBB33)}
-.km-hero.green{background:linear-gradient(135deg,var(--navy),#1565C0)}
-.km-hero::before{content:'';position:absolute;top:-40px;left:-40px;width:200px;height:200px;background:rgba(255,255,255,.1);border-radius:50%}
+.km-hero.green{background:linear-gradient(135deg,var(–navy),#1565C0)}
+.km-hero::before{content:’’;position:absolute;top:-40px;left:-40px;width:200px;height:200px;background:rgba(255,255,255,.1);border-radius:50%}
 .km-row{display:flex;align-items:flex-end;justify-content:space-between}
 .km-label{font-size:11px;font-weight:600;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:1px}
 .km-num{font-size:44px;font-weight:900;color:#fff;direction:ltr;display:block;letter-spacing:-2px;line-height:1}
@@ -194,251 +195,248 @@ body{font-family:var(--font);background:var(--bg);color:var(--ink);min-height:10
 .km-bal-num{font-size:28px;font-weight:900;color:#fff;letter-spacing:-1px;text-align:left;direction:ltr}
 .km-bal-sub{font-size:11px;color:rgba(255,255,255,.75);font-weight:500;text-align:left}
 .stale-pill{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.2);
-  border-radius:999px;padding:4px 10px;font-size:11px;font-weight:700;color:#fff;margin-top:8px}
+border-radius:999px;padding:4px 10px;font-size:11px;font-weight:700;color:#fff;margin-top:8px}
 
-.prog-card{margin:0 16px 10px;background:var(--card);border-radius:var(--r);padding:16px 18px;box-shadow:var(--sh)}
+.prog-card{margin:0 16px 10px;background:var(–card);border-radius:var(–r);padding:16px 18px;box-shadow:var(–sh)}
 .prog-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
 .prog-title{font-size:13px;font-weight:700}
 .prog-pct{font-size:13px;font-weight:700}
-.prog-pct.red{color:var(--red)}.prog-pct.yellow{color:var(--yellow)}.prog-pct.green{color:var(--green)}
-.prog-track{height:9px;background:var(--bg);border-radius:999px;overflow:hidden;margin-bottom:6px}
+.prog-pct.red{color:var(–red)}.prog-pct.yellow{color:var(–yellow)}.prog-pct.green{color:var(–green)}
+.prog-track{height:9px;background:var(–bg);border-radius:999px;overflow:hidden;margin-bottom:6px}
 .prog-fill{height:100%;border-radius:999px;transition:width .8s cubic-bezier(.4,0,.2,1)}
-.prog-fill.red{background:linear-gradient(90deg,var(--red),#FF8080)}
-.prog-fill.yellow{background:linear-gradient(90deg,var(--yellow),#FFCC66)}
-.prog-fill.green{background:linear-gradient(90deg,var(--green),#90EFA5)}
-.prog-range{display:flex;justify-content:space-between;font-size:11px;color:var(--ink3);direction:ltr}
+.prog-fill.red{background:linear-gradient(90deg,var(–red),#FF8080)}
+.prog-fill.yellow{background:linear-gradient(90deg,var(–yellow),#FFCC66)}
+.prog-fill.green{background:linear-gradient(90deg,var(–green),#90EFA5)}
+.prog-range{display:flex;justify-content:space-between;font-size:11px;color:var(–ink3);direction:ltr}
 
 .tiles-sec{padding:0 16px 10px}
-.tiles-grp-lbl{font-size:11px;font-weight:700;color:var(--ink3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px;margin-top:14px}
+.tiles-grp-lbl{font-size:11px;font-weight:700;color:var(–ink3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px;margin-top:14px}
 .tiles{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.tile{background:var(--card);border-radius:14px;padding:12px 14px;box-shadow:var(--sh)}
+.tile{background:var(–card);border-radius:14px;padding:12px 14px;box-shadow:var(–sh)}
 .tile.wide{grid-column:span 2}
-.tile-lbl{font-size:10px;color:var(--ink3);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
-.tile-val{font-size:14px;font-weight:700;color:var(--ink)}
+.tile-lbl{font-size:10px;color:var(–ink3);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+.tile-val{font-size:14px;font-weight:700;color:var(–ink)}
 .tile-val.ltr{direction:ltr;display:block}
 .tile-val.note{font-size:13px;font-weight:400;line-height:1.4}
-.tile-val.ok{color:var(--green)}.tile-val.warn{color:var(--yellow)}.tile-val.alert{color:var(--red)}
+.tile-val.ok{color:var(–green)}.tile-val.warn{color:var(–yellow)}.tile-val.alert{color:var(–red)}
 
 /* ── BUTTONS ── */
 .cta-wrap{padding:0 16px 8px}
-.cta-btn{width:100%;padding:16px;background:linear-gradient(135deg,var(--navy),#1565C0);border:none;border-radius:16px;
-  color:#fff;font-family:var(--font);font-size:15px;font-weight:700;cursor:pointer;
-  transition:transform .15s;box-shadow:0 4px 16px rgba(13,27,75,.3);
-  display:flex;align-items:center;justify-content:center;gap:8px}
+.cta-btn{width:100%;padding:16px;background:linear-gradient(135deg,var(–navy),#1565C0);border:none;border-radius:16px;
+color:#fff;font-family:var(–font);font-size:15px;font-weight:700;cursor:pointer;
+transition:transform .15s;box-shadow:0 4px 16px rgba(13,27,75,.3);
+display:flex;align-items:center;justify-content:center;gap:8px}
 .cta-btn:active{transform:scale(.98)}
-.cta-btn.ghost{background:#fff;color:var(--blue);box-shadow:none;border:1.5px solid var(--line)}
-.cta-btn.danger{background:#fff;color:var(--red);box-shadow:none;border:1.5px solid var(--line)}
+.cta-btn.ghost{background:#fff;color:var(–blue);box-shadow:none;border:1.5px solid var(–line)}
+.cta-btn.danger{background:#fff;color:var(–red);box-shadow:none;border:1.5px solid var(–line)}
 
 /* ── FORMS ── */
-.form-hdr{background:var(--card);padding:52px 16px 18px;border-bottom:1px solid var(--line)}
+.form-hdr{background:var(–card);padding:52px 16px 18px;border-bottom:1px solid var(–line)}
 .form-hdr h1{font-size:22px;font-weight:800;letter-spacing:-.6px}
-.form-hdr p{font-size:13px;color:var(--ink3);font-weight:500;margin-top:3px}
+.form-hdr p{font-size:13px;color:var(–ink3);font-weight:500;margin-top:3px}
 .form-body{padding:16px;display:flex;flex-direction:column;gap:10px}
-.form-sec-lbl{font-size:11px;font-weight:700;color:var(--ink3);text-transform:uppercase;letter-spacing:.8px;padding:6px 4px 2px}
+.form-sec-lbl{font-size:11px;font-weight:700;color:var(–ink3);text-transform:uppercase;letter-spacing:.8px;padding:6px 4px 2px}
 
-.fcard{background:var(--card);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh)}
-.frow{display:flex;align-items:center;padding:13px 16px;border-bottom:1px solid var(--line);gap:10px}
+.fcard{background:var(–card);border-radius:var(–r);overflow:hidden;box-shadow:var(–sh)}
+.frow{display:flex;align-items:center;padding:13px 16px;border-bottom:1px solid var(–line);gap:10px}
 .frow:last-child{border-bottom:none}
 .ficon{font-size:18px;width:24px;text-align:center;flex-shrink:0}
-.flabel{font-size:12px;font-weight:600;color:var(--ink3);flex-shrink:0;min-width:90px}
-.finput{flex:1;border:none;outline:none;font-family:var(--font);font-size:15px;font-weight:700;
-  color:var(--ink);background:transparent;text-align:left;direction:ltr}
+.flabel{font-size:12px;font-weight:600;color:var(–ink3);flex-shrink:0;min-width:90px}
+.finput{flex:1;border:none;outline:none;font-family:var(–font);font-size:15px;font-weight:700;
+color:var(–ink);background:transparent;text-align:left;direction:ltr}
 .finput.rtl{direction:rtl;text-align:right}
-.finput::placeholder{color:var(--line);font-weight:400}
+.finput::placeholder{color:var(–line);font-weight:400}
 .finput[type=date]{font-size:14px;cursor:pointer}
-.fta{flex:1;border:none;outline:none;font-family:var(--font);font-size:13px;font-weight:500;
-  color:var(--ink);background:transparent;resize:none;height:56px}
+.fta{flex:1;border:none;outline:none;font-family:var(–font);font-size:13px;font-weight:500;
+color:var(–ink);background:transparent;resize:none;height:56px}
 
 .chips-wrap{padding:14px 16px}
-.chips-lbl{font-size:11px;font-weight:600;color:var(--ink3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:9px}
+.chips-lbl{font-size:11px;font-weight:600;color:var(–ink3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:9px}
 .chips-row{display:flex;gap:7px;flex-wrap:wrap}
-.chip{padding:8px 16px;border-radius:999px;border:1.5px solid var(--line);background:var(--bg);
-  color:var(--ink3);font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;font-family:var(--font)}
-.chip.active{background:var(--blue);border-color:var(--blue);color:#fff}
-.other-input{width:100%;border:none;border-top:1px solid var(--line);outline:none;
-  font-family:var(--font);font-size:14px;font-weight:600;color:var(--ink);
-  padding:12px 16px;background:transparent;direction:rtl;display:none}
+.chip{padding:8px 16px;border-radius:999px;border:1.5px solid var(–line);background:var(–bg);
+color:var(–ink3);font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;font-family:var(–font)}
+.chip.active{background:var(–blue);border-color:var(–blue);color:#fff}
+.other-input{width:100%;border:none;border-top:1px solid var(–line);outline:none;
+font-family:var(–font);font-size:14px;font-weight:600;color:var(–ink);
+padding:12px 16px;background:transparent;direction:rtl;display:none}
 .other-input.show{display:block}
-
 
 /* ── FILTER ── */
 .filter-btn{display:flex;align-items:center;gap:6px;padding:7px 14px;border-radius:12px;
-  border:1.5px solid var(--line);background:var(--card);color:var(--ink);
-  font-family:var(--font);font-size:13px;font-weight:700;cursor:pointer;transition:all .2s}
-.filter-btn.active{background:var(--navy);border-color:var(--navy);color:#fff}
+border:1.5px solid var(–line);background:var(–card);color:var(–ink);
+font-family:var(–font);font-size:13px;font-weight:700;cursor:pointer;transition:all .2s}
+.filter-btn.active{background:var(–navy);border-color:var(–navy);color:#fff}
 .filter-sheet-item{display:flex;align-items:center;justify-content:space-between;
-  padding:15px 16px;border-bottom:1px solid var(--line);cursor:pointer;transition:background .15s;border-radius:0}
+padding:15px 16px;border-bottom:1px solid var(–line);cursor:pointer;transition:background .15s;border-radius:0}
 .filter-sheet-item:last-child{border-bottom:none}
-.filter-sheet-item:active{background:var(--bg)}
+.filter-sheet-item:active{background:var(–bg)}
 .filter-sheet-item .fi-left{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600}
-.filter-sheet-item .fi-count{font-size:13px;font-weight:700;color:var(--ink3)}
-.filter-sheet-item.selected{background:var(--navy);border-radius:12px;margin:2px 0}
+.filter-sheet-item .fi-count{font-size:13px;font-weight:700;color:var(–ink3)}
+.filter-sheet-item.selected{background:var(–navy);border-radius:12px;margin:2px 0}
 .filter-sheet-item.selected .fi-left{color:#fff}
 .filter-sheet-item.selected .fi-count{color:rgba(255,255,255,.7)}
 
 /* ── TABLE VIEW ── */
 .view-toggle{display:flex;gap:6px;padding:0 16px 12px}
-.vtoggle-btn{flex:1;padding:8px;border-radius:10px;border:1.5px solid var(--line);
-  background:var(--card);color:var(--ink3);font-size:13px;font-weight:600;
-  cursor:pointer;font-family:var(--font);transition:all .2s;text-align:center}
-.vtoggle-btn.active{background:var(--ink);border-color:var(--ink);color:#fff}
+.vtoggle-btn{flex:1;padding:8px;border-radius:10px;border:1.5px solid var(–line);
+background:var(–card);color:var(–ink3);font-size:13px;font-weight:600;
+cursor:pointer;font-family:var(–font);transition:all .2s;text-align:center}
+.vtoggle-btn.active{background:var(–ink);border-color:var(–ink);color:#fff}
 
 .tbl-wrap{overflow-x:auto;padding:0 0 12px;-webkit-overflow-scrolling:touch}
 .tbl{border-collapse:collapse;width:max-content;min-width:100%;font-size:12px;direction:rtl}
-.tbl th{background:var(--card);color:var(--ink3);font-weight:700;font-size:10px;
-  letter-spacing:.5px;padding:10px 12px;text-align:right;
-  border-bottom:2px solid var(--line);white-space:nowrap;position:sticky;top:0;z-index:2}
-.tbl td{padding:10px 12px;border-bottom:1px solid var(--line);white-space:nowrap;
-  background:var(--card);vertical-align:middle;text-align:right}
+.tbl th{background:var(–card);color:var(–ink3);font-weight:700;font-size:10px;
+letter-spacing:.5px;padding:10px 12px;text-align:right;
+border-bottom:2px solid var(–line);white-space:nowrap;position:sticky;top:0;z-index:2}
+.tbl td{padding:10px 12px;border-bottom:1px solid var(–line);white-space:nowrap;
+background:var(–card);vertical-align:middle;text-align:right}
 .tbl tr:last-child td{border-bottom:none}
-.tbl tr:active td{background:var(--bg)}
+.tbl tr:active td{background:var(–bg)}
 .tbl tr{cursor:pointer}
 .tbl .st-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-left:6px;flex-shrink:0}
-.tbl .st-dot.red{background:var(--red)}.tbl .st-dot.yellow{background:var(--yellow)}.tbl .st-dot.green{background:var(--green)}
+.tbl .st-dot.red{background:var(–red)}.tbl .st-dot.yellow{background:var(–yellow)}.tbl .st-dot.green{background:var(–green)}
 .tbl .ltr{direction:ltr;display:inline-block}
-.tbl .bal.pos{color:var(--green)}.tbl .bal.neg{color:var(--red)}
-.tbl .date-ok{color:var(--green)}.tbl .date-warn{color:var(--yellow)}.tbl .date-alert{color:var(--red)}
+.tbl .bal.pos{color:var(–green)}.tbl .bal.neg{color:var(–red)}
+.tbl .date-ok{color:var(–green)}.tbl .date-warn{color:var(–yellow)}.tbl .date-alert{color:var(–red)}
 
 /* ── EXEMPTION TOGGLE ── */
-.exempt-row{display:flex;align-items:center;justify-content:space-between;padding:13px 16px;border-bottom:1px solid var(--line)}
+.exempt-row{display:flex;align-items:center;justify-content:space-between;padding:13px 16px;border-bottom:1px solid var(–line)}
 .exempt-row:last-child{border-bottom:none}
 .exempt-label{display:flex;flex-direction:column;gap:2px}
-.exempt-title{font-size:14px;font-weight:600;color:var(--ink)}
-.exempt-sub{font-size:11px;color:var(--ink3)}
+.exempt-title{font-size:14px;font-weight:600;color:var(–ink)}
+.exempt-sub{font-size:11px;color:var(–ink3)}
 .sw{position:relative;width:44px;height:26px;flex-shrink:0}
 .sw input{opacity:0;width:0;height:0;position:absolute}
-.sw-knob{position:absolute;inset:0;background:var(--line);border-radius:999px;transition:background .2s;cursor:pointer}
-.sw-knob::after{content:'';position:absolute;width:22px;height:22px;background:#fff;border-radius:50%;top:2px;right:2px;transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
-.sw input:checked+.sw-knob{background:var(--green)}
+.sw-knob{position:absolute;inset:0;background:var(–line);border-radius:999px;transition:background .2s;cursor:pointer}
+.sw-knob::after{content:’’;position:absolute;width:22px;height:22px;background:#fff;border-radius:50%;top:2px;right:2px;transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.sw input:checked+.sw-knob{background:var(–green)}
 .sw input:checked+.sw-knob::after{transform:translateX(-18px)}
 
 /* ── UNFIT BANNER ── */
 .unfit-banner{margin:0 16px 10px;border-radius:14px;padding:12px 16px;
-  background:#1a0000;border:2px solid var(--red);
-  display:flex;align-items:center;gap:10px}
+background:#1a0000;border:2px solid var(–red);
+display:flex;align-items:center;gap:10px}
 .unfit-banner .unfit-icon{font-size:22px;flex-shrink:0}
-.unfit-banner .unfit-text{font-size:14px;font-weight:800;color:var(--red);letter-spacing:.3px}
+.unfit-banner .unfit-text{font-size:14px;font-weight:800;color:var(–red);letter-spacing:.3px}
 .unfit-banner .unfit-sub{font-size:11px;color:#ff8080;font-weight:500;margin-top:2px}
 
 .fit-banner{margin:0 16px 10px;border-radius:14px;padding:12px 16px;
-  background:#001a08;border:2px solid var(--green);
-  display:flex;align-items:center;gap:10px}
+background:#001a08;border:2px solid var(–green);
+display:flex;align-items:center;gap:10px}
 .fit-banner .fit-icon{font-size:22px;flex-shrink:0}
-.fit-banner .fit-text{font-size:14px;font-weight:800;color:var(--green)}
+.fit-banner .fit-text{font-size:14px;font-weight:800;color:var(–green)}
 
 /* ── HISTORY ── */
 .hist-item{display:flex;gap:12px;align-items:flex-start}
 .hist-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:4px}
 .hist-line{display:flex;flex-direction:column;gap:2px;flex:1}
-.hist-action{font-size:14px;font-weight:600;color:var(--ink)}
-.hist-time{font-size:11px;color:var(--ink3);font-weight:500}
-.hist-sep{height:1px;background:var(--line);margin:4px 0}
+.hist-action{font-size:14px;font-weight:600;color:var(–ink)}
+.hist-time{font-size:11px;color:var(–ink3);font-weight:500}
+.hist-sep{height:1px;background:var(–line);margin:4px 0}
 
 /* ── TABLE SORT ── */
 .tbl th{cursor:pointer;user-select:none}
-.tbl th:hover{background:var(--bg)}
-.tbl th.sort-asc::after{content:' ▲';font-size:9px;color:var(--blue)}
-.tbl th.sort-desc::after{content:' ▼';font-size:9px;color:var(--blue)}
+.tbl th:hover{background:var(–bg)}
+.tbl th.sort-asc::after{content:’ ▲’;font-size:9px;color:var(–blue)}
+.tbl th.sort-desc::after{content:’ ▼’;font-size:9px;color:var(–blue)}
 .base-sheet{max-height:88dvh;overflow-y:auto}
 .base-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
-.base-tile{background:var(--bg);border-radius:12px;padding:10px 12px}
+.base-tile{background:var(–bg);border-radius:12px;padding:10px 12px}
 .base-tile.wide{grid-column:span 2}
-.base-lbl{font-size:10px;color:var(--ink3);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px}
-.base-val{font-size:14px;font-weight:700;color:var(--ink)}
+.base-lbl{font-size:10px;color:var(–ink3);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px}
+.base-val{font-size:14px;font-weight:700;color:var(–ink)}
 .base-val.ltr{direction:ltr;display:block}
-.base-val.ok{color:var(--green)}.base-val.warn{color:var(--yellow)}.base-val.alert{color:var(--red)}
+.base-val.ok{color:var(–green)}.base-val.warn{color:var(–yellow)}.base-val.alert{color:var(–red)}
 .base-val.note{font-size:13px;font-weight:400;line-height:1.4}
 .bottom-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;
-  background:rgba(255,255,255,.95);backdrop-filter:blur(20px);
-  border-top:1px solid rgba(0,0,0,.06);display:flex;z-index:500;
-  padding:8px 12px env(safe-area-inset-bottom,10px);gap:6px}
+background:rgba(255,255,255,.95);backdrop-filter:blur(20px);
+border-top:1px solid rgba(0,0,0,.06);display:flex;z-index:500;
+padding:8px 12px env(safe-area-inset-bottom,10px);gap:6px}
 .nav-item{flex:1;padding:8px 4px 7px;display:flex;flex-direction:column;align-items:center;gap:3px;
-  cursor:pointer;border:none;background:transparent;font-family:var(--font);
-  border-radius:16px;transition:background .2s,transform .15s}
+cursor:pointer;border:none;background:transparent;font-family:var(–font);
+border-radius:16px;transition:background .2s,transform .15s}
 .nav-item:active{transform:scale(.94)}
-.nav-item.active{background:var(--navy)}
+.nav-item.active{background:var(–navy)}
 .nav-emoji{font-size:22px}
-.nav-label{font-size:10px;font-weight:700;color:var(--ink3);letter-spacing:.2px}
+.nav-label{font-size:10px;font-weight:700;color:var(–ink3);letter-spacing:.2px}
 .nav-item.active .nav-label{color:#fff}
 
 /* ── MODAL ── */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:900;
-  display:flex;align-items:flex-end;opacity:0;pointer-events:none;transition:opacity .3s}
+display:flex;align-items:flex-end;opacity:0;pointer-events:none;transition:opacity .3s}
 .modal-overlay.show{opacity:1;pointer-events:all}
-.modal-sheet{background:var(--card);border-radius:24px 24px 0 0;padding:24px 20px 44px;
-  width:100%;transform:translateY(100%);transition:transform .35s cubic-bezier(.4,0,.2,1)}
+.modal-sheet{background:var(–card);border-radius:24px 24px 0 0;padding:24px 20px 44px;
+width:100%;transform:translateY(100%);transition:transform .35s cubic-bezier(.4,0,.2,1)}
 .modal-overlay.show .modal-sheet{transform:translateY(0)}
 .modal-icon{font-size:32px;margin-bottom:10px}
 .modal-title{font-size:18px;font-weight:800;margin-bottom:6px}
-.modal-sub{font-size:14px;color:var(--ink3);margin-bottom:20px;line-height:1.5}
-.mbtn{width:100%;padding:15px;border-radius:14px;border:none;font-family:var(--font);
-  font-size:15px;font-weight:700;cursor:pointer;margin-bottom:10px;transition:opacity .2s}
+.modal-sub{font-size:14px;color:var(–ink3);margin-bottom:20px;line-height:1.5}
+.mbtn{width:100%;padding:15px;border-radius:14px;border:none;font-family:var(–font);
+font-size:15px;font-weight:700;cursor:pointer;margin-bottom:10px;transition:opacity .2s}
 .mbtn:active{opacity:.8}
-.mbtn.blue{background:var(--blue);color:#fff}
-.mbtn.green{background:var(--green);color:#fff}
-.mbtn.red{background:var(--red-bg);color:var(--red)}
-.mbtn.gray{background:var(--bg);color:var(--ink3)}
-
+.mbtn.blue{background:var(–blue);color:#fff}
+.mbtn.green{background:var(–green);color:#fff}
+.mbtn.red{background:var(–red-bg);color:var(–red)}
+.mbtn.gray{background:var(–bg);color:var(–ink3)}
 
 .nav-ico{transition:filter .2s;filter:none}
 .nav-item.active .nav-ico{filter:brightness(0) invert(1)}
 
 /* ── TOAST ── */
 .toast{position:fixed;bottom:100px;left:50%;transform:translateX(-50%) translateY(20px);
-  background:var(--ink);color:#fff;padding:12px 20px;border-radius:14px;
-  font-size:14px;font-weight:600;opacity:0;transition:all .3s;z-index:1000;
-  white-space:nowrap;box-shadow:0 8px 32px rgba(0,0,0,.15)}
+background:var(–ink);color:#fff;padding:12px 20px;border-radius:14px;
+font-size:14px;font-weight:600;opacity:0;transition:all .3s;z-index:1000;
+white-space:nowrap;box-shadow:0 8px 32px rgba(0,0,0,.15)}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
-.empty{text-align:center;padding:60px 20px;color:var(--ink3)}
+.empty{text-align:center;padding:60px 20px;color:var(–ink3)}
 .empty .ei{font-size:48px;margin-bottom:12px}
-.empty .et{font-size:17px;font-weight:700;color:var(--ink);margin-bottom:6px}
+.empty .et{font-size:17px;font-weight:700;color:var(–ink);margin-bottom:6px}
 .empty .es{font-size:14px;line-height:1.5}
 
 /* ── DARK MODE ── */
 body.dark{
-  --red:#FF453A;--red-bg:#3D1A18;
-  --yellow:#FF9F0A;--yel-bg:#3D2E0A;
-  --green:#30D158;--grn-bg:#0D3320;
-  --blue:#4FC3F7;
-  --ink:#F5F5F7;--ink3:#8E8E93;
-  --line:#3A3A3C;--bg:#1C1C1E;--card:#2C2C2E;
+–red:#FF453A;–red-bg:#3D1A18;
+–yellow:#FF9F0A;–yel-bg:#3D2E0A;
+–green:#30D158;–grn-bg:#0D3320;
+–blue:#4FC3F7;
+–ink:#F5F5F7;–ink3:#8E8E93;
+–line:#3A3A3C;–bg:#1C1C1E;–card:#2C2C2E;
 }
 body.dark .bottom-nav{background:rgba(28,28,30,.95);border-top-color:rgba(255,255,255,.08)}
 body.dark .modal-sheet{background:#2C2C2E}
 body.dark .mbtn.gray{background:#3A3A3C}
 body.dark .pick-vrow{background:#3A3A3C}
-body.dark .vtoggle-btn{background:#2C2C2E;border-color:#3A3A3C;color:var(--ink3)}
+body.dark .vtoggle-btn{background:#2C2C2E;border-color:#3A3A3C;color:var(–ink3)}
 body.dark .vtoggle-btn.active{background:#F5F5F7;border-color:#F5F5F7;color:#1C1C1E}
-body.dark .chip{background:#3A3A3C;border-color:#48484A;color:var(--ink3)}
-body.dark .other-input{color:var(--ink)}
-body.dark input,body.dark textarea,body.dark select{color:var(--ink)}
+body.dark .chip{background:#3A3A3C;border-color:#48484A;color:var(–ink3)}
+body.dark .other-input{color:var(–ink)}
+body.dark input,body.dark textarea,body.dark select{color:var(–ink)}
 
 /* ── TOGGLE SWITCH ── */
 .toggle-switch{position:relative;width:51px;height:31px;flex-shrink:0}
 .toggle-switch input{opacity:0;width:0;height:0;position:absolute}
 .toggle-knob{position:absolute;inset:0;background:#E5E5EA;border-radius:999px;
-  transition:background .2s;cursor:pointer}
-.toggle-knob::after{content:'';position:absolute;width:27px;height:27px;
-  background:#fff;border-radius:50%;top:2px;right:2px;
-  transition:transform .2s;box-shadow:0 2px 4px rgba(0,0,0,.25)}
-.toggle-switch input:checked+.toggle-knob{background:var(--blue)}
+transition:background .2s;cursor:pointer}
+.toggle-knob::after{content:’’;position:absolute;width:27px;height:27px;
+background:#fff;border-radius:50%;top:2px;right:2px;
+transition:transform .2s;box-shadow:0 2px 4px rgba(0,0,0,.25)}
+.toggle-switch input:checked+.toggle-knob{background:var(–blue)}
 .toggle-switch input:checked+.toggle-knob::after{transform:translateX(-20px)}
 </style>
-
-
 
 </head>
 <body>
 <div class="app">
 
 <!-- ══ DASHBOARD ══ -->
+
 <div class="screen active" id="s-dash">
-  <div style="padding:52px 20px 16px;background:var(--card);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)">
+  <div style="padding:36px 20px 10px;background:var(--card);display:flex;align-items:center;justify-content:flex-end;border-bottom:1px solid var(--line);flex-shrink:0">
     <div style="font-size:28px;font-weight:900;letter-spacing:-1px;color:var(--navy)">CarFleet</div>
-    <img src="" style="width:32px;height:32px;border-radius:8px;object-fit:contain">
   </div>
-<div style="height:16px"></div>
+  <div class="scroll-body">
+    <div style="height:16px"></div>
     <div class="banner red" id="dash-banner" onclick="bannerClick()">
       <div class="banner-label" id="b-label">דחוף</div>
       <div class="banner-count" id="b-count">0</div>
@@ -462,9 +460,10 @@ body.dark input,body.dark textarea,body.dark select{color:var(--ink)}
 </div>
 
 <!-- ══ LIST ══ -->
+
 <div class="screen" id="s-list">
   <div class="list-hdr">
-    <div style="padding:52px 20px 16px;background:var(--card);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)">
+    <div style="padding:36px 20px 10px;background:var(--card);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)">
       <div>
         <div style="font-size:26px;font-weight:800;letter-spacing:-.8px;color:var(--navy)">כל הרכבים</div>
         <div style="font-size:12px;color:var(--ink3);font-weight:500;margin-top:2px" id="list-sub">—</div>
@@ -489,6 +488,7 @@ body.dark input,body.dark textarea,body.dark select{color:var(--ink)}
 </div>
 
 <!-- ══ DETAIL ══ -->
+
 <div class="screen" id="s-detail">
   <div class="det-nav">
     <button class="icon-btn" onclick="goBack()">‹</button>
@@ -573,6 +573,7 @@ body.dark input,body.dark textarea,body.dark select{color:var(--ink)}
 </div>
 
 <!-- ══ ADD ══ -->
+
 <div class="screen" id="s-add">
   <div style="padding:52px 16px 16px;background:var(--card);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px">
     <button class="icon-btn" onclick="goBack()">‹</button>
@@ -585,6 +586,7 @@ body.dark input,body.dark textarea,body.dark select{color:var(--ink)}
 </div>
 
 <!-- ══ EDIT ══ -->
+
 <div class="screen" id="s-edit">
   <div style="padding:52px 16px 14px;background:var(--card);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px">
     <button class="icon-btn" onclick="goBack()">‹</button>
@@ -598,86 +600,91 @@ body.dark input,body.dark textarea,body.dark select{color:var(--ink)}
 </div>
 
 <!-- ══ SETTINGS ══ -->
+
 <div class="screen" id="s-settings">
-  <div style="padding:52px 20px 16px;background:var(--card);border-bottom:1px solid var(--line)">
+  <div style="padding:36px 20px 10px;background:var(--card);border-bottom:1px solid var(--line)">
     <div style="font-size:26px;font-weight:800;letter-spacing:-.8px;color:var(--navy)">הגדרות</div>
   </div>
 <div class="scroll-body">
     <div style="padding:16px;display:flex;flex-direction:column;gap:10px">
 
-      <div class="form-sec-lbl">תצוגה</div>
-      <div class="fcard">
-        <div class="frow" style="justify-content:space-between">
-          <div style="display:flex;align-items:center;gap:10px">
-            <span class="ficon">🌙</span>
-            <span style="font-size:15px;font-weight:600">מצב כהה</span>
-          </div>
-          <label class="toggle-switch">
-            <input type="checkbox" id="dark-toggle" onchange="toggleDark(this.checked)">
-            <span class="toggle-knob"></span>
-          </label>
-        </div>
+```
+  <div class="form-sec-lbl">תצוגה</div>
+  <div class="fcard">
+    <div class="frow" style="justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span class="ficon">🌙</span>
+        <span style="font-size:15px;font-weight:600">מצב כהה</span>
       </div>
-
-      <div class="form-sec-lbl">ארכיון</div>
-      <div class="fcard">
-        <div class="frow" style="justify-content:space-between;cursor:pointer" onclick="openArchive()">
-          <div style="display:flex;align-items:center;gap:10px">
-            <span class="ficon">📦</span>
-            <span style="font-size:15px;font-weight:600">ארכיון רכבים</span>
-          </div>
-          <span style="color:var(--ink3)" id="archive-count"></span>
-        </div>
-      </div>
-
-      <div class="form-sec-lbl">נתונים</div>
-      <div class="fcard">
-        <div class="frow" style="justify-content:space-between;cursor:pointer" onclick="exportData()">
-          <div style="display:flex;align-items:center;gap:10px">
-            <span class="ficon">📤</span>
-            <span style="font-size:15px;font-weight:600">ייצוא נתונים</span>
-          </div>
-          <span style="color:var(--ink3)">›</span>
-        </div>
-        <div class="frow" style="justify-content:space-between;cursor:pointer" onclick="document.getElementById('import-file').click()">
-          <div style="display:flex;align-items:center;gap:10px">
-            <span class="ficon">📥</span>
-            <span style="font-size:15px;font-weight:600">ייבוא נתונים (כל הצי)</span>
-          </div>
-          <span style="color:var(--ink3)">›</span>
-        </div>
-        <div class="frow" style="justify-content:space-between;cursor:pointer" onclick="document.getElementById('import-vehicle-file').click()">
-          <div style="display:flex;align-items:center;gap:10px">
-            <span class="ficon">🚗</span>
-            <span style="font-size:15px;font-weight:600">ייבוא רכב מקצין רכב אחר</span>
-          </div>
-          <span style="color:var(--ink3)">›</span>
-        </div>
-        <input type="file" id="import-file" accept=".json" style="display:none" onchange="importData(this)">
-        <input type="file" id="import-vehicle-file" accept=".json" style="display:none" onchange="importVehicle(this)">
-      </div>
-
-      <div class="form-sec-lbl">תמיכה והצעות</div>
-      <div class="fcard">
-        <div class="frow" style="justify-content:space-between;cursor:pointer" onclick="shareWhatsapp()">
-          <div style="display:flex;align-items:center;gap:10px">
-            <span class="ficon">📤</span>
-            <span style="font-size:15px;font-weight:600">שלח הצעה / דווח על בעיה</span>
-          </div>
-          <span style="color:var(--ink3)">›</span>
-        </div>
-      </div>
-
-      <div style="text-align:center;padding:24px 0;color:var(--ink3);font-size:12px;font-weight:500">
-        CarFleet · גרסה 0.77V
-      </div>
+      <label class="toggle-switch">
+        <input type="checkbox" id="dark-toggle" onchange="toggleDark(this.checked)">
+        <span class="toggle-knob"></span>
+      </label>
     </div>
+  </div>
+
+  <div class="form-sec-lbl">ארכיון</div>
+  <div class="fcard">
+    <div class="frow" style="justify-content:space-between;cursor:pointer" onclick="openArchive()">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span class="ficon">📦</span>
+        <span style="font-size:15px;font-weight:600">ארכיון רכבים</span>
+      </div>
+      <span style="color:var(--ink3)" id="archive-count"></span>
+    </div>
+  </div>
+
+  <div class="form-sec-lbl">נתונים</div>
+  <div class="fcard">
+    <div class="frow" style="justify-content:space-between;cursor:pointer" onclick="exportData()">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span class="ficon">📤</span>
+        <span style="font-size:15px;font-weight:600">ייצוא נתונים</span>
+      </div>
+      <span style="color:var(--ink3)">›</span>
+    </div>
+    <div class="frow" style="justify-content:space-between;cursor:pointer" onclick="document.getElementById('import-file').click()">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span class="ficon">📥</span>
+        <span style="font-size:15px;font-weight:600">ייבוא נתונים (כל הצי)</span>
+      </div>
+      <span style="color:var(--ink3)">›</span>
+    </div>
+    <div class="frow" style="justify-content:space-between;cursor:pointer" onclick="document.getElementById('import-vehicle-file').click()">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span class="ficon">🚗</span>
+        <span style="font-size:15px;font-weight:600">ייבוא רכב מקצין רכב אחר</span>
+      </div>
+      <span style="color:var(--ink3)">›</span>
+    </div>
+    <input type="file" id="import-file" accept=".json" style="display:none" onchange="importData(this)">
+    <input type="file" id="import-vehicle-file" accept=".json" style="display:none" onchange="importVehicle(this)">
+  </div>
+
+  <div class="form-sec-lbl">תמיכה והצעות</div>
+  <div class="fcard">
+    <div class="frow" style="justify-content:space-between;cursor:pointer" onclick="shareWhatsapp()">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span class="ficon">📤</span>
+        <span style="font-size:15px;font-weight:600">שלח הצעה / דווח על בעיה</span>
+      </div>
+      <span style="color:var(--ink3)">›</span>
+    </div>
+  </div>
+
+  <div style="text-align:center;padding:24px 0;color:var(--ink3);font-size:12px;font-weight:500">
+    CarFleet · גרסה 0.78V
+  </div>
+</div>
+```
+
   </div>
 </div>
 
 </div><!-- /app -->
 
 <!-- ══ FAB MENU ══ -->
+
 <div class="fab-overlay" id="fab-overlay" onclick="closeFab()"></div>
 <div class="fab-menu" id="fab-menu">
   <div class="fab-action" onclick="closeFab();openQuickKm()">
@@ -713,6 +720,7 @@ body.dark input,body.dark textarea,body.dark select{color:var(--ink)}
 </nav>
 
 <!-- VEHICLE BASE MODAL (מסד רכב) -->
+
 <div class="modal-overlay" id="m-base">
   <div class="modal-sheet base-sheet">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
@@ -726,6 +734,7 @@ body.dark input,body.dark textarea,body.dark select{color:var(--ink)}
 </div>
 
 <!-- QUICK KM - PICK VEHICLE -->
+
 <div class="modal-overlay" id="m-pick-vehicle">
   <div class="modal-sheet">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
@@ -737,6 +746,7 @@ body.dark input,body.dark textarea,body.dark select{color:var(--ink)}
 </div>
 
 <!-- WEEKLY SERVICE MODAL -->
+
 <div class="modal-overlay" id="m-weekly">
   <div class="modal-sheet">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
@@ -745,49 +755,53 @@ body.dark input,body.dark textarea,body.dark select{color:var(--ink)}
     </div>
     <div style="font-size:13px;color:var(--ink3);font-weight:500;margin-bottom:16px" id="m-weekly-name">—</div>
 
-    <div style="font-size:12px;font-weight:600;color:var(--ink3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">ק"מ נוכחי</div>
-    <input type="number" id="m-weekly-km" inputmode="numeric"
-      style="width:100%;font-family:var(--font);font-size:32px;font-weight:800;border:none;
-             border-bottom:2px solid var(--line);outline:none;padding:8px 0;margin-bottom:16px;
-             direction:ltr;color:var(--ink);background:transparent"
-      placeholder="0">
-    <div style="font-size:12px;font-weight:600;color:var(--ink3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">תאריך טיפול</div>
-    <input type="date" id="m-weekly-date"
-      style="width:100%;font-family:var(--font);font-size:16px;font-weight:600;border:none;
-             border-bottom:2px solid var(--line);outline:none;padding:8px 0;margin-bottom:20px;
-             color:var(--ink);background:transparent;cursor:pointer">
+```
+<div style="font-size:12px;font-weight:600;color:var(--ink3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">ק"מ נוכחי</div>
+<input type="number" id="m-weekly-km" inputmode="numeric"
+  style="width:100%;font-family:var(--font);font-size:32px;font-weight:800;border:none;
+         border-bottom:2px solid var(--line);outline:none;padding:8px 0;margin-bottom:16px;
+         direction:ltr;color:var(--ink);background:transparent"
+  placeholder="0">
+<div style="font-size:12px;font-weight:600;color:var(--ink3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">תאריך טיפול</div>
+<input type="date" id="m-weekly-date"
+  style="width:100%;font-family:var(--font);font-size:16px;font-weight:600;border:none;
+         border-bottom:2px solid var(--line);outline:none;padding:8px 0;margin-bottom:20px;
+         color:var(--ink);background:transparent;cursor:pointer">
 
-    <!-- Pass/Fail toggle -->
-    <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-radius:14px;margin-bottom:12px;background:#F0FFF4;transition:background .25s" id="m-weekly-status-bar">
-      <div>
-        <div style="font-size:15px;font-weight:700;color:var(--green)" id="m-weekly-status-lbl">טיפול שבועי בוצע בהצלחה</div>
-        <div style="font-size:11px;color:var(--ink3);margin-top:2px">החלק לא אם הטיפול לא תקין</div>
-      </div>
-      <label class="sw"><input type="checkbox" id="m-weekly-pass" checked onchange="weeklyTogglePass(this.checked)"><span class="sw-knob"></span></label>
-    </div>
-    <!-- Optional note (always visible) -->
-    <div style="margin-bottom:16px">
-      <div style="font-size:12px;font-weight:600;color:var(--ink3);margin-bottom:6px" id="m-weekly-note-lbl">הערה (אופציונלי)</div>
-      <textarea id="m-weekly-fail-text" style="width:100%;height:70px;border:1.5px solid var(--line);border-radius:12px;
-        padding:10px;font-family:var(--font);font-size:14px;color:var(--ink);background:var(--bg);
-        resize:none;outline:none;direction:rtl" placeholder="הוסף הערה לטיפול..."></textarea>
-    </div>
+<!-- Pass/Fail toggle -->
+<div style="display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-radius:14px;margin-bottom:12px;background:#F0FFF4;transition:background .25s" id="m-weekly-status-bar">
+  <div>
+    <div style="font-size:15px;font-weight:700;color:var(--green)" id="m-weekly-status-lbl">טיפול שבועי בוצע בהצלחה</div>
+    <div style="font-size:11px;color:var(--ink3);margin-top:2px">החלק לא אם הטיפול לא תקין</div>
+  </div>
+  <label class="sw"><input type="checkbox" id="m-weekly-pass" checked onchange="weeklyTogglePass(this.checked)"><span class="sw-knob"></span></label>
+</div>
+<!-- Optional note (always visible) -->
+<div style="margin-bottom:16px">
+  <div style="font-size:12px;font-weight:600;color:var(--ink3);margin-bottom:6px" id="m-weekly-note-lbl">הערה (אופציונלי)</div>
+  <textarea id="m-weekly-fail-text" style="width:100%;height:70px;border:1.5px solid var(--line);border-radius:12px;
+    padding:10px;font-family:var(--font);font-size:14px;color:var(--ink);background:var(--bg);
+    resize:none;outline:none;direction:rtl" placeholder="הוסף הערה לטיפול..."></textarea>
+</div>
 
-    <div id="m-weekly-ena-wrap" style="display:none;margin-bottom:20px">
-      <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-top:1px solid var(--line)">
-        <div>
-          <div style="font-size:14px;font-weight:600;color:var(--ink)">נבדקה מערכת ענ"א</div>
-          <div style="font-size:11px;color:var(--ink3);margin-top:2px">סמן אם בוצעה בדיקת ענ"א</div>
-        </div>
-        <label class="sw"><input type="checkbox" id="m-weekly-ena-check"><span class="sw-knob"></span></label>
-      </div>
+<div id="m-weekly-ena-wrap" style="display:none;margin-bottom:20px">
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-top:1px solid var(--line)">
+    <div>
+      <div style="font-size:14px;font-weight:600;color:var(--ink)">נבדקה מערכת ענ"א</div>
+      <div style="font-size:11px;color:var(--ink3);margin-top:2px">סמן אם בוצעה בדיקת ענ"א</div>
     </div>
+    <label class="sw"><input type="checkbox" id="m-weekly-ena-check"><span class="sw-knob"></span></label>
+  </div>
+</div>
 
-    <button class="mbtn blue" onclick="saveWeeklyModal()">שמור טיפול שבועי</button>
+<button class="mbtn blue" onclick="saveWeeklyModal()">שמור טיפול שבועי</button>
+```
+
   </div>
 </div>
 
 <!-- NOTES MODAL -->
+
 <div class="modal-overlay" id="m-notes">
   <div class="modal-sheet">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
@@ -806,6 +820,7 @@ body.dark input,body.dark textarea,body.dark select{color:var(--ink)}
 </div>
 
 <!-- ARCHIVE MODAL -->
+
 <div class="modal-overlay" id="m-archive">
   <div class="modal-sheet" style="max-height:80dvh;overflow-y:auto;padding-bottom:32px">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;position:sticky;top:0;background:var(--card);padding-top:4px">
@@ -817,6 +832,7 @@ body.dark input,body.dark textarea,body.dark select{color:var(--ink)}
 </div>
 
 <!-- HISTORY MODAL -->
+
 <div class="modal-overlay" id="m-history">
   <div class="modal-sheet" style="max-height:80dvh;overflow-y:auto;padding-bottom:32px">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;position:sticky;top:0;background:var(--card);padding-top:4px">
@@ -828,6 +844,7 @@ body.dark input,body.dark textarea,body.dark select{color:var(--ink)}
 </div>
 
 <!-- FILTER SHEET -->
+
 <div class="modal-overlay" id="m-filter" onclick="if(event.target===this)closeM('m-filter')">
   <div class="modal-sheet" style="padding-bottom:32px">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
@@ -872,6 +889,7 @@ body.dark input,body.dark textarea,body.dark select{color:var(--ink)}
 </div>
 
 <!-- BCHECK MODAL -->
+
 <div class="modal-overlay" id="m-bcheck">
   <div class="modal-sheet">
     <div class="modal-icon">✅</div>
@@ -905,6 +923,7 @@ body.dark input,body.dark textarea,body.dark select{color:var(--ink)}
 </div>
 
 <!-- CONFIRM FIXED MODAL -->
+
 <div class="modal-overlay" id="m-confirm-fixed">
   <div class="modal-sheet">
     <div class="modal-icon">🔧</div>
@@ -916,6 +935,7 @@ body.dark input,body.dark textarea,body.dark select{color:var(--ink)}
 </div>
 
 <!-- DELETE MODAL -->
+
 <div class="modal-overlay" id="m-del">
   <div class="modal-sheet">
     <div class="modal-icon">🗑</div>
@@ -1012,6 +1032,15 @@ function getStatus(v){
     if(base<today){ enaUnfit=true; issues.push({s:'red',m:`ענ"א נדרש — עבר מועד`}); }
     else if(Math.round((base-today)/86400000)<=7) issues.push({s:'yellow',m:`ענ"א נדרש — ${Math.round((base-today)/86400000)} ימים`});
   }
+  // Weekly service
+  if(!v.exemptWeekly){
+    const wlast=v.lastWeekly?new Date(v.lastWeekly):null;
+    if(wlast) wlast.setHours(0,0,0,0);
+    const wdago=wlast?Math.round((today-wlast)/86400000):null;
+    if(wdago===null||wdago>7) issues.push({s:'red',   m: wdago?`חורג טיפול שבועי — ${wdago-7} ימים באיחור`:'חורג טיפול שבועי — לא בוצע'});
+    else if(wdago===7)        issues.push({s:'yellow',m:'נדרש טיפול שבועי היום'});
+  }
+
   const reds=issues.filter(i=>i.s==='red');
   const unfit = v.manualUnfit || annualExpired || annualServiceExpired || bcheckExpired || kmOverdue || enaUnfit;
 
@@ -1165,16 +1194,20 @@ function shareWhatsapp(){
 
 function shareVehicle(){
   const d=load(); const v=d.v.find(x=>x.id===_cur); if(!v) return;
-  // Export single vehicle as JSON file
   const payload={ _type:'fleet_vehicle_v1', vehicle: v };
   const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});
-  const a=document.createElement('a');
-  a.href=URL.createObjectURL(blob);
-  // Clean filename from vehicle name
   const name=(v.model||'רכב').replace(/[^a-zA-Z0-9א-ת]/g,'_');
-  a.download=`vehicle_${name}_${v.mil||v.civ||v.id}.json`;
-  a.click();
-  showToast(`📤 ${v.model} יוצא — שלח את הקובץ`);
+  const filename=`vehicle_${name}_${v.mil||v.civ||v.id}.json`;
+
+  // Download the file
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url; a.download=filename; a.click();
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
+
+  // Open WhatsApp with a message
+  const msg=encodeURIComponent(`פרטי רכב: ${v.model} (${v.mil||v.civ||''})\nקובץ הרכב הורד למכשיר — צרף אותו לשיחה 👇`);
+  setTimeout(()=>window.open(`https://wa.me/?text=${msg}`,'_blank'),600);
 }
 
 function importVehicle(input){
@@ -1268,17 +1301,31 @@ function renderDash(){
     document.getElementById('alerts').innerHTML=`<div style="text-align:center;padding:28px 20px;color:var(--ink3);font-size:14px;font-weight:500">🎉 אין התראות פעילות</div>`;
     return;
   }
-  document.getElementById('alerts').innerHTML=urgent.map(v=>{
+
+  const urgentRows=urgent.map(v=>{
     const pl=v.mil||v.civ||'';
-    return `<div class="alert-row ${v.st}" onclick="openDetail(${v.id})">
-      <div class="alert-icon">${SICON[v.st]}</div>
-      <div class="alert-body">
-        <div class="alert-name">${v.model}${pl?' · '+pl:''}</div>
-        <div class="alert-desc">${v.msg||''}</div>
+    const issues=v._issues&&v._issues.length?v._issues:[{s:v.st,m:v.msg||''}];
+    // Card per vehicle — name header + all issues listed inside
+    const issueLines=issues.map(iss=>{
+      const icon=iss.s==='red'?'🔴':'⚠️';
+      return `<div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(0,0,0,.05)">
+        <span style="font-size:13px">${icon}</span>
+        <span style="font-size:13px;font-weight:600;color:var(--ink)">${iss.m}</span>
+      </div>`;
+    }).join('');
+    return `<div class="alert-row ${v.st}" onclick="openDetail(${v.id})" style="flex-direction:column;align-items:stretch">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:${issues.length>1?'8px':'0'}">
+        <div class="alert-icon">${SICON[v.st]}</div>
+        <div class="alert-body" style="flex:1">
+          <div class="alert-name">${v.model}${pl?' · '+pl:''}</div>
+        </div>
+        <div class="alert-chev">‹</div>
       </div>
-      <div class="alert-chev">‹</div>
+      ${issues.length>1?issueLines:`<div style="font-size:13px;font-weight:500;color:var(--ink3);padding-right:4px">${issues[0]?.m||''}</div>`}
     </div>`;
   }).join('');
+
+  document.getElementById('alerts').innerHTML=urgentRows;
 }
 
 function bannerClick(){
@@ -1663,8 +1710,9 @@ function openDetail(id){
     // Warnings banner (yellow/red issues from getStatus)
     const allIssues=s._issues||[];
     const warnings=allIssues.filter(i=>i.s==='yellow'||i.s==='red');
+
     if(warnings.length){
-      const items=warnings.map(i=>{
+      const warnRows=warnings.map(i=>{
         const icon=i.s==='red'?'🔴':'⚠️';
         return '<div style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid rgba(0,0,0,.06)">'
           +'<span style="font-size:14px">'+icon+'</span>'
@@ -1673,7 +1721,7 @@ function openDetail(id){
       }).join('');
       html+='<div style="margin:0 16px 10px;border-radius:14px;padding:12px 16px;background:var(--card);box-shadow:var(--sh)">'
         +'<div style="font-size:11px;font-weight:700;color:var(--ink3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:4px">התראות</div>'
-        +items+'</div>';
+        +warnRows+'</div>';
     }
 
     pendEl.innerHTML=html;
@@ -2166,159 +2214,160 @@ function buildForm(v){
 
   h+='<div class="form-sec-lbl">הערות</div>';
   h+='<div class="fcard"><div class="frow"><span class="ficon">📝</span><span class="flabel">טקסט</span><textarea class="fta" id="fv-notes">'+( v?esc(v.notes||''):'' )+'</textarea></div></div>';
-  h+='<div class="cta-wrap" style="padding:0"><button class="cta-btn" onclick="'+fn+'">✅ &nbsp;שמור</button></div>';
-  if(v) h+='<div class="cta-wrap" style="padding:8px 0 0"><button class="cta-btn danger" onclick="confirmDel()">🗑 &nbsp;מחק רכב</button></div>';
-  return h;
+
+h+=’<div class="cta-wrap" style="padding:0"><button class="cta-btn" onclick="'+fn+'">✅  שמור</button></div>’;
+if(v) h+=’<div class="cta-wrap" style="padding:8px 0 0"><button class="cta-btn danger" onclick="confirmDel()">🗑  מחק רכב</button></div>’;
+return h;
 }
 function pickChip(el){
-  el.closest('.chips-row').querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
-  el.classList.add('active');
+el.closest(’.chips-row’).querySelectorAll(’.chip’).forEach(c=>c.classList.remove(‘active’));
+el.classList.add(‘active’);
 }
 function toggleOther(inputId, btn){
-  const inp=document.getElementById(inputId);
-  if(!inp) return;
-  inp.classList.add('show');
-  setTimeout(()=>inp.focus(),50);
+const inp=document.getElementById(inputId);
+if(!inp) return;
+inp.classList.add(‘show’);
+setTimeout(()=>inp.focus(),50);
 }
 function hideOther(inputId){
-  const inp=document.getElementById(inputId);
-  if(inp) inp.classList.remove('show');
+const inp=document.getElementById(inputId);
+if(inp) inp.classList.remove(‘show’);
 }
 
 function readForm(){
-  const g=id=>document.getElementById(id);
-  const model=g('fv-model')?.value.trim();
-  const civ=g('fv-civ')?.value.trim();
-  const mil=g('fv-mil')?.value.trim();
-  const iron=g('fv-iron')?.value.trim()||'';
-  const resp=g('fv-resp')?.value.trim()||'—';
-  const year=parseInt(g('fv-year')?.value)||2020;
+const g=id=>document.getElementById(id);
+const model=g(‘fv-model’)?.value.trim();
+const civ=g(‘fv-civ’)?.value.trim();
+const mil=g(‘fv-mil’)?.value.trim();
+const iron=g(‘fv-iron’)?.value.trim()||’’;
+const resp=g(‘fv-resp’)?.value.trim()||’—’;
+const year=parseInt(g(‘fv-year’)?.value)||2020;
 
-  // Vehicle type
-  const vtypeChip=document.querySelector('#fv-vtype-chips .chip.active');
-  const vtype= vtypeChip?.textContent==='אחר'
-    ? (g('vtype-other')?.value.trim()||'אחר')
-    : (vtypeChip?.textContent||'');
-  const manualUnfit=g('fv-manual-unfit')?.checked||false;
+// Vehicle type
+const vtypeChip=document.querySelector(’#fv-vtype-chips .chip.active’);
+const vtype= vtypeChip?.textContent===‘אחר’
+? (g(‘vtype-other’)?.value.trim()||‘אחר’)
+: (vtypeChip?.textContent||’’);
+const manualUnfit=g(‘fv-manual-unfit’)?.checked||false;
 
-  // Purpose — check if "אחר" chip is active
-  const purChip=document.querySelector('#fv-purpose-chips .chip.active');
-  const purpose= purChip?.textContent==='אחר'
-    ? (g('purpose-other')?.value.trim()||'אחר')
-    : (purChip?.textContent||'משימתי');
+// Purpose — check if “אחר” chip is active
+const purChip=document.querySelector(’#fv-purpose-chips .chip.active’);
+const purpose= purChip?.textContent===‘אחר’
+? (g(‘purpose-other’)?.value.trim()||‘אחר’)
+: (purChip?.textContent||‘משימתי’);
 
-  const km=parseInt(g('fv-km')?.value)||0;
-  const kmDate=g('fv-kmdate')?.value||new Date().toISOString().split('T')[0];
-  const kmLastService=parseInt(g('fv-km-last-service')?.value)||null;
-  const annualService=g('fv-annual-service')?.value||null;
+const km=parseInt(g(‘fv-km’)?.value)||0;
+const kmDate=g(‘fv-kmdate’)?.value||new Date().toISOString().split(‘T’)[0];
+const kmLastService=parseInt(g(‘fv-km-last-service’)?.value)||null;
+const annualService=g(‘fv-annual-service’)?.value||null;
 
-  // Interval — check if "אחר" chip active
-  const itvlChip=document.querySelector('#fv-itvl-chips .chip.active');
-  const itvl= itvlChip?.dataset.val==='other'
-    ? (parseInt(g('itvl-other')?.value)||10000)
-    : (parseInt(itvlChip?.dataset.val)||10000);
+// Interval — check if “אחר” chip active
+const itvlChip=document.querySelector(’#fv-itvl-chips .chip.active’);
+const itvl= itvlChip?.dataset.val===‘other’
+? (parseInt(g(‘itvl-other’)?.value)||10000)
+: (parseInt(itvlChip?.dataset.val)||10000);
 
-  const bf=document.querySelector('#fv-bf-chips .chip.active')?.textContent||BFREQS[0];
-  const bday=document.querySelector('#fv-bd-chips .chip.active')?.textContent||'ראשון';
-  const blast=g('fv-blast')?.value||null;
-  const annual=g('fv-annual')?.value||null;
-  const winter=g('fv-winter')?.value||null;
-  const notes=g('fv-notes')?.value.trim()||'';
-  const exemptWeekly=g('fv-exempt-weekly')?.checked||false;
-  const exemptBcheck=g('fv-exempt-bcheck')?.checked||false;
-  const enaActive=g('fv-ena-active')?.checked||false;
-  const enaStatus=g('fv-ena-status')?.value||'ok';
-  const enaDate=g('fv-ena-date')?.value||null;
-  const fuelCard=g('fv-fuel-card')?.checked||false;
-  const fuelCode=g('fv-fuel-code')?.value.trim()||'';
-  const vehicleCode=g('fv-vehicle-code')?.checked||false;
-  const vehicleCodeVal=g('fv-code-val')?.value.trim()||'';
-  return {model,civ,mil,iron,resp,year,vtype,purpose,manualUnfit,km,kmDate,kmLastService,annualService,itvl,bf,bday,blast,annual,winter,notes,exemptWeekly,exemptBcheck,enaActive,enaStatus,enaDate,fuelCard,fuelCode,vehicleCode,vehicleCodeVal};
+const bf=document.querySelector(’#fv-bf-chips .chip.active’)?.textContent||BFREQS[0];
+const bday=document.querySelector(’#fv-bd-chips .chip.active’)?.textContent||‘ראשון’;
+const blast=g(‘fv-blast’)?.value||null;
+const annual=g(‘fv-annual’)?.value||null;
+const winter=g(‘fv-winter’)?.value||null;
+const notes=g(‘fv-notes’)?.value.trim()||’’;
+const exemptWeekly=g(‘fv-exempt-weekly’)?.checked||false;
+const exemptBcheck=g(‘fv-exempt-bcheck’)?.checked||false;
+const enaActive=g(‘fv-ena-active’)?.checked||false;
+const enaStatus=g(‘fv-ena-status’)?.value||‘ok’;
+const enaDate=g(‘fv-ena-date’)?.value||null;
+const fuelCard=g(‘fv-fuel-card’)?.checked||false;
+const fuelCode=g(‘fv-fuel-code’)?.value.trim()||’’;
+const vehicleCode=g(‘fv-vehicle-code’)?.checked||false;
+const vehicleCodeVal=g(‘fv-code-val’)?.value.trim()||’’;
+return {model,civ,mil,iron,resp,year,vtype,purpose,manualUnfit,km,kmDate,kmLastService,annualService,itvl,bf,bday,blast,annual,winter,notes,exemptWeekly,exemptBcheck,enaActive,enaStatus,enaDate,fuelCard,fuelCode,vehicleCode,vehicleCodeVal};
 }
 
 function doAdd(){
-  const f=readForm();
-  if(!f.model){showToast('⚠️ נא להזין דגם רכב');return;}
-  const d=load();
-  d.v.push({id:d.nid++,...f});
-  save(d);
-  showToast('✅ הרכב נוסף!');
-  goHome();
+const f=readForm();
+if(!f.model){showToast(‘⚠️ נא להזין דגם רכב’);return;}
+const d=load();
+d.v.push({id:d.nid++,…f});
+save(d);
+showToast(‘✅ הרכב נוסף!’);
+goHome();
 }
 
 function goEdit(){
-  const d=load(); const v=d.v.find(x=>x.id===_cur); if(!v) return;
-  document.getElementById('edit-sub').textContent=v.model;
-  document.getElementById('edit-body').innerHTML=buildForm(v);
-  pushScreen('s-edit');
-  setNav(-1);
+const d=load(); const v=d.v.find(x=>x.id===_cur); if(!v) return;
+document.getElementById(‘edit-sub’).textContent=v.model;
+document.getElementById(‘edit-body’).innerHTML=buildForm(v);
+pushScreen(‘s-edit’);
+setNav(-1);
 }
 
 function doUpdate(){
-  const f=readForm();
-  if(!f.model){showToast('⚠️ נא להזין דגם רכב');return;}
-  const d=load(); const v=d.v.find(x=>x.id===_cur); if(!v) return;
-  // log specific field changes
-  const changes=[];
-  if(f.annual!==v.annual) changes.push(`תוקף רישוי שנתי עודכן ל-${fmt(f.annual)||'—'}`);
-  if(f.winter!==v.winter) changes.push(`ביקורת חורף עודכן ל-${fmt(f.winter)||'—'}`);
-  if(f.km>v.km) changes.push(`ק"מ עודכן ל-${f.km.toLocaleString()}`);
-  if(f.resp!==v.resp) changes.push(`אחראי שונה ל-${f.resp}`);
-  if(f.annualService!==v.annualService) changes.push(`טיפול שנתי עודכן ל-${fmt(f.annualService)||'—'}`);
-  if(changes.length===0) changes.push('פרטי רכב עודכנו');
-  changes.forEach(c=>logEvent(v,'edit',c));
-  // Preserve history and archive fields, merge new form data
-  const preserved={id:v.id, history:v.history, weeklyLog:v.weeklyLog, lastWeekly:v.lastWeekly, kmNext:v.kmNext};
-  Object.assign(v, f, preserved);
-  save(d);
-  showToast('✅ הפרטים עודכנו');
-  goBack();
-  openDetail(_cur);
+const f=readForm();
+if(!f.model){showToast(‘⚠️ נא להזין דגם רכב’);return;}
+const d=load(); const v=d.v.find(x=>x.id===_cur); if(!v) return;
+// log specific field changes
+const changes=[];
+if(f.annual!==v.annual) changes.push(`תוקף רישוי שנתי עודכן ל-${fmt(f.annual)||'—'}`);
+if(f.winter!==v.winter) changes.push(`ביקורת חורף עודכן ל-${fmt(f.winter)||'—'}`);
+if(f.km>v.km) changes.push(`ק"מ עודכן ל-${f.km.toLocaleString()}`);
+if(f.resp!==v.resp) changes.push(`אחראי שונה ל-${f.resp}`);
+if(f.annualService!==v.annualService) changes.push(`טיפול שנתי עודכן ל-${fmt(f.annualService)||'—'}`);
+if(changes.length===0) changes.push(‘פרטי רכב עודכנו’);
+changes.forEach(c=>logEvent(v,‘edit’,c));
+// Preserve history and archive fields, merge new form data
+const preserved={id:v.id, history:v.history, weeklyLog:v.weeklyLog, lastWeekly:v.lastWeekly, kmNext:v.kmNext};
+Object.assign(v, f, preserved);
+save(d);
+showToast(‘✅ הפרטים עודכנו’);
+goBack();
+openDetail(_cur);
 }
 
 /* ═══ UTILS ═══ */
 function fmt(iso){
-  if(!iso) return null;
-  const[y,m,d]=iso.split('-'); return `${d}/${m}/${y}`;
+if(!iso) return null;
+const[y,m,d]=iso.split(’-’); return `${d}/${m}/${y}`;
 }
-function esc(s){return (s||'').replace(/"/g,'&quot;').replace(/</g,'&lt;');}
+function esc(s){return (s||’’).replace(/”/g,’"’).replace(/</g,’<’);}
 function showToast(msg){
-  const t=document.getElementById('toast');
-  t.textContent=msg; t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'),2500);
+const t=document.getElementById(‘toast’);
+t.textContent=msg; t.classList.add(‘show’);
+setTimeout(()=>t.classList.remove(‘show’),2500);
 }
-
 
 /* ═══ SWIPE TO GO BACK ═══ */
 (function(){
-  let startX=0, startY=0, active=false;
-  document.addEventListener('touchstart', e=>{
-    startX = e.touches[0].clientX;
-    startY = e.touches[0].clientY;
-    active = startX < 30; // only from left edge
-  }, {passive:true});
-  document.addEventListener('touchend', e=>{
-    if(!active) return;
-    const dx = e.changedTouches[0].clientX - startX;
-    const dy = Math.abs(e.changedTouches[0].clientY - startY);
-    if(dx > 60 && dy < 40 && _stack.length > 1){
-      goBack();
-    }
-    active = false;
-  }, {passive:true});
+let startX=0, startY=0, active=false;
+document.addEventListener(‘touchstart’, e=>{
+startX = e.touches[0].clientX;
+startY = e.touches[0].clientY;
+active = startX < 30; // only from left edge
+}, {passive:true});
+document.addEventListener(‘touchend’, e=>{
+if(!active) return;
+const dx = e.changedTouches[0].clientX - startX;
+const dy = Math.abs(e.changedTouches[0].clientY - startY);
+if(dx > 60 && dy < 40 && _stack.length > 1){
+goBack();
+}
+active = false;
+}, {passive:true});
 })();
 
 /* ═══ INIT ═══ */
 seed();
-if(localStorage.getItem('fleet_dark')==='1') document.body.classList.add('dark');
+if(localStorage.getItem(‘fleet_dark’)===‘1’) document.body.classList.add(‘dark’);
 renderDash();
 // Version check
 (function(){
-  const VER='v0.73';
-  const prev=localStorage.getItem('carfleet_version');
-  localStorage.setItem('carfleet_version',VER);
-  if(prev && prev!==VER) setTimeout(()=>showToast('✅ עודכן ל-'+VER),800);
+const VER=‘v0.73’;
+const prev=localStorage.getItem(‘carfleet_version’);
+localStorage.setItem(‘carfleet_version’,VER);
+if(prev && prev!==VER) setTimeout(()=>showToast(‘✅ עודכן ל-’+VER),800);
 })();
 </script>
+
 </body>
 </html>
