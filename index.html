@@ -742,6 +742,20 @@ body.dark .fab-overlay{background:rgba(0,0,0,.6)}
         </div>
       </div>
 
+      <div class="form-sec-lbl">חשבון</div>
+      <div class="fcard">
+        <div class="frow" style="justify-content:space-between">
+          <div style="display:flex;align-items:center;gap:10px">
+            <span class="ficon">👤</span>
+            <span style="font-size:15px;font-weight:600" id="settings-username">—</span>
+          </div>
+          <button onclick="doLogout()" style="background:var(--red-bg);color:var(--red);border:none;
+            border-radius:10px;padding:7px 14px;font-family:var(--font);font-size:13px;font-weight:700;cursor:pointer">
+            התנתק
+          </button>
+        </div>
+      </div>
+
       <div class="form-sec-lbl">תצוגה</div>
       <div class="fcard">
         <div class="frow" style="justify-content:space-between">
@@ -1439,6 +1453,8 @@ function goList(){
 }
 
 function goSettings(){
+  const u=localStorage.getItem('fleet_auth_user');
+  if(u){ try{ const p=JSON.parse(u); const el=document.getElementById('settings-username'); if(el) el.textContent=p.username+(p.role?' · '+p.role:''); }catch(e){} }
   closeFab();
   const dt=document.getElementById('dark-toggle');
   if(dt) dt.checked=document.body.classList.contains('dark');
@@ -2730,7 +2746,7 @@ function doLogin(){
     .then(r=>r.json())
     .then(data=>{
       if(data.success){
-        sessionStorage.setItem(AUTH_KEY, JSON.stringify({username:data.username, role:data.role}));
+        localStorage.setItem(AUTH_KEY, JSON.stringify({username:data.username, role:data.role}));
         document.getElementById('login-screen').classList.add('hidden');
         setTimeout(()=>document.getElementById('login-screen').remove(),500);
         renderDash();
@@ -2748,11 +2764,16 @@ function doLogin(){
 }
 
 function checkAuth(){
-  const user=sessionStorage.getItem(AUTH_KEY);
+  const user=localStorage.getItem(AUTH_KEY);
   if(user){
     document.getElementById('login-screen').classList.add('hidden');
     setTimeout(()=>{ const el=document.getElementById('login-screen'); if(el) el.remove(); },100);
   }
+}
+
+function doLogout(){
+  localStorage.removeItem(AUTH_KEY);
+  location.reload();
 }
 
 // Run on load
