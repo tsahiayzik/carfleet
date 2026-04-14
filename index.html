@@ -824,7 +824,7 @@ body.dark .fab-overlay{background:rgba(0,0,0,.6)}
       </div>
 
       <div style="text-align:center;padding:24px 0;color:var(--ink3);font-size:12px;font-weight:500">
-        CarFleet · גרסה 0.80V
+        CarFleet · גרסה 0.82V
       </div>
     </div>
   </div>
@@ -1239,6 +1239,17 @@ body.dark .fab-overlay{background:rgba(0,0,0,.6)}
   </div>
 </div>
 
+<!-- LOGOUT CONFIRM -->
+<div class="modal-overlay" id="m-logout-confirm" onclick="if(event.target===this)closeM('m-logout-confirm')">
+  <div class="modal-sheet">
+    <div class="modal-icon">🔒</div>
+    <div class="modal-title">התנתקות</div>
+    <div class="modal-sub">האם אתה בטוח שברצונך להתנתק?</div>
+    <button class="mbtn red" onclick="confirmLogout()">כן, התנתק</button>
+    <button class="mbtn gray" onclick="closeM('m-logout-confirm')">ביטול</button>
+  </div>
+</div>
+
 <!-- KM MODAL -->
 <div class="modal-overlay" id="m-km">
   <div class="modal-sheet">
@@ -1334,9 +1345,16 @@ function seed(){
 /* ═══ STATUS ═══ */
 function nextBcheck(lastIso, freq){
   if(!lastIso) return null;
-  const w=freq&&freq.includes('12')?12:4;
-  const d=new Date(lastIso); d.setDate(d.getDate()+w*7);
-  return d.toISOString().split('T')[0];
+  // חודשי = 28 יום, תלת חודשי = 84 יום
+  const days=freq&&freq.includes('12')?84:28;
+  // Parse as local date to avoid UTC timezone shift
+  const [y,m,d]=lastIso.split('-').map(Number);
+  const date=new Date(y,m-1,d);
+  date.setDate(date.getDate()+days);
+  const yy=date.getFullYear();
+  const mm=String(date.getMonth()+1).padStart(2,'0');
+  const dd=String(date.getDate()).padStart(2,'0');
+  return `${yy}-${mm}-${dd}`;
 }
 
 function getStatus(v){
@@ -1344,7 +1362,7 @@ function getStatus(v){
   const issues=[];
   const nkm=v.km+(v.itvl||10000);
   // If kmLastService is set, base next service on it; otherwise fallback
-  const kmNext = v.kmLastService
+  const kmNext = (v.kmLastService!==null&&v.kmLastService!==undefined)
     ? v.kmLastService + (v.itvl||10000)
     : (v.kmNext && v.kmNext > v.km) ? v.kmNext : nkm;
 
@@ -2737,7 +2755,8 @@ function readForm(){
 
   const km=parseInt(g('fv-km')?.value)||0;
   const kmDate=g('fv-kmdate')?.value||new Date().toISOString().split('T')[0];
-  const kmLastService=parseInt(g('fv-km-last-service')?.value)||null;
+  const _klsRaw=g('fv-km-last-service')?.value;
+  const kmLastService=(_klsRaw!==''&&_klsRaw!==undefined&&_klsRaw!==null)?Number(_klsRaw):null;
   const annualService=g('fv-annual-service')?.value||null;
 
   // Interval — check if "אחר" chip active
@@ -2768,6 +2787,13 @@ function doAdd(){
   const f=readForm();
   if(!f.model){showToast('⚠️ נא להזין דגם רכב');return;}
   const d=load();
+  // Check duplicates
+  if(f.civ&&d.v.find(x=>x.civ&&x.civ===f.civ)){
+    showToast('⚠️ מספר רכב '+f.civ+' כבר קיים');return;
+  }
+  if(f.mil&&d.v.find(x=>x.mil&&x.mil===f.mil)){
+    showToast('⚠️ מספר צבאי '+f.mil+' כבר קיים');return;
+  }
   d.v.push({id:d.nid++,...f});
   save(d);
   showToast('✅ הרכב נוסף!');
@@ -2932,6 +2958,10 @@ function msgResp(){
 }
 
 function doLogout(){
+  document.getElementById('m-logout-confirm').classList.add('show');
+}
+function confirmLogout(){
+  closeM('m-logout-confirm');
   localStorage.removeItem(AUTH_KEY);
   location.reload();
 }
