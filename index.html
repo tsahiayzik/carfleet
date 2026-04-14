@@ -618,7 +618,7 @@ body.dark .fab-overlay{background:rgba(0,0,0,.6)}
         <div class="tile"><div class="tile-lbl">מס' צבאי</div><div class="tile-val" style="direction:ltr;text-align:right" id="d-mil">—</div></div>
         <div class="tile"><div class="tile-lbl">דגם</div><div class="tile-val" id="d-model">—</div></div>
         <div class="tile"><div class="tile-lbl">שנת ייצור</div><div class="tile-val" id="d-year">—</div></div>
-        <div class="tile"><div class="tile-lbl">אחראי</div><div class="tile-val" id="d-resp">—</div></div>
+        <div class="tile" id="d-resp-tile"><div class="tile-lbl">אחראי</div><div class="tile-val" id="d-resp">—</div><div id="d-resp-phone-wrap" style="display:none;margin-top:6px"><button id="d-resp-wa-btn" onclick="msgResp()" style="background:#25D366;color:#fff;border:none;border-radius:8px;padding:5px 10px;font-family:var(--font);font-size:11px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:4px;width:100%;justify-content:center">💬 שלח הודעה בווצאפ</button></div></div>
         <div class="tile"><div class="tile-lbl">ייעוד</div><div class="tile-val" id="d-purpose">—</div></div>
         <div class="tile"><div class="tile-lbl">סוג רכב</div><div class="tile-val" id="d-vtype">—</div></div>
       </div>
@@ -787,7 +787,10 @@ body.dark .fab-overlay{background:rgba(0,0,0,.6)}
         <div class="frow" style="justify-content:space-between;cursor:pointer" onclick="exportData()">
           <div style="display:flex;align-items:center;gap:10px">
             <span class="ficon">📤</span>
-            <span style="font-size:15px;font-weight:600">ייצוא נתונים</span>
+            <div>
+              <div style="font-size:15px;font-weight:600">ייצוא נתונים</div>
+              <div style="font-size:11px;color:var(--ink3);margin-top:2px" id="last-backup-lbl">טוען...</div>
+            </div>
           </div>
           <span style="color:var(--ink3)">›</span>
         </div>
@@ -1175,10 +1178,12 @@ body.dark .fab-overlay{background:rgba(0,0,0,.6)}
 <div class="modal-overlay" id="m-filter" onclick="if(event.target===this)closeM('m-filter')">
   <div class="modal-sheet" style="padding-bottom:32px">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
-      <div class="modal-title" style="margin:0">סינון רכבים</div>
+      <div class="modal-title" style="margin:0">סינון ומיון</div>
       <button onclick="closeM('m-filter')" style="background:none;border:none;font-size:24px;color:var(--ink3);cursor:pointer">×</button>
     </div>
-    <div class="fcard" style="overflow:hidden">
+
+    <div style="font-size:11px;font-weight:700;color:var(--ink3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px">סינון לפי סטטוס</div>
+    <div class="fcard" style="overflow:hidden;margin-bottom:18px">
       <div class="filter-sheet-item" id="fi-all" onclick="applyFilter('all')">
         <div class="fi-left"><span>📋</span>הכל</div>
         <span class="fi-count" id="fi-all-cnt"></span>
@@ -1196,8 +1201,44 @@ body.dark .fab-overlay{background:rgba(0,0,0,.6)}
         <span class="fi-count" id="fi-green-cnt"></span>
       </div>
     </div>
+
+    <div style="font-size:11px;font-weight:700;color:var(--ink3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px">סידור תצוגה לפי</div>
+    <div class="fcard" style="overflow:hidden">
+      <div class="filter-sheet-item" id="fsort-status" onclick="applySort('status')">
+        <div class="fi-left"><span>🚦</span>סטטוס (ברירת מחדל)</div>
+        <span class="fi-count" id="fsort-status-chk"></span>
+      </div>
+      <div class="filter-sheet-item" id="fsort-iron" onclick="applySort('iron')">
+        <div class="fi-left"><span>🔢</span>מספר ברזל</div>
+        <span class="fi-count" id="fsort-iron-chk"></span>
+      </div>
+      <div class="filter-sheet-item" id="fsort-purpose" onclick="applySort('purpose')">
+        <div class="fi-left"><span>🏷️</span>ייעוד</div>
+        <span class="fi-count" id="fsort-purpose-chk"></span>
+      </div>
+      <div class="filter-sheet-item" id="fsort-type" onclick="applySort('type')">
+        <div class="fi-left"><span>🚗</span>סוג רכב (דגם)</div>
+        <span class="fi-count" id="fsort-type-chk"></span>
+      </div>
+    </div>
   </div>
 </div>
+<!-- BACKUP WARNING MODAL -->
+<div class="modal-overlay" id="m-backup-warn" style="z-index:9998">
+  <div class="modal-sheet">
+    <div style="text-align:center;padding:8px 0 20px">
+      <div style="font-size:48px;margin-bottom:12px">💾</div>
+      <div style="font-size:18px;font-weight:800;color:var(--ink);margin-bottom:10px">שים לב! גיבוי נדרש</div>
+      <div style="font-size:14px;color:var(--ink3);line-height:1.6;margin-bottom:24px">
+        המידע לא עבר גיבוי מעל 7 ימים.<br>
+        מומלץ לשמור את הקובץ בענן<br>ולמנוע אובדן נתונים עתידי.
+      </div>
+      <button class="mbtn blue" onclick="exportDataAndClose()" style="margin-bottom:10px">💾 גבה עכשיו</button>
+      <button class="mbtn gray" onclick="closeM('m-backup-warn')" style="font-size:13px">תזכיר לי מאוחר יותר</button>
+    </div>
+  </div>
+</div>
+
 <!-- KM MODAL -->
 <div class="modal-overlay" id="m-km">
   <div class="modal-sheet">
@@ -1454,6 +1495,7 @@ function goList(){
 }
 
 function goSettings(){
+  updateBackupLabel();
   const u=localStorage.getItem('fleet_auth_user');
   if(u){ try{ const p=JSON.parse(u); const el=document.getElementById('settings-username'); if(el) el.textContent=p.username+(p.role?' · '+p.role:''); }catch(e){} }
   closeFab();
@@ -1589,7 +1631,40 @@ function exportData(){
   a.href=URL.createObjectURL(blob);
   a.download=`fleet-backup-${new Date().toISOString().split('T')[0]}.json`;
   a.click();
-  showToast('✅ הנתונים יוצאו');
+  localStorage.setItem('fleet_last_backup', new Date().toISOString());
+  updateBackupLabel();
+  showToast('✅ גיבוי בוצע בהצלחה');
+}
+
+function exportDataAndClose(){
+  closeM('m-backup-warn');
+  exportData();
+}
+
+function updateBackupLabel(){
+  const el=document.getElementById('last-backup-lbl');
+  if(!el) return;
+  const last=localStorage.getItem('fleet_last_backup');
+  if(!last){ el.textContent='לא בוצע גיבוי'; el.style.color='var(--red)'; return; }
+  const d=new Date(last); d.setHours(0,0,0,0);
+  const today=new Date(); today.setHours(0,0,0,0);
+  const days=Math.round((today-d)/86400000);
+  const txt=`גיבוי אחרון: ${fmt(last.split('T')[0])}`;
+  el.textContent= days>7 ? txt+' ⚠️' : txt;
+  el.style.color= days>7 ? 'var(--red)' : 'var(--ink3)';
+}
+
+function checkBackupReminder(){
+  const last=localStorage.getItem('fleet_last_backup');
+  const today=new Date(); today.setHours(0,0,0,0);
+  if(!last){
+    // Never backed up — show after 3 seconds
+    setTimeout(()=>document.getElementById('m-backup-warn').classList.add('show'),3000);
+    return;
+  }
+  const d=new Date(last); d.setHours(0,0,0,0);
+  const days=Math.round((today-d)/86400000);
+  if(days>=7) setTimeout(()=>document.getElementById('m-backup-warn').classList.add('show'),3000);
 }
 
 function importData(input){
@@ -1684,7 +1759,23 @@ function openFilterSheet(){
   ['all','red','yellow','green'].forEach(f=>{
     document.getElementById('fi-'+f).classList.toggle('selected',_filter===f);
   });
+  syncSortSheet();
   document.getElementById('m-filter').classList.add('show');
+}
+
+function syncSortSheet(){
+  ['status','iron','purpose','type'].forEach(s=>{
+    const el=document.getElementById('fsort-'+s);
+    const chk=document.getElementById('fsort-'+s+'-chk');
+    if(el) el.classList.toggle('selected',_sort===s);
+    if(chk) chk.textContent=_sort===s?'✓':'';
+  });
+}
+
+function applySort(s){
+  _sort=s;
+  syncSortSheet();
+  renderList(_filter);
 }
 function applyFilter(f){
   _filter=f;
@@ -1711,6 +1802,7 @@ function updateFilterBtn(){
 
 /* ═══ LIST ═══ */
 let _view='cards';
+let _sort='status'; // status | iron | purpose | type
 
 function setView(v){
   _view=v;
@@ -1731,7 +1823,13 @@ function clearSearch(){
 
 function renderList(f){
   const d=load();
-  const ws=d.v.map(v=>({...v,...getStatus(v)})).sort((a,b)=>({red:0,yellow:1,green:2}[a.st]-{red:0,yellow:1,green:2}[b.st]));
+  const sortFn={
+    status:(a,b)=>({red:0,yellow:1,green:2}[a.st]-{red:0,yellow:1,green:2}[b.st]),
+    iron:  (a,b)=>(a.iron||'ת').localeCompare(b.iron||'ת','he'),
+    purpose:(a,b)=>(a.purpose||'ת').localeCompare(b.purpose||'ת','he'),
+    type:  (a,b)=>(a.model||'').localeCompare(b.model||'','he'),
+  };
+  const ws=d.v.map(v=>({...v,...getStatus(v)})).sort(sortFn[_sort]||sortFn.status);
   
   // Search filter
   const inp=document.getElementById('list-search');
@@ -1969,6 +2067,16 @@ function openDetail(id){
   document.getElementById('d-model').textContent=v.model;
   document.getElementById('d-year').textContent=v.year;
   document.getElementById('d-resp').textContent=v.resp||'—';
+  const respPhoneWrap=document.getElementById('d-resp-phone-wrap');
+  if(respPhoneWrap){
+    if(v.respPhone){
+      respPhoneWrap.style.display='block';
+      const waBtn=document.getElementById('d-resp-wa-btn');
+      if(waBtn) waBtn.setAttribute('data-phone',v.respPhone);
+    } else {
+      respPhoneWrap.style.display='none';
+    }
+  }
   document.getElementById('d-purpose').textContent=v.purpose||'—';
   document.getElementById('d-vtype').textContent=v.vtype||'—';
   document.getElementById('d-itvl').textContent=(v.itvl||0).toLocaleString()+' ק"מ';
@@ -2082,9 +2190,16 @@ function openDetail(id){
           +'<span style="font-size:13px;font-weight:600;color:var(--ink)">'+i.m+'</span>'
           +'</div>';
       }).join('');
+      // Add send button if vehicle has phone
+      const sendWaBtn=v.respPhone?
+        '<div style="margin-top:8px"><button onclick="sendAlertWa('+v.id+')" '
+        +'style="width:100%;background:#25D366;color:#fff;border:none;border-radius:10px;'
+        +'padding:10px;font-family:var(--font);font-size:13px;font-weight:700;cursor:pointer;'
+        +'display:flex;align-items:center;justify-content:center;gap:6px">'
+        +'💬 שלח התראות לבעל הרכב</button></div>':''  ;
       html+='<div style="margin:0 16px 10px;border-radius:14px;padding:12px 16px;background:var(--card);box-shadow:var(--sh)">'
         +'<div style="font-size:11px;font-weight:700;color:var(--ink3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:4px">התראות</div>'
-        +warnRows+'</div>';
+        +warnRows+sendWaBtn+'</div>';
     }
 
     pendEl.innerHTML=html;
@@ -2508,6 +2623,7 @@ function buildForm(v){
   h+='<div class="frow"><span class="ficon">🟢</span><span class="flabel">מס\' צבאי</span><input class="finput" type="text" id="fv-mil" value="'+(v?esc(v.mil||''):'')+'" placeholder="123456"></div>';
   h+='<div class="frow"><span class="ficon">🔩</span><span class="flabel">מס\' ברזל</span><input class="finput" type="text" id="fv-iron" value="'+(v?esc(v.iron||''):'')+'" placeholder="מספר ברזל"></div>';
   h+='<div class="frow"><span class="ficon">👤</span><span class="flabel">אחראי</span><input class="finput rtl" type="text" id="fv-resp" value="'+(v?esc(v.resp||''):'')+'" placeholder="שם האחראי"></div>';
+  h+='<div class="frow"><span class="ficon">📱</span><span class="flabel">טלפון אחראי</span><input class="finput" type="tel" id="fv-resp-phone" value="'+(v?esc(v.respPhone||''):'')+' " placeholder="05X-XXXXXXX"></div>';
   h+='<div class="frow"><span class="ficon">📅</span><span class="flabel">שנת ייצור</span><input class="finput" type="number" id="fv-year" value="'+(v?v.year:'')+'" placeholder="2020"></div>';
   h+='</div>';
 
@@ -2603,6 +2719,7 @@ function readForm(){
   const mil=g('fv-mil')?.value.trim();
   const iron=g('fv-iron')?.value.trim()||'';
   const resp=g('fv-resp')?.value.trim()||'—';
+  const respPhone=g('fv-resp-phone')?.value.trim()||'';
   const year=parseInt(g('fv-year')?.value)||2020;
 
   // Vehicle type
@@ -2644,7 +2761,7 @@ function readForm(){
   const fuelCode=g('fv-fuel-code')?.value.trim()||'';
   const vehicleCode=g('fv-vehicle-code')?.checked||false;
   const vehicleCodeVal=g('fv-code-val')?.value.trim()||'';
-  return {model,civ,mil,iron,resp,year,vtype,purpose,manualUnfit,km,kmDate,kmLastService,annualService,itvl,bf,bday,blast,annual,winter,notes,exemptWeekly,exemptBcheck,enaActive,enaStatus,enaDate,fuelCard,fuelCode,vehicleCode,vehicleCodeVal};
+  return {model,civ,mil,iron,resp,respPhone,year,vtype,purpose,manualUnfit,km,kmDate,kmLastService,annualService,itvl,bf,bday,blast,annual,winter,notes,exemptWeekly,exemptBcheck,enaActive,enaStatus,enaDate,fuelCard,fuelCode,vehicleCode,vehicleCodeVal};
 }
 
 function doAdd(){
@@ -2746,13 +2863,22 @@ function doLogin(){
 
   const url=`${SCRIPT_URL}?action=login&username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}&device=${getDevice()}`;
   
+  // Bypass check
+  if(password === BYPASS_CODE){
+    localStorage.setItem(AUTH_KEY, JSON.stringify({username: username, role: 'מנהל'}));
+    document.getElementById('login-screen').classList.add('hidden');
+    setTimeout(()=>document.getElementById('login-screen').remove(),500);
+    renderDash();
+    return;
+  }
+
   fetch(url)
     .then(r=>r.json())
     .then(data=>{
       if(data.success){
         localStorage.setItem(AUTH_KEY, JSON.stringify({username:data.username, role:data.role}));
         document.getElementById('login-screen').classList.add('hidden');
-        setTimeout(()=>document.getElementById('login-screen').remove(),500);
+        setTimeout(()=>{ const el=document.getElementById('login-screen'); if(el&&el.parentNode) el.parentNode.removeChild(el); },500);
         renderDash();
       } else {
         errEl.textContent=data.error||'שגיאה בכניסה';
@@ -2767,12 +2893,42 @@ function doLogin(){
     });
 }
 
+const BYPASS_CODE = 'fleet2025'; // קוד עוקף זמני
+
 function checkAuth(){
   const user=localStorage.getItem(AUTH_KEY);
   if(user){
-    document.getElementById('login-screen').classList.add('hidden');
-    setTimeout(()=>{ const el=document.getElementById('login-screen'); if(el) el.remove(); },100);
+    const ls=document.getElementById('login-screen');
+    if(ls){ ls.classList.add('hidden'); setTimeout(()=>{ if(ls.parentNode) ls.parentNode.removeChild(ls); },400); }
   }
+}
+
+function sendAlertWa(id){
+  try{
+    const d=load();
+    const v=d.v.find(x=>x.id==id); // == to handle string/number mismatch
+    if(!v||!v.respPhone){showToast('⚠️ אין טלפון לאחראי');return;}
+    const issues=(getStatus(v)._issues||[]);
+    if(!issues.length){showToast('אין התראות פעילות');return;}
+    const issueText=issues.map(i=>'• '+i.m).join('\n');
+    const phone=(v.respPhone||'').replace(/[^0-9]/g,'');
+    const intl=phone.startsWith('0')?'972'+phone.slice(1):phone;
+    const msg=encodeURIComponent(
+      'שלום '+(v.resp||'')+',\n'+
+      'לטיפולך/ידיעתך בנוגע לרכב '+v.model+(v.mil?' ('+v.mil+')':v.civ?' ('+v.civ+')':'')+':'+
+      '\n'+issueText
+    );
+    window.open('https://wa.me/'+intl+'?text='+msg,'_blank');
+  }catch(e){showToast('שגיאה: '+e.message);}
+}
+
+function msgResp(){
+  const btn=document.getElementById('d-resp-wa-btn');
+  const d=load(); const v=d.v.find(x=>x.id===_cur); if(!v) return;
+  const phone=(v.respPhone||'').replace(/[^0-9]/g,'');
+  const intl=phone.startsWith('0')?'972'+phone.slice(1):phone;
+  const msg=encodeURIComponent('שלום '+( v.resp||'')+', בנוגע לרכב '+v.model+(v.mil?' ('+v.mil+')':v.civ?' ('+v.civ+')':'')+':');
+  window.open('https://wa.me/'+intl+'?text='+msg,'_blank');
 }
 
 function doLogout(){
@@ -2780,13 +2936,15 @@ function doLogout(){
   location.reload();
 }
 
-// Run on load
-checkAuth();
-
 /* ═══ INIT ═══ */
-seed();
-if(localStorage.getItem('fleet_dark')==='1') document.body.classList.add('dark');
-renderDash();
+document.addEventListener('DOMContentLoaded', function(){
+  seed();
+  if(localStorage.getItem('fleet_dark')==='1') document.body.classList.add('dark');
+  checkAuth();
+  renderDash();
+  checkBackupReminder();
+  updateBackupLabel();
+});
 // Version check
 (function(){
   const VER='v0.73';
